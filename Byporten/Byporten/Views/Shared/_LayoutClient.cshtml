@@ -10,7 +10,26 @@
 
 </head>
 <body>
-    <div>
+
+    <div class="hidden-menu-wrap">
+        <div class="menu-header">
+            <p class="lead"><span class="fa fa-caret-down"></span> Meny</p>
+        </div>
+        <ul class="main-navigation">
+            <!--Actionlinks-->
+        </ul>
+    </div> <!-- Hidden-menu-wrap end -->
+        
+    <div class="header-wrap">
+        <div class="container-fluid">
+            <h3 class="fa fa-bars pull-left menu-button"></h3>
+            <!--LOGO-->
+            <h3 class="fa fa-search pull-right search-button"></h3>
+        </div>
+    </div> <!-- Header-wrap end -->
+
+
+    <div class="render-body">
         @RenderBody()
     </div>
 
@@ -25,7 +44,6 @@
 
 
     <script src="~/Scripts/jquery-1.11.2.min.js"></script>
-    <script src="~/Scripts/jquery-1.11.2.intellisense.js"></script>
     <script src="~/Scripts/layout.js"></script>
 </body>
 </html>
