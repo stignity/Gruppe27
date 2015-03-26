@@ -97,6 +97,7 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\layout.css" />
+    <Content Include="Content\portal.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -192,6 +193,12 @@
     <Content Include="Views\Admin\_ViewStartAdmin.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Logout.cshtml" />
+    <Content Include="Views\Home\Aktuelt.cshtml" />
+    <Content Include="Views\Home\Butikker.cshtml" />
+    <Content Include="Views\Home\Kundeklubb.cshtml" />
+    <Content Include="Views\Home\Gavekort.cshtml" />
+    <Content Include="Views\Home\Senterinformasjon.cshtml" />
+    <Content Include="Views\Home\Stillinger.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

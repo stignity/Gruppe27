@@ -14,13 +14,13 @@
             if (Toggled == false) {
                 Toggled = true;
                 $('.hidden-menu-wrap').animate({ left: '0px' }, 250);
-                $('body').animate({ left: '240px' }, 250);
+                $('body').animate({ left: '230px' }, 250);
                 $('body').css('max-width', '100%');
                 $('body').css('overflow-x', 'hidden');
 
             } else {
                 Toggled = false;
-                $('.hidden-menu-wrap').animate({ left: '-240px' }, 250);
+                $('.hidden-menu-wrap').animate({ left: '-230px' }, 250);
                 $('body').animate({ left: '0px' }, 250);
             }
         });

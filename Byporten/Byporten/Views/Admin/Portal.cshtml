@@ -1,23 +1,34 @@
 ﻿@model Byporten.Models.AdminModel
 
 <!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/portal.css" rel="stylesheet" />
+</head>
 
-<h1>Byporten Portal</h1>
+<body>
 
-@using (Html.BeginForm())
-{
-    @Html.ValidationSummary(true, "Login feilet, vennligst prøv igjen.")
-    <div>
-        <fieldset>
-            <legend>Login</legend>
-            <div>@Html.LabelFor(u => u.Username)</div>
-            <div>@Html.TextBoxFor(u => u.Username)</div>
-            <div>@Html.ValidationMessageFor(u => u.Username)</div>
+    <div class="container-fluid">
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true, "Login feilet, vennligst prøv igjen.")
+            <div class="login-wrap">
+                <div class="login-form">
+                    <center>
+                        <h2 class="logo">Byporten<span class="fa fa-stumbleupon"></span>Shopping</h2>
+                        <p class="lead">Administrator</p>
+                        <div>@Html.TextBoxFor(u => u.Username, new { @placeholder = "Brukernavn" })</div>
+                        <div>@Html.ValidationMessageFor(u => u.Username)</div>
 
-            <div>@Html.LabelFor(u => u.Password)</div>
-            <div>@Html.PasswordFor(u => u.Password)</div>
-            <div>@Html.ValidationMessageFor(u => u.Password)</div>
-            <input type="submit" value="Login" />
-        </fieldset>
+                        <div>@Html.PasswordFor(u => u.Password, new { @placeholder = "Passord" })</div>
+                        <div>@Html.ValidationMessageFor(u => u.Password)</div>
+                        <input type="submit" value="Login" />
+                    </center>
+                </div>
+            </div>
+        }
     </div>
-}
+</body>
