@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="byportenModelStoreContainer" CdmEntityContainer="byportenEntities">
+    <EntitySetMapping Name="adminuser">
+      <EntityTypeMapping TypeName="byportenModel.adminuser">
+        <MappingFragment StoreEntitySet="adminuser">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="aktuelt">
+      <EntityTypeMapping TypeName="byportenModel.aktuelt">
+        <MappingFragment StoreEntitySet="aktuelt">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Tittel" ColumnName="Tittel" />
+          <ScalarProperty Name="Innhold" ColumnName="Innhold" />
+          <ScalarProperty Name="Startdato" ColumnName="Startdato" />
+          <ScalarProperty Name="Sluttdato" ColumnName="Sluttdato" />
+          <ScalarProperty Name="Bilde" ColumnName="Bilde" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="availablepositions">
+      <EntityTypeMapping TypeName="byportenModel.availablepositions">
+        <MappingFragment StoreEntitySet="availablepositions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+          <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+          <ScalarProperty Name="ExternalLinkURL" ColumnName="ExternalLinkURL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="butikker">
+      <EntityTypeMapping TypeName="byportenModel.butikker">
+        <MappingFragment StoreEntitySet="butikker">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Navn" ColumnName="Navn" />
+          <ScalarProperty Name="Kategori" ColumnName="Kategori" />
+          <ScalarProperty Name="Beskrivelse" ColumnName="Beskrivelse" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+          <ScalarProperty Name="Hjemmeside" ColumnName="Hjemmeside" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="createpost">
+      <EntityTypeMapping TypeName="byportenModel.createpost">
+        <MappingFragment StoreEntitySet="createpost">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+          <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+          <ScalarProperty Name="ExternalLinkURL" ColumnName="ExternalLinkURL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user">
+      <EntityTypeMapping TypeName="byportenModel.user">
+        <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
