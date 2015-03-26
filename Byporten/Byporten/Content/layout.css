@@ -61,6 +61,13 @@
     position: fixed;
 }
 
+.logo-wrap{
+    width: 500px;
+    height: 60px;
+    margin: 0 auto;
+    background-color: rgb(210, 77, 87);
+}
+
 .menu-button{
     font-size: 1.7em;
     cursor: pointer;

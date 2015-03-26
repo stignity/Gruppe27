@@ -49,6 +49,10 @@ input[type="submit"]:hover{
     color: rgb(210, 77, 87);
 }
 
+.validation-summary-errors{
+    color: rgb(210, 77, 87);
+}
+
 /*Login on mobile*/
 @media (max-width: 497px){
     .login-form{

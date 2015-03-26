@@ -17,11 +17,15 @@
                 $('body').animate({ left: '230px' }, 250);
                 $('body').css('max-width', '100%');
                 $('body').css('overflow-x', 'hidden');
+                $('.menu-button').removeClass('fa fa-bars');
+                $('.menu-button').addClass('fa fa-remove');
 
             } else {
                 Toggled = false;
                 $('.hidden-menu-wrap').animate({ left: '-230px' }, 250);
                 $('body').animate({ left: '0px' }, 250);
+                $('.menu-button').removeClass('fa fa-remove');
+                $('.menu-button').addClass('fa fa-bars');
             }
         });
     }

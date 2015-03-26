@@ -14,7 +14,7 @@
     <div class="container-fluid">
         @using (Html.BeginForm())
         {
-            @Html.ValidationSummary(true, "Login feilet, vennligst prøv igjen.")
+           
             <div class="login-wrap">
                 <div class="login-form">
                     <center>
@@ -24,7 +24,8 @@
                         <div>@Html.ValidationMessageFor(u => u.Username)</div>
 
                         <div>@Html.PasswordFor(u => u.Password, new { @placeholder = "Passord" })</div>
-                        <div>@Html.ValidationMessageFor(u => u.Password)</div>
+                        <br />
+                        @Html.ValidationSummary(true, "Login feilet, vennligst prøv igjen.")
                         <input type="submit" value="Login" />
                     </center>
                 </div>
