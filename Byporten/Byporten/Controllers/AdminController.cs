@@ -9,6 +9,7 @@ namespace Byporten.Controllers
 {
     public class AdminController : Controller
     {
+        #region Administration Index
         // GET: Admin
         public ActionResult Index()
         {
@@ -18,12 +19,17 @@ namespace Byporten.Controllers
             }
             return RedirectToAction("Portal", "Admin");
         }
+        #endregion
 
+        #region Admin Portal
         [HttpGet]
         public ActionResult Portal()
         {
             return View();
         }
+        #endregion
+
+        #region Admin Login HttpPost
         [HttpPost]
         public ActionResult Portal(Byporten.Models.AdminModel admin) {
             if (ModelState.IsValid)
@@ -41,7 +47,17 @@ namespace Byporten.Controllers
 
             return View(admin);
         }
+        #endregion
 
+        #region Logout Block
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Portal", "Admin");
+        }
+        #endregion
+
+        #region Password Encryption Block
         private bool IsValid(string username, string password)
         {
             var crypto = new SimpleCrypto.PBKDF2();
@@ -62,5 +78,6 @@ namespace Byporten.Controllers
 
             return isValid;
         }
+        #endregion
     }
 }

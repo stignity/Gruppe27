@@ -2,13 +2,22 @@
 
 <!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Portal</title>
-</head>
-<body>
-    <div> 
+<h1>Byporten Portal</h1>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "Login feilet, vennligst prøv igjen.")
+    <div>
+        <fieldset>
+            <legend>Login</legend>
+            <div>@Html.LabelFor(u => u.Username)</div>
+            <div>@Html.TextBoxFor(u => u.Username)</div>
+            <div>@Html.ValidationMessageFor(u => u.Username)</div>
+
+            <div>@Html.LabelFor(u => u.Password)</div>
+            <div>@Html.PasswordFor(u => u.Password)</div>
+            <div>@Html.ValidationMessageFor(u => u.Password)</div>
+            <input type="submit" value="Login" />
+        </fieldset>
     </div>
-</body>
-</html>
+}
