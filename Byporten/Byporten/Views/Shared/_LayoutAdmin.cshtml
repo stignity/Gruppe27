@@ -4,9 +4,27 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <link href="~/Content/layoutAdmin.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-    <div>
+    <div class="header-wrap">
+        <div class="container-fluid">
+            <p class="pull-left admin-user">Du er logget inn som:  <i class="fa fa-user"></i> @Html.Encode(User.Identity.Name)</p>
+            @if (Request.IsAuthenticated)
+            {
+                <p class="log-out pull-right"> @Html.ActionLink("Logg ut", "Logout", "Admin")</p>
+            }
+        </div>
+    </div>
+
+    <div class="menu-wrap">
+
+    </div>
+    
+
+    <div class="render-body">
         @RenderBody()
     </div>
 </body>

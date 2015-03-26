@@ -68,6 +68,16 @@
     background-color: rgb(210, 77, 87);
 }
 
+.top-search-bar{
+    border: 1px solid rgb(227, 227, 227);
+    position: relative;
+    top: 10px;
+    border-radius: 0px;
+    width: 280px;
+    height: 40px;
+    display: none;
+}
+
 .menu-button{
     font-size: 1.7em;
     cursor: pointer;
