@@ -97,6 +97,7 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\layout.css" />
+    <Content Include="Content\layoutAdmin.css" />
     <Content Include="Content\portal.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
