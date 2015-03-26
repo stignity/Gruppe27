@@ -30,7 +30,6 @@ namespace Byporten.Models
 
         [Required]
         [Display(Name = "Passord")]
-        [MinLength(6), MaxLength(25)]
         [DataType(DataType.Password)]
         public string Password { get; set; }
     }

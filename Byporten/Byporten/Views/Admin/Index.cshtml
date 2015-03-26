@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<Byporten.createpost>
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
@@ -6,6 +7,19 @@
 <h2>Velkommen @Html.Encode(User.Identity.Name)</h2>
 @if (Request.IsAuthenticated)
 {
-    @Html.ActionLink("Logg ut bruker", "Logout", "Admin")
+    <div>
+        @Html.ActionLink("Logg ut bruker", "Logout", "Admin")
+    </div>
+    <div>
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-4" >
+                <h2>@Html.DisplayFor(modelItem => item.Title)</h2>
+                <div id="MainContent">
+                    <p>@Html.DisplayFor(modelItem=>item.Content)</p>
+                </div>
+            </div>
+        }
+    </div>
 }
 

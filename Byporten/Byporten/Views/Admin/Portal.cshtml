@@ -21,11 +21,10 @@
                         <h2 class="logo">Byporten<span class="fa fa-stumbleupon"></span>Shopping</h2>
                         <p class="lead">Administrator</p>
                         <div>@Html.TextBoxFor(u => u.Username, new { @placeholder = "Brukernavn" })</div>
-                        <div>@Html.ValidationMessageFor(u => u.Username)</div>
 
                         <div>@Html.PasswordFor(u => u.Password, new { @placeholder = "Passord" })</div>
                         <br />
-                        @Html.ValidationSummary(true, "Login feilet, vennligst prøv igjen.")
+                        @Html.ValidationSummary(true)
                         <input type="submit" value="Login" />
                     </center>
                 </div>
