@@ -13,11 +13,14 @@ namespace Byporten.Controllers
         // GET: Admin
         public ActionResult Index()
         {
-            if (User.Identity.IsAuthenticated)
+            if (Session["Username"] == null)
+            {
+                return RedirectToAction("Portal", "Admin");
+            }
+            else
             {
                 return View();
             }
-            return RedirectToAction("Portal", "Admin");
         }
         #endregion
 
@@ -53,6 +56,7 @@ namespace Byporten.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
+            Session.Abandon();
             return RedirectToAction("Portal", "Admin");
         }
         #endregion
@@ -72,6 +76,7 @@ namespace Byporten.Controllers
                     if (user.Password == crypto.Compute(password, user.PasswordSalt))
                     {
                         isValid = true;
+                        Session["Username"] = user.Username;
                     }
                 }
             }

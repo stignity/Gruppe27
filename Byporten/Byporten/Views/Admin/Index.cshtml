@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Velkommen @Html.Encode(User.Identity.Name)</h2>
+@if (Request.IsAuthenticated)
+{
+    @Html.ActionLink("Logg ut bruker", "Logout", "Admin")
+}
+
