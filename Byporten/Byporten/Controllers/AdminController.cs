@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using System.IO;
+using System.Data;
 
 namespace Byporten.Controllers
 {
@@ -91,10 +92,106 @@ namespace Byporten.Controllers
         }
         #endregion
 
-        #region CRUD Details
+        #region Post Details
         public ActionResult Details(int? id)
         {
-            if(id == null) {
+            if (Session["Username"] == null)
+            {
+                return RedirectToAction("Portal", "Admin");
+            }
+            else
+            {
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                createpost createpost = db.createpost.Find(id);
+                if (createpost == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(createpost);
+            }
+        }
+        #endregion
+
+        #region Create New Post
+        public ActionResult Create()
+        {
+            if (Session["Username"] == null)
+            {
+                return RedirectToAction("Portal", "Admin");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(createpost createpost, HttpPostedFileBase imageURL)
+        {
+            if (imageURL != null && imageURL.ContentLength > 0)
+            {
+                var imageName = Path.GetFileName(imageURL.FileName);
+                var path = Path.Combine(Server.MapPath("~/images/uploads/"), imageName);
+
+                imageURL.SaveAs(path);
+                createpost.ImageURL = imageName;
+            }
+
+            if (ModelState.IsValid)
+            {
+                db.createpost.Add(createpost);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(createpost);
+        }
+        #endregion
+
+        #region Edit a post
+        public ActionResult Edit(int? id)
+        {
+            if (Session["Username"] == null)
+            {
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
+                }
+                createpost createpost = db.createpost.Find(id);
+                if (createpost == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(createpost);
+            }
+            else
+            {
+                return RedirectToAction("Portal", "Admin");
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id,Title,Content,CreateDate,ExpireDate,ImageURL,ExternalLinkURL")] createpost createpost)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(createpost).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(createpost);
+        }
+        #endregion
+
+        #region Delete a post
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             createpost createpost = db.createpost.Find(id);
@@ -104,37 +201,32 @@ namespace Byporten.Controllers
             }
             return View(createpost);
         }
-        #endregion
 
-        #region Create New Post
-        public ActionResult Create()
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int? id)
         {
-            return View();
+            createpost createpost = db.createpost.Find(id);
+            db.createpost.Remove(createpost);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
         #endregion
 
-        //#region Create New Post HttpPost
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult(createpost createpost, HttpPostedFileBase imageURL) {
-
-        //    if(imageURL != null && imageURL.ContentLength > 0) {
-        //        var imagename = Path.GetFileName(imageURL.FileName);
-        //        var path = Path.Combine(Server.MapPath("~/images/uploads/"), imagename);
-
-        //        imageURL.SaveAs(path);
-        //        createpost.ImageURL = imagename;
-        //    }
-
-        //    if(ModelState.IsValid) {
-        //        db.createpost.Add(createpost);
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-
-        //    return View(createpost);
-
-        //}
-        //#endregion
+        #region View All current Articles in a list
+        public ActionResult ViewAllArticles()
+        {
+            return View(db.createpost.ToList());
+        }
+        #endregion
     }
 }

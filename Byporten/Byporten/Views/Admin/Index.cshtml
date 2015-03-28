@@ -1,31 +1,40 @@
-﻿@model IEnumerable<Byporten.createpost>
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<<<<<<< HEAD
-<h2>Velkommen @Html.Encode(User.Identity.Name)</h2>
-@if (Request.IsAuthenticated)
-{
-    <div>
-        @Html.ActionLink("Logg ut bruker", "Logout", "Admin")
-    </div>
-    <div>
-        @foreach (var item in Model)
-        {
-            <div class="col-lg-4" >
-                <h2>@Html.DisplayFor(modelItem => item.Title)</h2>
-                <div id="MainContent">
-                    <p>@Html.DisplayFor(modelItem=>item.Content)</p>
+<div class="admin-header-bottom-wrap">
+    <p class="lead">Velkommen til dette fantastiske dashboardet!</p>
+    <span><i><span class="fa fa-pencil"></span> Administrer Byporten.no akkurat slik du vil</i></span>
+    <span><b>Se alle @Html.ActionLink("artikler", "ViewAllArticles", "Admin")</b></span>
+</div>
+
+<div class="admin-index-content">
+    <div class="container forside-container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="admin-info-box" id="box1">
+                    <p class="lead">Some Content</p>
                 </div>
             </div>
-        }
+            <div class="col-lg-6 col-md-6 col">
+                <div class="admin-info-box" id="box2">
+                    <p class="lead">Some Content</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="admin-info-box" id="box3">
+                    <p class="lead">Some Content</p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col">
+                <div class="admin-info-box" id="box4">
+                    <p class="lead">Some Content</p>
+                </div>
+            </div>
+        </div>
     </div>
-}
-=======
-<div class="container-fluid">
-    <h2 class="page-header">Forsiden, administrator</h2>
 </div>
->>>>>>> accf9db7df803a6da879e979d594563ffd90c6d4
 
