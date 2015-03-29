@@ -43,3 +43,4 @@ C:\Users\Øyvind\Documents\Gruppe27\Byporten\Byporten\bin\Mvc.RazorTools.FontAwe
 C:\Users\Øyvind\Documents\Gruppe27\Byporten\Byporten\bin\WebActivatorEx.dll
 C:\Users\Øyvind\Documents\Gruppe27\Byporten\Byporten\bin\Mvc.RazorTools.xml
 C:\Users\Øyvind\Documents\Gruppe27\Byporten\Byporten\bin\Mvc.RazorTools.FontAwesome.xml
+C:\Users\Øyvind\Documents\Gruppe27\Byporten\Byporten\obj\Debug\Byporten.csprojResolveAssemblyReference.cache
