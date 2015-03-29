@@ -1,38 +1,78 @@
-﻿@{
+﻿@model IEnumerable<Byporten.createpost>
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<div class="admin-header-bottom-wrap">
-    <p class="lead">Velkommen til dette fantastiske dashboardet!</p>
-    <span><i><span class="fa fa-pencil"></span> Administrer Byporten.no akkurat slik du vil</i></span>
-    <span><b>Se alle @Html.ActionLink("artikler", "ViewAllArticles", "Admin")</b></span>
-</div>
-
-<div class="admin-index-content">
-    <div class="container forside-container">
-        <div class="row">
-            <div class="col-lg-6 col-md-6">
-                <div class="admin-info-box" id="box1">
-                    <p class="lead">Some Content</p>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col">
-                <div class="admin-info-box" id="box2">
-                    <p class="lead">Some Content</p>
-                </div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="statistic-boxes">
+                <p class="lead">Statistikk for ditt og datt</p>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-6 col-md-6">
-                <div class="admin-info-box" id="box3">
-                    <p class="lead">Some Content</p>
-                </div>
+        <div class="col-lg-3">
+            <div class="statistic-boxes">
+                <p class="lead">Statistikk for ditt og datt</p>
             </div>
-            <div class="col-lg-6 col-md-6 col">
-                <div class="admin-info-box" id="box4">
-                    <p class="lead">Some Content</p>
-                </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="statistic-boxes">
+                <p class="lead">Statistikk for ditt og datt</p>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="statistic-boxes">
+                <p class="lead">Statistikk for ditt og datt</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="index-content">
+        <div class="search-area">
+            <input type="search" class="search-bar" placeholder="Søk igjennom artiklene!" />
+        </div>
+
+        <div class="main-content">
+            <div class="top-feed-header">
+                <p><i class="fa fa-rss"></i> Siste 5 artiklene</p>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.Title)</td>
+                        <td>@Html.DisplayNameFor(model => model.CreateDate)</td>
+                        <td>@Html.DisplayNameFor(model => model.ExpireDate)</td>
+                    </tr>
+                </thead>
+            </table>
+            @foreach (var item in Model.Reverse().Take(5)) 
+            { 
+            <table class="table table-striped">
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.CreateDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.ExpireDate)
+                    </td>
+                </tr>
+            </table>
+            }
+        </div>
+        <div class="sidebar">
+            <div class="top-feed-header">
+                <p><i class="fa fa-pie-chart"></i> Statisikk</p>
+            </div>
+            <div class="sidebar-body">
+                <center>
+                    <i class="fa fa-area-chart"></i>
+                    <i class="fa fa-line-chart"></i>
+                    <i class="fa fa-bar-chart"></i>
+                </center>
             </div>
         </div>
     </div>
