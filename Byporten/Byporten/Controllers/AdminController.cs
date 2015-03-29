@@ -31,7 +31,7 @@ namespace Byporten.Controllers
         }
         #endregion
 
-        #region Admin Portal
+        #region Admin Portal for innlogging
         [HttpGet]
         public ActionResult Portal()
         {
