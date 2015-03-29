@@ -1,43 +1,72 @@
 ﻿body {
     margin: 0px;
     padding: 0px;
+    padding-bottom: 150px;
+}
+
+.render-body{
+    padding-top: 70px;
 }
 
 .header-wrap{
     width: 100%;
-    height: 60px;
-    background-color: rgb(238, 238, 238);
+    height: 100px;
+    background-color: rgb(71, 71, 71);
 }
 
-.admin-user{
+.user-logged-in{
     position: relative;
-    top: 20px;
-    color: rgb(128, 128, 128);
+    top: 40px;
+    list-style: none;
+    padding: 0px;
 }
 
-.admin-user span{
+.user-logged-in li a{
+    text-decoration: none;
     color: rgb(71, 71, 71);
 }
 
-.log-out{
-    box-sizing: border-box;
-    padding-top: 20px;
+.dropdown-menu{
+    border-radius: 0px !important;
 }
 
-.log-out a{
-    padding: 22px;
-    color: rgb(51, 51, 51) !important;
-    background-color: rgb(226, 226, 226);
-}
-
-.log-out a:hover{
-    text-decoration: none;
-    background-color: rgb(71, 71, 71);
-    color: rgb(255, 255, 255) !important;
+.dropdown-toggle{
+    font-size: 1.3em;
+    color: rgb(191, 191, 191) !important;
 }
 
 .menu-wrap{
     width: 100%;
-    height: 60px;
-    background-color: rgb(226, 226, 226);
+    height: 50px;
+    background-color: rgb(81, 81, 81);
+}
+
+.admin-navigation{
+    display: block;
+    list-style: none;
+}
+
+.admin-navigation li{
+    float: left;
+}
+
+.admin-navigation li a{
+    padding: 15px;
+    text-decoration: none;
+    display: block;
+    color: rgb(191, 191, 191);
+}
+
+.admin-navigation li a:hover{
+    background-color: rgb(71, 71, 71);
+}
+
+.logo{
+    color: rgb(191, 191, 191);  
+    position: relative;
+    top: 15px;
+}
+
+.logo span{
+    color: rgb(210, 77, 87);
 }

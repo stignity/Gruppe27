@@ -1,5 +1,4 @@
 ﻿<!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -7,25 +6,47 @@
     <link href="~/Content/layoutAdmin.css" rel="stylesheet" />
     <link href="~/Content/font-awesome.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/admin-body.css" rel="stylesheet" />
 </head>
 <body>
+
     <div class="header-wrap">
-        <div class="container-fluid">
-            <p class="pull-left admin-user">Du er logget inn som:  <i class="fa fa-user"></i> @Html.Encode(User.Identity.Name)</p>
+        <div class="container">
             @if (Request.IsAuthenticated)
             {
-                <p class="log-out pull-right"> @Html.ActionLink("Logg ut", "Logout", "Admin")</p>
+                <h2 class="logo pull-left">Byporten<span class="fa fa-stumbleupon"></span>Shopping</h2>
+                <ul class="user-logged-in pull-right">
+                    <li role="presentation" class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa fa-user"></i> @Html.Encode(User.Identity.Name) 
+                        <span class="caret"></span> 
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li class="log-out">@Html.ActionLink("Logg ut", "Logout", "Admin")</li>
+                        </ul>
+                    </li>
+                </ul>
+                
             }
         </div>
     </div>
 
     <div class="menu-wrap">
-
+        <div class="container">
+            <ul class="admin-navigation pull-right">
+                <li>@Html.ActionLink("Forsiden", "index", "Admin")</li>
+                <li>@Html.ActionLink("Opprett ny artikkel", "Create")</li>
+                <li>@Html.ActionLink("Alle artiklene", "ViewAllArticles", "Admin")</li>
+                <li><a href="#"><i class="fa fa-user"></i> Kundeklubben</a></li>
+                <li><a href="#"><i class="fa fa-cogs"></i> Innstillinger</a></li>
+            </ul>
+        </div>
     </div>
-    
 
     <div class="render-body">
         @RenderBody()
     </div>
+    <script src="~/Scripts/jquery-1.11.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/layout.js"></script>
 </body>
 </html>
