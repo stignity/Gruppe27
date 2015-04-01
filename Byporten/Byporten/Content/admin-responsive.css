@@ -29,6 +29,10 @@
         cursor: pointer;
     }
 
+    #mobile-noShow{
+        display: none;
+    }
+
     .logo{
         display: none;
     }
@@ -53,6 +57,17 @@
 
     .statistic-boxes{
         margin-top: 10px;
+    }
+
+    .main-board{
+        float: none;
+        width: 100%;
+    }
+
+    .settings-sidebar{
+        float: none;
+        width: 100%;
+        margin-left: 0px;
     }
 
 }
