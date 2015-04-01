@@ -1,8 +1,10 @@
-﻿
+﻿@model Byporten.Models.UserLoginModel
 @{
     ViewBag.Title = "Kundeklubb";
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
 }
 
 <h2>Kundeklubb</h2>
+
+@Html.ActionLink("Registrer deg her", "Register", "Home")
 

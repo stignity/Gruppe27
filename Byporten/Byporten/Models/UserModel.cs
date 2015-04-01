@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -35,6 +36,9 @@ namespace Byporten.Models
 
     public class UserCreateModel
     {
+        //[DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+        //public int UserId { get; set; }
+
         [Required]
         [Display(Name = "Fullt Navn")]
         public string FullName { get; set; }
@@ -51,7 +55,8 @@ namespace Byporten.Models
 
         [Required]
         [Display(Name = "Postnummer")]
-        public string ZipCode { get; set; }
+        [DataType(DataType.PostalCode)]
+        public int ZipCode { get; set; }
 
         [Required]
         [Display(Name = "By")]
@@ -60,6 +65,7 @@ namespace Byporten.Models
         [Required]
         [Display(Name = "Velg passord")]
         [DataType(DataType.Password)]
+        [MinLength(6), MaxLength(25)]
         public string Password { get; set; }
     }
 
