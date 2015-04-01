@@ -12,7 +12,7 @@ namespace Byporten.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return View();
+            return View(db.createpost.ToList());
         }
 
         public ActionResult Aktuelt()
@@ -27,6 +27,39 @@ namespace Byporten.Controllers
 
         public ActionResult Kundeklubb()
         {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Register()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Register(Byporten.Models.UserCreateModel createuser)
+        {
+            if (ModelState.IsValid)
+            {
+                using(var db = new byportenEntities()) {
+                    var crypto = new SimpleCrypto.PBKDF2();
+                    var encryptPass = crypto.Compute(createuser.Password);
+
+                    var sysUser = db.user.Create();
+
+                    sysUser.FullName = createuser.FullName;
+                    sysUser.Email = createuser.Email;
+                    sysUser.Birthday = createuser.Birthday;
+                    sysUser.ZipCode = createuser.ZipCode;
+                    sysUser.City = createuser.City;
+                    sysUser.Password = encryptPass;
+                    sysUser.PasswordSalt = crypto.Salt;
+
+                    db.user.Add(sysUser);
+                    db.SaveChanges();
+
+                    return RedirectToAction("Kundeklubb", "Home");
+                }
+            }
             return View();
         }
 

@@ -156,6 +156,10 @@ namespace Byporten.Controllers
         {
             if (Session["Username"] == null)
             {
+                return RedirectToAction("Portal", "Admin");
+            }
+            else
+            {
                 if (id == null)
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
@@ -166,10 +170,6 @@ namespace Byporten.Controllers
                     return HttpNotFound();
                 }
                 return View(createpost);
-            }
-            else
-            {
-                return RedirectToAction("Portal", "Admin");
             }
         }
 
