@@ -7,6 +7,7 @@
     <link href="~/Content/font-awesome.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/admin-body.css" rel="stylesheet" />
+    <link href="~/Content/admin-responsive.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -15,6 +16,7 @@
             @if (Request.IsAuthenticated)
             {
                 <h2 class="logo pull-left">Byporten<span class="fa fa-stumbleupon"></span>Shopping</h2>
+                <h2 class="fa fa-bars menu-button-mobile"></h2>
                 <ul class="user-logged-in pull-right">
                     <li role="presentation" class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa fa-user"></i> @Html.Encode(User.Identity.Name) 
@@ -47,6 +49,6 @@
     </div>
     <script src="~/Scripts/jquery-1.11.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/layout.js"></script>
+    <script src="~/Scripts/layoutAdmin.js"></script>
 </body>
 </html>

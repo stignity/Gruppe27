@@ -6,61 +6,43 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-3">
+        <div class="col-lg-3 col-md-4">
             <div class="statistic-boxes">
-                <p class="lead">Statistikk for ditt og datt</p>
+                <p class="lead">52</p>
             </div>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-3 col-md-4">
             <div class="statistic-boxes">
-                <p class="lead">Statistikk for ditt og datt</p>
+                <p class="lead">522</p>
             </div>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-3 col-md-4">
             <div class="statistic-boxes">
-                <p class="lead">Statistikk for ditt og datt</p>
+                <p class="lead">34</p>
             </div>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-3 col-md-4">
             <div class="statistic-boxes">
-                <p class="lead">Statistikk for ditt og datt</p>
+                <p class="lead">1203</p>
             </div>
         </div>
     </div>
 
     <div class="index-content">
-        <div class="search-area">
-            <input type="search" class="search-bar" placeholder="Søk igjennom artiklene!" />
-        </div>
-
         <div class="main-content">
             <div class="top-feed-header">
                 <p><i class="fa fa-rss"></i> Siste 5 artiklene</p>
             </div>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <td>@Html.DisplayNameFor(model => model.Title)</td>
-                        <td>@Html.DisplayNameFor(model => model.CreateDate)</td>
-                        <td>@Html.DisplayNameFor(model => model.ExpireDate)</td>
-                    </tr>
-                </thead>
-            </table>
-            @foreach (var item in Model.Reverse().Take(5)) 
+            @foreach (var item in Model.Reverse().Take(5))
             { 
-            <table class="table table-striped">
-                <tr>
-                    <td>
-                        @Html.DisplayFor(model => item.Title)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(model => item.CreateDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(model => item.ExpireDate)
-                    </td>
-                </tr>
-            </table>
+            <div class="last-article-wrap">
+                <div class="article-title">
+                    <p class="lead">@Html.DisplayFor(model => item.Title)</p>
+                </div>
+                <div class="article-content">
+                    @Html.DisplayFor(model => item.Content)
+                </div>
+            </div>
             }
         </div>
         <div class="sidebar">
