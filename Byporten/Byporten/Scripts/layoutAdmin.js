@@ -20,7 +20,7 @@
             var filter = $(this).val(), count = 0;
 
             // Loop through the comment list
-            $(".article-title").each(function () {
+            $(".last-article-wrap").each(function () {
 
                 // If the list item does not contain the text phrase fade it out
                 if ($(this).text().search(new RegExp(filter, "i")) < 0) {

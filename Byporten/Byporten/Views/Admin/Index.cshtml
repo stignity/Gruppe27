@@ -29,17 +29,11 @@
     </div>
 
     <div class="index-content">
-        <div class="search-area">
-            <form id="live-search" action="" method="post">
-                <input type="search" class="search-bar" id="filter" placeholder="Søk igjennom artiklene!" />
-            </form>
-        </div>
-
         <div class="main-content">
             <div class="top-feed-header">
-                <p><i class="fa fa-rss"></i> Siste 10 artiklene</p>
+                <p><i class="fa fa-rss"></i> Siste 5 artiklene</p>
             </div>
-            @foreach (var item in Model.Reverse().Take(10))
+            @foreach (var item in Model.Reverse().Take(5))
             { 
             <div class="last-article-wrap">
                 <div class="article-title">
