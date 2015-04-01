@@ -6,15 +6,20 @@
 
 <div class="container-fluid">
     <h2 class="page-header">Index</h2>
+
     @{
-        var displayedArticles = 6;
+        int displayedArticles = 6;
     }
-    @foreach (var item in Model.Take(displayedArticles))
+
+    @foreach (var item in Model.Take(displayedArticles).Reverse())
     {
-        <div class="col-lg-4">
-            <h2>@Html.DisplayFor(modelItem => item.Title) </h2>
-            <div id="textContent">
-                @Html.DisplayFor(modelItem => item.Content)
+        <div class="col-lg-4 col-md-6 col-sm-6 feed-entry">
+            <div class="image-section">
+                <img src="~/images/uploads/@Html.DisplayFor(modelItem => item.ImageURL)" class="img-thumbnail" />
+            </div>
+            <div class="title-section">
+                <h5><span class="fa fa-pencil"></span> @Html.DisplayFor(modelItem => item.Title)</h5>
+                @Html.ActionLink("Les mer", "viewArticle", new { id = item.Id })
             </div>
         </div>
     }
@@ -22,5 +27,4 @@
         <input type="button" class="btn btn-success" value="Show more articles" id="showMore" style="width: 100%"/> 
     </div>
 </div> 
-</div>
 

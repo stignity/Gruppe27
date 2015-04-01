@@ -228,5 +228,140 @@ namespace Byporten.Controllers
             return View(db.createpost.ToList());
         }
         #endregion
+
+        #region Show all current available positions
+        public ActionResult AllPositions()
+        {
+            if (Session["Username"] == null)
+            {
+                return RedirectToAction("Portal", "Admin");
+            }
+            else
+            {
+                return View(db.availablepositions.ToList());
+            }
+        }
+        #endregion
+
+        #region create New position
+
+        public ActionResult createNewPosition()
+        {
+            if (Session["Username"] == null)
+            {
+                return RedirectToAction("Portal", "Admin");
+            }
+            else {
+                return View();
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult createNewPosition(availablepositions availableposition, HttpPostedFileBase imageUrl)
+        {
+            if (imageUrl != null && imageUrl.ContentLength > 0)
+            {
+                var imageName = Path.GetFileName(imageUrl.FileName);
+                var path = Path.Combine(Server.MapPath("~/images/positions/"), imageName);
+
+                imageUrl.SaveAs(path);
+                availableposition.ImageURL = imageName;
+            }
+            
+            if(ModelState.IsValid) {
+                db.availablepositions.Add(availableposition);
+                db.SaveChanges();
+                return RedirectToAction("AllPositions", "Admin");
+            }
+            return View(availableposition);
+        }
+
+        #endregion
+
+        #region Edit postition
+        public ActionResult EditPosition(int? id)
+        {
+            if (Session["Username"] == null)
+            {
+                return RedirectToAction("Portal", "Admin");
+            }
+            else
+            {
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
+                }
+                availablepositions availableposition = db.availablepositions.Find(id);
+                if (availableposition == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(availableposition);
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditPosition([Bind(Include = "Id, Title, Description, CreateDate, ExpireDate, ImageURL, ExternalLinkURL")] availablepositions availableposition)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(availableposition).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("AllPositions");
+            }
+            return View(availableposition);
+        }
+        #endregion
+
+        #region Position Details
+        public ActionResult PositionDetails(int? id)
+        {
+            if (Session["Username"] == null)
+            {
+                return RedirectToAction("Portal", "Admin");
+            }
+            else
+            {
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                availablepositions availableposition = db.availablepositions.Find(id);
+                if (availableposition == null)
+                {
+                    HttpNotFound();
+                }
+                return View(availableposition);
+            }
+        }
+        #endregion
+
+        #region Delete Position
+        public ActionResult DeletePosition(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            availablepositions availableposition = db.availablepositions.Find(id);
+            if (availableposition == null)
+            {
+                HttpNotFound();
+            }
+            return View(availableposition);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePositionConfirmed(int? id)
+        {
+            availablepositions availableposition = db.availablepositions.Find(id);
+            db.availablepositions.Remove(availableposition);
+            db.SaveChanges();
+            return RedirectToAction("AllPositions");
+        }
+        #endregion
     }
 }

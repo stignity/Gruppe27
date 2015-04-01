@@ -44,13 +44,6 @@
         })
     }
     //Button function to show more articles
-    var increaseArticleCount = function () {
-        var currentArticles = 6;
-        $("#showMore").click(function () {
-            currentArticles += 6;
-            console.log(currentArticles);
-        })
-    }
     //End button function to show more articles
 
 
@@ -59,7 +52,6 @@
     var init = function () {
         toggle_main_menu();
         toggle_searchbar();
-        increaseArticleCount();
     }    
 
     

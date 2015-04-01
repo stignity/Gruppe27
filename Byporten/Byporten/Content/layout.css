@@ -136,3 +136,12 @@
     font-size: 0.9em;
 
 }
+
+.feed-entry {
+    padding-top: 10px;
+}
+
+.image-section img{
+    height: 250px;
+    width: 100%;
+}
