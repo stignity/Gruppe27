@@ -204,3 +204,18 @@
     border-radius: 0px;
 }
 
+/*details and delete*/
+
+.view-articles-details-delete{
+    width: 100%;
+    height: auto;
+}
+
+.slett-btn{
+    background-color: rgb(210, 77, 87);
+    width: 200px;
+    height: 40px;
+    border: none;
+    border-radius: 0px;
+    color: rgb(255, 255, 255);
+}

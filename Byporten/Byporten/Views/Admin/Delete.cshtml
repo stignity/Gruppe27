@@ -5,69 +5,35 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>createpost</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-
-        <dd>
+<div class="container">
+    <h2 class="page-header">Er du sikker på at du vil slette denne artikkelen?</h2>
+    <div class="view-articles-details-delete">
+        <div class="title">
+            <p class="lead">Tittel</p>
             @Html.DisplayFor(model => model.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Content)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Content)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreateDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreateDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ExpireDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ExpireDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ImageURL)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ImageURL)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ExternalLinkURL)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ExternalLinkURL)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Tilbake", "ViewAllArticles")
         </div>
-    }
-</div>
+        <hr />
+        <div class="content">
+            <p class="lead">Innhold</p>
+            @Html.DisplayFor(model => model.Content)
+        </div>
+        <hr />
+        <div class="other">
+            <p><b>Startdato:</b> @Html.DisplayFor(model => model.CreateDate)</p>
+            <p><b>Sluttdato:</b> @Html.DisplayFor(model => model.ExpireDate)</p>
+            <p><b>BildeURL:</b> @Html.DisplayFor(model => model.ImageURL)</p>
+            <p><b>Eksterne Lenker:</b> @Html.DisplayFor(model => model.ExternalLinkURL)</p>
+        </div>
+    </div>
+
+    
+    
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+                <input type="submit" value="Slett" class="slett-btn" /> 
+                @Html.ActionLink("Tilbake", "ViewAllArticles")
+        }
+    </div>
