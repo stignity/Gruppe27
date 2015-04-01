@@ -5,7 +5,7 @@
 }
 
 <div class="container">
-    <div class="row">
+    <div class="row" id="mobile-noShow">
         <div class="col-lg-3 col-md-4">
             <div class="statistic-boxes">
                 <p class="lead">52</p>
@@ -37,7 +37,7 @@
             { 
             <div class="last-article-wrap">
                 <div class="article-title">
-                    <p class="lead">@Html.DisplayFor(model => item.Title)</p>
+                    <h4>@Html.DisplayFor(model => item.Title)</h4>
                 </div>
                 <div class="article-content">
                     @Html.DisplayFor(model => item.Content)

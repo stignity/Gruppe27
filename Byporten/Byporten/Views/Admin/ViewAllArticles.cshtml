@@ -12,24 +12,30 @@
             <input type="search" class="search-bar" id="filter" placeholder="Søk igjennom artiklene!" />
         </form>
     </div>
-
+    <hr />
     <p>
         @Html.ActionLink("Opprett ny artikkel", "Create")
     </p>
 
 
-        @foreach (var item in Model)
+        @foreach (var item in Model.Reverse())
         {
             <div class="last-article-wrap">
                 <div class="article-title" id="query">
-                    <p class="lead">@Html.DisplayFor(modelitem => item.Title)</p>
+                    <h4>@Html.DisplayFor(modelitem => item.Title)</h4>
                 </div>
                 <div class="article-content">
-                    @Html.DisplayFor(modelitem => item.Title)
+                    <p>@Html.DisplayFor(modelitem => item.Content)</p>
                     <hr />
-                    @Html.ActionLink("Endre", "Edit", new { id = item.Id }, new {@class = "link-button" })
-                    @Html.ActionLink("Detaljer", "Details", new { id = item.Id }, new { @class = "link-button" })
-                    @Html.ActionLink("Slett", "Delete", new { id = item.Id }, new { @class = "link-button" })
+                    <p>Startdato: @Html.DisplayFor(modelitem => item.CreateDate)</p>
+                    <p>Sluttdato: @Html.DisplayFor(modelitem => item.ExpireDate)</p>
+                    <p>BildeURL: @Html.DisplayFor(modelitem => item.ImageURL)</p>
+                    <p>Eksterne Lenker: @Html.DisplayFor(modelitem => item.ExternalLinkURL)</p>
+                    <div class="choices">
+                        <p>@Html.ActionLink("Endre", "Edit", new { id = item.Id }, new { @class = "link-button" })</p>
+                        <p>@Html.ActionLink("Detaljer", "Details", new { id = item.Id }, new { @class = "link-button" })</p>
+                        <p>@Html.ActionLink("Slett", "Delete", new { id = item.Id }, new { @class = "link-button" })</p>
+                    </div>
                 </div>
 
                 
