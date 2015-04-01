@@ -35,6 +35,11 @@
     color: rgb(191, 191, 191) !important;
 }
 
+.menu-button-mobile{
+    display: none !important;
+    color: rgb(191, 191, 191);
+}
+
 .menu-wrap{
     width: 100%;
     height: 50px;

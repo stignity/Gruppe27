@@ -1,0 +1,65 @@
+﻿/*Mobile*/
+@media (max-width: 497px){
+
+}
+
+/*large mobile screen*/
+@media (max-width: 697px){
+    .menu-wrap{
+        height: auto;
+        display: none;
+    }
+
+    .admin-navigation{
+        float: left !important;
+        width: 100%;
+        padding: 0px;
+    }
+
+    .admin-navigation li{
+        float: none;
+    }
+
+    .menu-button-mobile{
+        display: block !important;
+        float: left;
+        position: relative;
+        top: 20px;
+        font-size: 2em;
+        cursor: pointer;
+    }
+
+    .logo{
+        display: none;
+    }
+
+    .dropdown-menu{
+        left: -150%;
+    }
+}
+
+/*ipads*/
+@media (max-width: 992px) {
+    .main-content {
+        float: none;
+        width: 100%;
+    }
+
+    .sidebar{
+        float: none;
+        width: 100%;
+        margin-left: 0px;
+    }
+
+    .statistic-boxes{
+        margin-top: 10px;
+    }
+
+}
+
+/*larger screens*/
+@media (max-width: 1200px){
+    .statistic-boxes{
+        margin-top: 10px;
+    }
+}

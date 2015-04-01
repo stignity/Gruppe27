@@ -8,6 +8,7 @@ namespace Byporten.Controllers
 {
     public class HomeController : Controller
     {
+        private byportenEntities db = new byportenEntities();
         // GET: Home
         public ActionResult Index()
         {
@@ -42,6 +43,26 @@ namespace Byporten.Controllers
         public ActionResult Stillinger()
         {
             return View();
+        }
+
+        private bool IsValid(string email, string password)
+        {
+            var crypto = new SimpleCrypto.PBKDF2();
+            bool isValid = false;
+            using (db)
+            {
+                var user = db.user.FirstOrDefault(u => u.Email == email);
+
+                if (user != null)
+                {
+                    if (user.Password == crypto.Compute(password, user.PasswordSalt))
+                    {
+                        isValid = true;
+                        Session["User"] = user.Email;
+                    }
+                }
+            }
+            return isValid;
         }
 
     }
