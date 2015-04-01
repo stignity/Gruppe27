@@ -89,3 +89,48 @@
     cursor: pointer;
     color: rgb(210, 77, 87);
 }
+/*Footer*/
+.footer-wrap{
+    padding-top: 20px;
+    width: 100%;
+    background-color: rgb(71, 71, 71);
+    height: auto;
+    overflow: hidden;
+}
+.footer-main{
+    color: rgb(191, 191, 191);
+    font-size: 0.9em;
+    text-align: left;
+}
+.footer-main h2{
+    font-size: 1.7em;
+}
+.footer-navigation{
+    padding-left: 0px;
+    list-style: none;
+    display: block;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+
+}
+.footer-navigation a{
+    text-decoration: none;
+    display: block;
+    color: rgb(191, 191, 191);
+    text-decoration: none;
+}
+.footer-navigation a:hover{
+    color: rgb(81,81, 81);
+}
+.footer-end{
+    padding-top: 10px;
+    height: 40px;
+    top: 100%;
+    width: 100%;
+    background-color: rgb(61, 61, 61);
+    color: rgb(191, 191, 191);
+    font-size: 0.9em;
+
+}
