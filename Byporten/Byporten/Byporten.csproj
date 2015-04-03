@@ -234,6 +234,12 @@
     <Content Include="Views\Admin\EditPosition.cshtml" />
     <Content Include="Views\Admin\PositionDetails.cshtml" />
     <Content Include="Views\Admin\DeletePosition.cshtml" />
+    <Content Include="Views\Admin\_TopPositions.cshtml" />
+    <Content Include="Views\Admin\ViewAllStores.cshtml" />
+    <Content Include="Views\Admin\CreateStore.cshtml" />
+    <Content Include="Views\Admin\EditStore.cshtml" />
+    <Content Include="Views\Admin\StoreDetails.cshtml" />
+    <Content Include="Views\Admin\DeleteStore.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

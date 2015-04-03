@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Byporten.butikker>
+
+@{
+    ViewBag.Title = "ViewAllStores";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>ViewAllStores</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateStore")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Navn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kategori)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Beskrivelse)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Logo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hjemmeside)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Navn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kategori)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Beskrivelse)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Logo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hjemmeside)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditStore", new { id=item.Id }) |
+            @Html.ActionLink("Details", "StoreDetails", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "DeleteStore", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

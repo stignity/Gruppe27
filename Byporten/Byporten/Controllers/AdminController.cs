@@ -207,10 +207,14 @@ namespace Byporten.Controllers
         public ActionResult DeleteConfirmed(int? id)
         {
             createpost createpost = db.createpost.Find(id);
-            db.createpost.Remove(createpost);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+
+             db.createpost.Remove(createpost);
+             db.SaveChanges();
+             return RedirectToAction("ViewAllArticles");
+            
         }
+
+        #endregion
 
         protected override void Dispose(bool disposing)
         {
@@ -220,7 +224,6 @@ namespace Byporten.Controllers
             }
             base.Dispose(disposing);
         }
-        #endregion
 
         #region View All current Articles in a list
         public ActionResult ViewAllArticles()
@@ -229,7 +232,7 @@ namespace Byporten.Controllers
         }
         #endregion
 
-        #region Show all current available positions
+        #region View all current available positions
         public ActionResult AllPositions()
         {
             if (Session["Username"] == null)
@@ -239,6 +242,34 @@ namespace Byporten.Controllers
             else
             {
                 return View(db.availablepositions.ToList());
+            }
+        }
+        #endregion
+
+        #region View all current stores
+        public ActionResult ViewAllStores()
+        {
+            if (Session["UserName"] == null)
+            {
+                return RedirectToAction("Portal", "Admin");
+            }
+            else
+            {
+                return View(db.butikker.ToList());
+            }
+        }
+        #endregion
+
+        #region View all current offers
+        public ActionResult ViewAllOffers()
+        {
+            if (Session["UserName"] == null)
+            {
+                return RedirectToAction("Portal", "Admin");
+            }
+            else
+            {
+                return View(db.aktuelt.ToList());
             }
         }
         #endregion
@@ -331,7 +362,7 @@ namespace Byporten.Controllers
                 availablepositions availableposition = db.availablepositions.Find(id);
                 if (availableposition == null)
                 {
-                    HttpNotFound();
+                   return HttpNotFound();
                 }
                 return View(availableposition);
             }
@@ -348,12 +379,12 @@ namespace Byporten.Controllers
             availablepositions availableposition = db.availablepositions.Find(id);
             if (availableposition == null)
             {
-                HttpNotFound();
+               HttpNotFound();
             }
             return View(availableposition);
         }
 
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("DeletePosition")]
         [ValidateAntiForgeryToken]
         public ActionResult DeletePositionConfirmed(int? id)
         {
@@ -361,6 +392,134 @@ namespace Byporten.Controllers
             db.availablepositions.Remove(availableposition);
             db.SaveChanges();
             return RedirectToAction("AllPositions");
+        }
+
+        #endregion
+
+        public ActionResult _TopPositions()
+        {
+            return PartialView(db.availablepositions.ToList());
+        }
+
+        #region Add a new store
+        public ActionResult CreateStore()
+        {
+            if (Session["Username"] == null)
+            {
+                return RedirectToAction("Portal", "Admin");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateStore(butikker butikker, HttpPostedFileBase logo)
+        {
+            if (logo != null && logo.ContentLength > 0)
+            {
+                var logoName = Path.GetFileName(logo.FileName);
+                var path = Path.Combine(Server.MapPath("~/images/stores/"), logoName);
+
+                logo.SaveAs(path);
+                butikker.Logo = logoName;
+            }
+            if (ModelState.IsValid)
+            {
+                db.butikker.Add(butikker);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(butikker);
+        }
+        #endregion
+
+        #region Edit an addded store
+
+        public ActionResult EditStore(int? id)
+        {
+            if (Session["Username"] == null)
+            {
+                return RedirectToAction("Portal", "Admin");
+            }
+            else
+            {
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                butikker butikker = db.butikker.Find(id);
+                if (butikker == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(butikker);
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditStore([Bind(Include = "Id, Navn, Kategori, Beskrivelse, Logo, Telefon, Hjemmeside")] butikker butikker) {
+            if (ModelState.IsValid)
+            {
+                db.Entry(butikker).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(butikker);
+        }
+
+        #endregion
+
+        #region Store Details
+        public ActionResult StoreDetails(int? id)
+        {
+            if (Session["Username"] == null)
+            {
+                return RedirectToAction("Portal", "Admin");
+            }
+            else
+            {
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                butikker butikker = db.butikker.Find(id);
+                if (butikker == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(butikker);
+            }
+        }
+        #endregion
+
+        #region Delete a store
+        public ActionResult DeleteStore(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+            butikker butikker = db.butikker.Find(id);
+            if (butikker == null)
+            {
+                return HttpNotFound();
+            }
+            return View(butikker);
+        }
+
+        [HttpPost, ActionName("DeleteStore")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteStoreConfirmed(int? id)
+        {
+            butikker butikker = db.butikker.Find(id);
+
+            db.butikker.Remove(butikker);
+            db.SaveChanges();
+            return RedirectToAction("ViewAllStores", "Admin");
         }
         #endregion
     }

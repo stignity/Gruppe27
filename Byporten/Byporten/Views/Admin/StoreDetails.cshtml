@@ -1,0 +1,67 @@
+﻿@model Byporten.butikker
+
+@{
+    ViewBag.Title = "StoreDetails";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>StoreDetails</h2>
+
+<div>
+    <h4>butikker</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Navn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Navn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kategori)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kategori)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Beskrivelse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Beskrivelse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Logo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Logo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hjemmeside)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hjemmeside)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditStore", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "ViewAllStores")
+</p>
