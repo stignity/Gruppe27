@@ -274,6 +274,11 @@ namespace Byporten.Controllers
         }
         #endregion
 
+        /// <summary>
+        /// Kode for å administrere ledige stillinger
+        /// </summary>
+        /// <returns></returns>
+
         #region create New position
 
         public ActionResult createNewPosition()
@@ -401,6 +406,11 @@ namespace Byporten.Controllers
             return PartialView(db.availablepositions.ToList());
         }
 
+        /// <summary>
+        /// Kode for å administrere butikker (stores)
+        /// </summary>
+        /// <returns></returns>
+
         #region Add a new store
         public ActionResult CreateStore()
         {
@@ -430,7 +440,7 @@ namespace Byporten.Controllers
             {
                 db.butikker.Add(butikker);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ViewAllStores");
             }
             return View(butikker);
         }
@@ -516,10 +526,132 @@ namespace Byporten.Controllers
         public ActionResult DeleteStoreConfirmed(int? id)
         {
             butikker butikker = db.butikker.Find(id);
-
             db.butikker.Remove(butikker);
             db.SaveChanges();
             return RedirectToAction("ViewAllStores", "Admin");
+        }
+        #endregion
+
+        /// <summary>
+        /// Koden for å administrere aktuelle tilbud (offers)
+        /// </summary>
+        /// <returns></returns>
+
+        #region Add a new offer
+        public ActionResult CreateOffer()
+        {
+            if (Session["Username"] == null)
+            {
+                return RedirectToAction("Portal", "Admin");
+            }
+            else
+            {
+                return View();
+            }
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateOffer(aktuelt aktuelt, HttpPostedFileBase Bilde)
+        {
+            if (Bilde != null && Bilde.ContentLength > 0)
+            {
+                var imageName = Path.GetFileName(Bilde.FileName);
+                var path = Path.Combine(Server.MapPath("~/images/offers/"), imageName);
+
+                Bilde.SaveAs(path);
+                aktuelt.Bilde = imageName;
+            }
+            if (ModelState.IsValid)
+            {
+                db.aktuelt.Add(aktuelt);
+                db.SaveChanges();
+                return RedirectToAction("ViewAllOffers");
+            }
+            return View(aktuelt);
+        }
+        #endregion
+
+        #region Edit an added offer
+        public ActionResult EditOffer(int? id)
+        {
+            if (Session["Username"] == null)
+            {
+                return RedirectToAction("Portal", "Admin");
+            }
+            else
+            {
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+                }
+                aktuelt aktuelt = db.aktuelt.Find(id);
+                if (aktuelt == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(aktuelt);
+            }
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditOffer([Bind(Include = "Id, Tittel, Innhold, Startdato, Sluttdato, Bilde")] aktuelt aktuelt)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(aktuelt).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("ViewAllOffers");
+            }
+            return View(aktuelt);
+        }
+        #endregion
+
+        #region Offer details
+        public ActionResult OfferDetails(int? id)
+        {
+            if (Session["Username"] == null)
+            {
+                return RedirectToAction("Portal", "Admin");
+            }
+            else
+            {
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+                }
+                aktuelt aktuelt = db.aktuelt.Find(id);
+                if (aktuelt == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(aktuelt);
+            }
+        }
+        #endregion
+
+        #region Delete an offer
+        public ActionResult DeleteOffer(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+            aktuelt aktuelt = db.aktuelt.Find(id);
+            if (aktuelt == null)
+            {
+                return HttpNotFound();
+            }
+            return View(aktuelt);
+        }
+
+        [HttpPost, ActionName("DeleteOffer")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteOfferConfirmed(int? id)
+        {
+            aktuelt aktuelt = db.aktuelt.Find(id);
+            db.aktuelt.Remove(aktuelt);
+            db.SaveChanges();
+            return RedirectToAction("ViewAllOffers", "Admin");
         }
         #endregion
     }

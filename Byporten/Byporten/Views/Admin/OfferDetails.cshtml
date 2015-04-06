@@ -1,0 +1,59 @@
+﻿@model Byporten.aktuelt
+
+@{
+    ViewBag.Title = "OfferDetails";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>OfferDetails</h2>
+
+<div>
+    <h4>aktuelt</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tittel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tittel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Innhold)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Innhold)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Startdato)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Startdato)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sluttdato)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sluttdato)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bilde)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bilde)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditOffer", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "ViewAllOffers")
+</p>

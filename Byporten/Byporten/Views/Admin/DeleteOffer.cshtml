@@ -1,0 +1,65 @@
+﻿@model Byporten.aktuelt
+
+@{
+    ViewBag.Title = "DeleteOffer";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>DeleteOffer</h2>
+
+<h3>Sikker på at du vil slette denne?</h3>
+<div>
+    <h4>aktuelt</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tittel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tittel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Innhold)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Innhold)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Startdato)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Startdato)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sluttdato)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sluttdato)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bilde)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bilde)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "ViewAllOffers")
+        </div>
+    }
+</div>

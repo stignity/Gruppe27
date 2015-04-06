@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Byporten.aktuelt>
+
+@{
+    ViewBag.Title = "ViewAllOffers";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>ViewAllOffers</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateOffer")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Tittel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Innhold)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Startdato)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sluttdato)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bilde)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tittel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Innhold)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Startdato)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sluttdato)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bilde)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditOffer", new { id=item.Id }) |
+            @Html.ActionLink("Details", "OfferDetails", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "DeleteOffer", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

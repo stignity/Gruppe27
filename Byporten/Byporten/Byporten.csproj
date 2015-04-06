@@ -240,6 +240,11 @@
     <Content Include="Views\Admin\EditStore.cshtml" />
     <Content Include="Views\Admin\StoreDetails.cshtml" />
     <Content Include="Views\Admin\DeleteStore.cshtml" />
+    <Content Include="Views\Admin\ViewAllOffers.cshtml" />
+    <Content Include="Views\Admin\CreateOffer.cshtml" />
+    <Content Include="Views\Admin\EditOffer.cshtml" />
+    <Content Include="Views\Admin\DeleteOffer.cshtml" />
+    <Content Include="Views\Admin\OfferDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
