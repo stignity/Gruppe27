@@ -40,6 +40,10 @@
     .dropdown-menu{
         left: -150%;
     }
+
+    .createNewButton a{
+        width: 100%;
+    }
 }
 
 /*ipads*/
