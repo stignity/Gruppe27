@@ -5,55 +5,28 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>OfferDetails</h2>
-
-<div>
-    <h4>aktuelt</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Tittel)
-        </dt>
-
-        <dd>
+<div class="container">
+    <h2 class="page-header">Detaljer</h2>
+    <div class="view-articles-details-delete">
+        <div class="title">
+            <p class="lead">Tittel</p>
             @Html.DisplayFor(model => model.Tittel)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Innhold)
-        </dt>
-
-        <dd>
+        </div>
+        <hr />
+        <div class="content">
+            <p class="lead">Innhold</p>
             @Html.DisplayFor(model => model.Innhold)
-        </dd>
+        </div>
+        <hr />
+        <div class="other">
+            <p><b>Startdato:</b> @Html.DisplayFor(model => model.Startdato)</p>
+            <p><b>Sluttdato:</b> @Html.DisplayFor(model => model.Sluttdato)</p>
+            <p><b>BildeURL:</b> @Html.DisplayFor(model => model.Bilde)</p>
+        </div>
+    </div>
+    <p>
+        @Html.ActionLink("Endre denne artikkelen!", "EditOffer", new { id = Model.Id }) |
+        @Html.ActionLink("Tilbake til artiklene", "ViewAllOffers")
+    </p>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Startdato)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Startdato)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Sluttdato)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Sluttdato)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Bilde)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Bilde)
-        </dd>
-
-    </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "EditOffer", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "ViewAllOffers")
-</p>

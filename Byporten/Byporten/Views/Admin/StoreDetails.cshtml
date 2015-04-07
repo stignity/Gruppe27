@@ -5,63 +5,29 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>StoreDetails</h2>
-
-<div>
-    <h4>butikker</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Navn)
-        </dt>
-
-        <dd>
+<div class="container">
+    <h2 class="page-header">Detaljer</h2>
+    <div class="view-articles-details-delete">
+        <div class="title">
+            <p class="lead">Tittel</p>
             @Html.DisplayFor(model => model.Navn)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Kategori)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Kategori)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Beskrivelse)
-        </dt>
-
-        <dd>
+        </div>
+        <hr />
+        <div class="content">
+            <p class="lead">Innhold</p>
             @Html.DisplayFor(model => model.Beskrivelse)
-        </dd>
+        </div>
+        <hr />
+        <div class="other">
+            <p><b>Kategori:</b> @Html.DisplayFor(model => model.Kategori)</p>
+            <p><b>Hjemmeside:</b> @Html.DisplayFor(model => model.Hjemmeside)</p>
+            <p><b>Logo:</b> @Html.DisplayFor(model => model.Logo)</p>
+            <p><b>Telefon:</b> @Html.DisplayFor(model => model.Telefon)</p>
+        </div>
+    </div>
+    <p>
+        @Html.ActionLink("Endre denne artikkelen!", "EditStore", new { id = Model.Id }) |
+        @Html.ActionLink("Tilbake til artiklene", "viewAllStores")
+    </p>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Logo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Logo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Telefon)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Telefon)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Hjemmeside)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Hjemmeside)
-        </dd>
-
-    </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "EditStore", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "ViewAllStores")
-</p>

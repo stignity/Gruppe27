@@ -5,60 +5,36 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>ViewAllStores</h2>
+<div class="container">
+    <h2 class="page-header">Alle butikkene</h2>
 
-<p>
-    @Html.ActionLink("Create New", "CreateStore")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Navn)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Kategori)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Beskrivelse)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Logo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Telefon)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Hjemmeside)
-        </th>
-        <th></th>
-    </tr>
+    <p class="createNewButton">
+        @Html.ActionLink("Legg til ny butikk", "CreateStore")
+    </p>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Navn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Kategori)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Beskrivelse)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Logo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Telefon)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Hjemmeside)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "EditStore", new { id=item.Id }) |
-            @Html.ActionLink("Details", "StoreDetails", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "DeleteStore", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model.Reverse())
+    {
+        <div class="last-article-wrap">
+            <div class="article-title" id="query">
+                <h4>@Html.DisplayFor(modelitem => item.Navn)</h4>
+            </div>
+            <div class="article-content">
+                <p>@Html.DisplayFor(modelitem => item.Beskrivelse)</p>
+                <hr />
+                <p><b>Kategori:</b> @Html.DisplayFor(modelitem => item.Kategori)</p>
+                <p><b>Hjemmeside:</b> @Html.DisplayFor(modelitem => item.Hjemmeside)</p>
+                <p><b>Logo:</b> @Html.DisplayFor(modelitem => item.Logo)</p>
+                <p><b>Telefon:</b> @Html.DisplayFor(modelitem => item.Telefon)</p>
+                <div class="choices">
+                    <p>@Html.ActionLink("Endre", "EditStore", new { id = item.Id }, new { @class = "link-button" })</p>
+                    <p>@Html.ActionLink("Detaljer", "StoreDetails", new { id = item.Id }, new { @class = "link-button" })</p>
+                    <p>@Html.ActionLink("Slett", "DeleteStore", new { id = item.Id }, new { @class = "link-button" })</p>
+                </div>
+            </div>
 
-</table>
+
+
+        </div>
+    }
+
+</div>

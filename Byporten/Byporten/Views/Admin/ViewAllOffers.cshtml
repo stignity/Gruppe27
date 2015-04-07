@@ -4,55 +4,34 @@
     ViewBag.Title = "ViewAllOffers";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+<div class="container">
+    <h2 class="page-header">Alle tilbudene</h2>
 
-<h2>ViewAllOffers</h2>
+    <p class="createNewButton">
+        @Html.ActionLink("Lag nytt tilbud", "CreateOffer")
+    </p>
 
-<p>
-    @Html.ActionLink("Create New", "CreateOffer")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Tittel)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Innhold)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Startdato)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Sluttdato)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Bilde)
-        </th>
-        <th></th>
-    </tr>
+    @foreach (var item in Model.Reverse())
+    {
+        <div class="last-article-wrap">
+            <div class="article-title" id="query">
+                <h4>@Html.DisplayFor(modelitem => item.Tittel)</h4>
+            </div>
+            <div class="article-content">
+                <p>@Html.DisplayFor(modelitem => item.Innhold)</p>
+                <hr />
+                <p><b>Startdato:</b> @Html.DisplayFor(modelitem => item.Startdato)</p>
+                <p><b>Sluttdato:</b> @Html.DisplayFor(modelitem => item.Sluttdato)</p>
+                <p><b>BildeURL:</b> @Html.DisplayFor(modelitem => item.Bilde)</p>
+                <div class="choices">
+                    <p>@Html.ActionLink("Endre", "EditOffer", new { id = item.Id }, new { @class = "link-button" })</p>
+                    <p>@Html.ActionLink("Detaljer", "OfferDetails", new { id = item.Id }, new { @class = "link-button" })</p>
+                    <p>@Html.ActionLink("Slett", "DeleteOffer", new { id = item.Id }, new { @class = "link-button" })</p>
+                </div>
+            </div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tittel)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Innhold)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Startdato)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sluttdato)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Bilde)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "EditOffer", new { id=item.Id }) |
-            @Html.ActionLink("Details", "OfferDetails", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "DeleteOffer", new { id=item.Id })
-        </td>
-    </tr>
-}
 
-</table>
+
+        </div>
+    }
+</div>
