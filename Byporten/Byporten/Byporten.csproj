@@ -121,6 +121,7 @@
     <Content Include="Content\layout.css" />
     <Content Include="Content\layoutAdmin.css" />
     <Content Include="Content\portal.css" />
+    <Content Include="Content\senterinfo.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
