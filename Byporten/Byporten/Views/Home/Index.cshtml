@@ -7,23 +7,41 @@
 <div class="container">
 
     @{
-        int displayedArticles = 6;
+        var itemCount = 0;
     }
 
-    @foreach (var item in Model.Reverse().Take(displayedArticles))
+    @while (itemCount < 3)
     {
-        <div class="col-lg-4 col-md-6 col-sm-6 feed-entry">
-            <div class="image-section">
-                <img src="~/images/uploads/@Html.DisplayFor(modelItem => item.ImageURL)" class="img-thumbnail" />
+        foreach (var item in Model.Reverse().Take(9))
+        {
+            if(itemCount == 0 )
+            {
+                @:<div class="row">
+            }
+
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="image-section">
+                    <img src="~/images/uploads/@Html.DisplayFor(modelItem => item.ImageURL)"/>
+                </div>
+                <div class="title-section">
+                    <h5><span class="fa fa-pencil"></span> @Html.DisplayFor(modelItem => item.Title)</h5>
+                    @Html.ActionLink("Les mer", "viewArticle", new { id = item.Id })
+                </div>
             </div>
-            <div class="title-section">
-                <h5><span class="fa fa-pencil"></span> @Html.DisplayFor(modelItem => item.Title)</h5>
-                @Html.ActionLink("Les mer", "viewArticle", new { id = item.Id })
-            </div>
-        </div>
+
+            itemCount++;
+
+            if ((itemCount % 3) == 0)
+            {
+                @:</div>
+
+            }
+
+        }
+
     }
-    <div class="col-lg-12" >
-        <input type="button" class="btn btn-success" value="Show more articles" id="showMore" style="width: 100%"/> 
-    </div>
-</div> 
+    @{itemCount = 0;}
+</div>
+
+ 
 
