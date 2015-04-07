@@ -436,12 +436,14 @@ namespace Byporten.Controllers
                 logo.SaveAs(path);
                 butikker.Logo = logoName;
             }
+
             if (ModelState.IsValid)
             {
                 db.butikker.Add(butikker);
                 db.SaveChanges();
                 return RedirectToAction("ViewAllStores");
             }
+
             return View(butikker);
         }
         #endregion

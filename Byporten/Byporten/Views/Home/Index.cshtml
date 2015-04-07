@@ -11,7 +11,7 @@
         int displayedArticles = 6;
     }
 
-    @foreach (var item in Model.Take(displayedArticles).Reverse())
+    @foreach (var item in Model.Reverse().Take(displayedArticles))
     {
         <div class="col-lg-4 col-md-6 col-sm-6 feed-entry">
             <div class="image-section">

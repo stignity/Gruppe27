@@ -20,6 +20,14 @@
                 @Html.TextAreaFor(model => model.Beskrivelse, new { htmlAttributes = new { @class = "inputField" } })
                 @Html.ValidationMessageFor(model => model.Beskrivelse, "", new { @class = "text-danger" })
 
+<<<<<<< HEAD
+=======
+        <div class="form-group">
+            @Html.LabelFor(model => model.Logo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Logo, new { htmlAttributes = new { @class = "form-control", @type = "file" } })
+                @Html.ValidationMessageFor(model => model.Logo, "", new { @class = "text-danger" })
+>>>>>>> 067e895d7ca2b8228c03568e5b34774312186117
             </div>
         </div>
         <div class="settings-sidebar">
