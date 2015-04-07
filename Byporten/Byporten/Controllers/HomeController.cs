@@ -40,7 +40,8 @@ namespace Byporten.Controllers
         {
             if (ModelState.IsValid)
             {
-                using(var db = new byportenEntities()) {
+                using(var db = new byportenEntities()) 
+                 {
                     var crypto = new SimpleCrypto.PBKDF2();
                     var encryptPass = crypto.Compute(createuser.Password);
 
