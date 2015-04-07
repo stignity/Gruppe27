@@ -5,69 +5,36 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>DeleteStore</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Alle Butikker</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Navn)
-        </dt>
-
-        <dd>
+<div class="container">
+    <h2 class="page-header">Er du sikker på at du vil slette denne artikkelen?</h2>
+    <div class="view-articles-details-delete">
+        <div class="title">
+            <p class="lead">Tittel</p>
             @Html.DisplayFor(model => model.Navn)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Kategori)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Kategori)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Beskrivelse)
-        </dt>
-
-        <dd>
+        </div>
+        <hr />
+        <div class="content">
+            <p class="lead">Innhold</p>
             @Html.DisplayFor(model => model.Beskrivelse)
-        </dd>
+        </div>
+        <hr />
+        <div class="other">
+            <p><b>Kategori:</b> @Html.DisplayFor(model => model.Kategori)</p>
+            <p><b>hjemmeside:</b> @Html.DisplayFor(model => model.Hjemmeside)</p>
+            <p><b>Logo:</b> @Html.DisplayFor(model => model.Logo)</p>
+            <p><b>Telefon:</b> @Html.DisplayFor(model => model.Telefon)</p>
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Logo)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Logo)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Telefon)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Telefon)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Hjemmeside)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Hjemmeside)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "ViewAllStores")
-        </div>
+        <input type="submit" value="Slett" class="slett-btn" />
+        @Html.ActionLink("Tilbake", "ViewAllStores")
     }
 </div>
+
