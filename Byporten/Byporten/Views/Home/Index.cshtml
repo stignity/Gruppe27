@@ -9,12 +9,9 @@
     @{
         var itemCount = 0;
     }
-
-    @while (itemCount < 3)
-    {
-        foreach (var item in Model.Reverse().Take(9))
+        @foreach (var item in Model.Reverse().Take(9))
         {
-            if(itemCount == 0 )
+            if (itemCount % 3 == 0 || itemCount % 3 == 3)
             {
                 @:<div class="row">
             }
@@ -35,12 +32,9 @@
             {
                 @:</div>
 
-            }
+         }
 
         }
-
-    }
-    @{itemCount = 0;}
 </div>
 
  
