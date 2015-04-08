@@ -4,31 +4,35 @@
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
 }
 
-<div class="container">
+<div class="carousel-wrap">
+
+</div>  
+
+<div class="container pushDown">
 
     @{
         var itemCount = 0;
     }
         @foreach (var item in Model.Reverse().Take(9))
         {
-            if (itemCount % 3 == 0 || itemCount % 3 == 3)
+            if (itemCount % 4 == 0 || itemCount % 4 == 4)
             {
                 @:<div class="row">
             }
 
-            <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="col-lg-3 col-md-3 col-sm-6 article-wrapper">
                 <div class="image-section">
                     <img src="~/images/uploads/@Html.DisplayFor(modelItem => item.ImageURL)"/>
                 </div>
                 <div class="title-section">
-                    <h5><span class="fa fa-pencil"></span> @Html.DisplayFor(modelItem => item.Title)</h5>
-                    @Html.ActionLink("Les mer", "viewArticle", new { id = item.Id })
+                    <h4>@Html.DisplayFor(modelItem => item.Title)</h4>
+                    @Html.ActionLink("Les mer", "viewArticles", new { id = item.Id })
                 </div>
             </div>
 
             itemCount++;
 
-            if ((itemCount % 3) == 0)
+            if ((itemCount % 4) == 0)
             {
                 @:</div>
 

@@ -2,11 +2,11 @@
     margin: 0px;
     padding: 0px;
     position: relative;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .render-body{
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding-top: 60px;
     z-index: 1;
 }
 
@@ -59,7 +59,8 @@
     background-color: rgb(236, 240, 241);
     position: fixed;
     border: 1px solid rgb(226, 226, 226);
-    z-index: 10000
+    z-index: 10000;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .logo-wrap{
@@ -138,11 +139,4 @@
 
 }
 
-.feed-entry {
-    padding-top: 10px;
-}
 
-.image-section img{
-    height: 250px;
-    width: 100%;
-}
