@@ -43,8 +43,6 @@
            
         })
     }
-    //Button function to show more articles
-    //End button function to show more articles
 
 
 
