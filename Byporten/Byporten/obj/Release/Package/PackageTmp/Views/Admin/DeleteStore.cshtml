@@ -1,0 +1,40 @@
+﻿@model Byporten.butikker
+
+@{
+    ViewBag.Title = "DeleteStore";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container">
+    <h2 class="page-header">Er du sikker på at du vil slette denne artikkelen?</h2>
+    <div class="view-articles-details-delete">
+        <div class="title">
+            <p class="lead">Tittel</p>
+            @Html.DisplayFor(model => model.Navn)
+        </div>
+        <hr />
+        <div class="content">
+            <p class="lead">Innhold</p>
+            @Html.DisplayFor(model => model.Beskrivelse)
+        </div>
+        <hr />
+        <div class="other">
+            <p><b>Kategori:</b> @Html.DisplayFor(model => model.Kategori)</p>
+            <p><b>hjemmeside:</b> @Html.DisplayFor(model => model.Hjemmeside)</p>
+            <p><b>Logo:</b> @Html.DisplayFor(model => model.Logo)</p>
+            <p><b>Telefon:</b> @Html.DisplayFor(model => model.Telefon)</p>
+        </div>
+    </div>
+
+
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <input type="submit" value="Slett" class="slett-btn" />
+        @Html.ActionLink("Tilbake", "ViewAllStores")
+    }
+</div>
+

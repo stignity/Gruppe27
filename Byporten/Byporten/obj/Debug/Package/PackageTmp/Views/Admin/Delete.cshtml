@@ -1,0 +1,39 @@
+﻿@model Byporten.createpost
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container">
+    <h2 class="page-header">Er du sikker på at du vil slette denne artikkelen?</h2>
+    <div class="view-articles-details-delete">
+        <div class="title">
+            <p class="lead">Tittel</p>
+            @Html.DisplayFor(model => model.Title)
+        </div>
+        <hr />
+        <div class="content">
+            <p class="lead">Innhold</p>
+            @Html.DisplayFor(model => model.Content)
+        </div>
+        <hr />
+        <div class="other">
+            <p><b>Startdato:</b> @Html.DisplayFor(model => model.CreateDate)</p>
+            <p><b>Sluttdato:</b> @Html.DisplayFor(model => model.ExpireDate)</p>
+            <p><b>BildeURL:</b> @Html.DisplayFor(model => model.ImageURL)</p>
+            <p><b>Eksterne Lenker:</b> @Html.DisplayFor(model => model.ExternalLinkURL)</p>
+        </div>
+    </div>
+
+    
+    
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+                <input type="submit" value="Slett" class="slett-btn" /> 
+                @Html.ActionLink("Tilbake", "ViewAllArticles")
+        }
+    </div>

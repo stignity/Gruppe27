@@ -105,7 +105,7 @@ namespace Byporten.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
 
             createpost createpost = db.createpost.Find(id);

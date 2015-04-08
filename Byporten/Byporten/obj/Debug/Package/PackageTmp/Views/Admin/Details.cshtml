@@ -1,0 +1,33 @@
+﻿@model Byporten.createpost
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container">
+    <h2 class="page-header">Detaljer</h2>
+    <div class="view-articles-details-delete">
+        <div class="title">
+            <p class="lead">Tittel</p>
+            @Html.DisplayFor(model => model.Title)
+        </div>
+        <hr />
+        <div class="content">
+            <p class="lead">Innhold</p>
+            @Html.DisplayFor(model => model.Content)
+        </div>
+        <hr />
+        <div class="other">
+            <p><b>Startdato:</b> @Html.DisplayFor(model => model.CreateDate)</p>
+            <p><b>Sluttdato:</b> @Html.DisplayFor(model => model.ExpireDate)</p>
+            <p><b>BildeURL:</b> @Html.DisplayFor(model => model.ImageURL)</p>
+            <p><b>Eksterne Lenker:</b> @Html.DisplayFor(model => model.ExternalLinkURL)</p>
+        </div>
+    </div>
+    <p>
+        @Html.ActionLink("Endre denne artikkelen!", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Tilbake til artiklene", "viewAllArticles")
+    </p>
+
+</div>

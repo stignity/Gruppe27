@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Byporten.createpost>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+
+<div class="carousel-wrap">
+
+</div>  
+
+<div class="container pushDown">
+
+    @{
+        var itemCount = 0;
+    }
+        @foreach (var item in Model.Reverse().Take(9))
+        {
+            if (itemCount % 4 == 0 || itemCount % 4 == 4)
+            {
+                @:<div class="row">
+            }
+
+            <div class="col-lg-3 col-md-3 col-sm-6 article-wrapper">
+                <div class="image-section">
+                    <img src="~/images/uploads/@Html.DisplayFor(modelItem => item.ImageURL)"/>
+                </div>
+                <div class="title-section">
+                    <h4>@Html.DisplayFor(modelItem => item.Title)</h4>
+                    @Html.ActionLink("Les mer", "viewArticles", new { id = item.Id })
+                </div>
+            </div>
+
+            itemCount++;
+
+            if ((itemCount % 4) == 0)
+            {
+                @:</div>
+
+         }
+
+        }
+</div>
+
+ 
+

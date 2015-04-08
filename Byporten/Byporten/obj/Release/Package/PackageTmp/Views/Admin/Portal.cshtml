@@ -1,0 +1,34 @@
+﻿@model Byporten.Models.AdminModel
+
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/portal.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        @using (Html.BeginForm())
+        {
+           
+            <div class="login-wrap">
+                <div class="login-form">
+                    <center>
+                        <h2 class="logo">Byporten<span class="fa fa-stumbleupon"></span>Shopping</h2>
+                        <p class="lead">Administrator</p>
+                        <div>@Html.TextBoxFor(u => u.Username, new { @placeholder = "Brukernavn" })</div>
+
+                        <div>@Html.PasswordFor(u => u.Password, new { @placeholder = "Passord" })</div>
+                        <br />
+                        @Html.ValidationSummary(true)
+                        <input type="submit" value="Login" />
+                    </center>
+                </div>
+            </div>
+        }
+    </div>
+</body>

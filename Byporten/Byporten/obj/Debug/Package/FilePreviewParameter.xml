@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="bpshopping" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Øyvind\\Documents\\Gruppe27\\Byporten\\Byporten\\obj\\Debug\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Øyvind\\Documents\\Gruppe27\\Byporten\\Byporten\\obj\\Debug\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="byportenEntities-Web.config Connection String" description="" value="metadata=res://*/ByportenModel.csdl|res://*/ByportenModel.ssdl|res://*/ByportenModel.msl;provider=MySql.Data.MySqlClient;provider connection string=&quot;server=46.226.13.53;user id=Administrator;password=AlfaRomeoGTV86;persistsecurityinfo=True;database=byporten&quot;" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Øyvind\\Documents\\Gruppe27\\Byporten\\Byporten\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='byportenEntities']/@connectionString" />
+  </parameter>
+</parameters>
