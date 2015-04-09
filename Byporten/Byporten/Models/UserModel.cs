@@ -7,17 +7,33 @@ using System.Web;
 
 namespace Byporten.Models
 {
-    public class UserLoginModel
+    public class UserModel
     {
         [Required]
-        [Display(Name="Epost")]
+        [Display(Name = "Fullt Navn")]
+        public string FullName { get; set; }
+
+        [Required]
+        [Display(Name = "Epost")]
         [DataType(DataType.EmailAddress)]
-        [StringLength(200)]
         public string Email { get; set; }
 
         [Required]
-        [Display(Name = "Passord")]
+        [Display(Name = "Bursdag")]
+        public string Birthday { get; set; }
+
+        [Required]
+        [Display(Name = "Postnummer")]
+        public int ZipCode { get; set; }
+
+        [Required]
+        [Display(Name = "By")]
+        public string City { get; set; }
+
+        [Required]
+        [Display(Name = "Velg passord")]
         [DataType(DataType.Password)]
+        [MinLength(6), MaxLength(25)]
         public string Password { get; set; }
 
     }
@@ -32,46 +48,5 @@ namespace Byporten.Models
         [Display(Name = "Passord")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-    }
-
-    public class UserCreateModel
-    {
-        //[DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        //public int UserId { get; set; }
-
-        [Required]
-        [Display(Name = "Fullt Navn")]
-        public string FullName { get; set; }
-
-        [Required]
-        [Display(Name = "Epost")]
-        [DataType(DataType.EmailAddress)]
-        public string Email { get; set; }
-
-        [Required]
-        [Display(Name = "Fødselsdag")]
-        [DataType(DataType.Date)]
-        public string Birthday { get; set; }
-
-        [Required]
-        [Display(Name = "Postnummer")]
-        [DataType(DataType.PostalCode)]
-        public int ZipCode { get; set; }
-
-        [Required]
-        [Display(Name = "By")]
-        public string City { get; set; }
-
-        [Required]
-        [Display(Name = "Velg passord")]
-        [DataType(DataType.Password)]
-        [MinLength(6), MaxLength(25)]
-        public string Password { get; set; }
-    }
-
-    public class UserLoginRegisterModel
-    {
-        public UserLoginModel UserLoginModel { get; set; }
-        public UserCreateModel UserCreateModel { get; set; }
     }
 }

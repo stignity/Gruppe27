@@ -37,17 +37,18 @@ namespace Byporten.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Register(Byporten.Models.UserCreateModel createuser)
+        public ActionResult Register(Byporten.Models.UserModel createuser)
         {
             if (ModelState.IsValid)
             {
-                using(var db = new byportenEntities()) 
+                using(db) 
                  {
                     var crypto = new SimpleCrypto.PBKDF2();
                     var encryptPass = crypto.Compute(createuser.Password);
 
                     var sysUser = db.user.Create();
 
+                    sysUser.UserId = 1;
                     sysUser.FullName = createuser.FullName;
                     sysUser.Email = createuser.Email;
                     sysUser.Birthday = createuser.Birthday;

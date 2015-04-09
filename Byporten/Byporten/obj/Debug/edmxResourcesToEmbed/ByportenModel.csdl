@@ -59,13 +59,6 @@
   <EntityType Name="user">
     <Key>
       <PropertyRef Name="UserId" />
-      <PropertyRef Name="FullName" />
-      <PropertyRef Name="Email" />
-      <PropertyRef Name="Birthday" />
-      <PropertyRef Name="ZipCode" />
-      <PropertyRef Name="City" />
-      <PropertyRef Name="Password" />
-      <PropertyRef Name="PasswordSalt" />
     </Key>
     <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="FullName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />

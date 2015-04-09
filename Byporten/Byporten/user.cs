@@ -11,9 +11,11 @@ namespace Byporten
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class user
     {
+        [Key]
         public int UserId { get; set; }
         public string FullName { get; set; }
         public string Email { get; set; }

@@ -10,8 +10,9 @@
             <div class="top-feed-header">
                 <p><i class="fa fa-rss"></i> Siste 5 artiklene</p>
             </div>
+
             @foreach (var item in Model.Reverse().Take(5))
-            { 
+            {
             <div class="last-article-wrap">
                 <div class="article-title">
                     <h4>@Html.DisplayFor(model => item.Title)</h4>
