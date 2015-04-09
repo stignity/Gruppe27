@@ -85,6 +85,10 @@
     color: rgb(255, 255, 255);
 }
 
+.search-area{
+    display: none;
+}
+
 .search-button{
     color: rgb(81, 81, 81);
     font-size: 1.5em;
@@ -93,16 +97,26 @@
     cursor: pointer;
 }
 
+.go-search-button{
+    position: relative;
+    top: 60px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 0px;
+    background-color: rgb(248, 148, 6);
+}
+
 .top-search-bar{
     width: 300px;
     height: 50px;
-    border: 1px solid rgb(71, 71, 71);
+    border: none;
     position: relative;
-    top: 58px;  
-    left: 140px;
-    display: none;
+    top: 60px;  
+    background-color: rgb(81, 81, 81);
     box-sizing: border-box;
-    padding: 15 px;
+    padding: 15px;
+    float: left;
 }
 
 /*Footer*/
