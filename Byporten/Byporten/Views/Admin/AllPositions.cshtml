@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<Byporten.availablepositions>
+@using System.Linq
 
 @{
     ViewBag.Title = "Alle stillinger";
@@ -12,28 +13,37 @@
         @Html.ActionLink("Lag ny stilling", "createNewPosition")
     </p>
 
-    @foreach (var item in Model.Reverse())
+    @if (!Model.Any())
     {
-        <div class="last-article-wrap">
-            <div class="article-title" id="query">
-                <h4>@Html.DisplayFor(modelitem => item.Title)</h4>
-            </div>
-            <div class="article-content">
-                <p>@Html.DisplayFor(modelitem => item.Description)</p>
-                <hr />
-                <p><b>Startdato:</b> @Html.DisplayFor(modelitem => item.CreateDate)</p>
-                <p><b>Sluttdato:</b> @Html.DisplayFor(modelitem => item.ExpireDate)</p>
-                <p><b>BildeURL:</b> @Html.DisplayFor(modelitem => item.ImageURL)</p>
-                <p><b>Eksterne Lenker:</b> @Html.DisplayFor(modelitem => item.ExternalLinkURL)</p>
-                <div class="choices">
-                    <p>@Html.ActionLink("Endre", "EditPosition", new { id = item.Id }, new { @class = "link-button" })</p>
-                    <p>@Html.ActionLink("Detaljer", "PositionDetails", new { id = item.Id }, new { @class = "link-button" })</p>
-                    <p>@Html.ActionLink("Slett", "DeletePosition", new { id = item.Id }, new { @class = "link-button" })</p>
-                </div>
-            </div>
-
-
-
-        </div>
+        <p class="lead page-header">Det finnes ingen artikler</p>
     }
+    else
+    {
+        foreach (var item in Model.Reverse())
+        {
+            <div class="last-article-wrap">
+                <div class="article-title" id="query">
+                    <h4>@Html.DisplayFor(modelitem => item.Title)</h4>
+                </div>
+                <div class="article-content">
+                    <p>@Html.DisplayFor(modelitem => item.Description)</p>
+                    <hr />
+                    <p><b>Startdato:</b> @Html.DisplayFor(modelitem => item.CreateDate)</p>
+                    <p><b>Sluttdato:</b> @Html.DisplayFor(modelitem => item.ExpireDate)</p>
+                    <p><b>BildeURL:</b> @Html.DisplayFor(modelitem => item.ImageURL)</p>
+                    <p><b>Eksterne Lenker:</b> @Html.DisplayFor(modelitem => item.ExternalLinkURL)</p>
+                    <div class="choices">
+                        <p>@Html.ActionLink("Endre", "EditPosition", new { id = item.Id }, new { @class = "link-button" })</p>
+                        <p>@Html.ActionLink("Detaljer", "PositionDetails", new { id = item.Id }, new { @class = "link-button" })</p>
+                        <p>@Html.ActionLink("Slett", "DeletePosition", new { id = item.Id }, new { @class = "link-button" })</p>
+                    </div>
+                </div>
+
+
+
+            </div>
+        }
+    }
+
+    
 </div>

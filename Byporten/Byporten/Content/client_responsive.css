@@ -1,0 +1,72 @@
+﻿/*CSS MEDIA QUERIES FOR CLIENT LAYOUT*/
+
+@media (max-width: 497px){
+
+}
+
+@media (max-width: 600px){
+        .carousel-wrap{
+        text-align: center;
+    }
+
+    .carousel-wrap img{
+        margin: 0 auto;
+    }
+
+    .mobile-logo{
+        display: block;
+        float: right;
+    }
+
+    .desktop-logo{
+        display: none;
+    }
+
+    .search-area{
+        display: block;
+    }
+
+    .top-search-bar{
+        width: 80%;
+    }
+
+    .go-search-button{
+        width: 20%;
+    }
+
+    .search-button{
+        display: none;
+    }
+
+    .mobile-container{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+}
+
+@media (max-width: 992px){
+    .image-section img {
+    -webkit-transition: none;
+    -moz-transition: none;
+    -ms-transition: none;
+    -o-transition: none;
+    transition: none;
+}
+
+.image-section:hover img {
+    -webkit-transform:none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+     transform: none;
+}
+}
+
+@media (max-width: 1024px){
+
+}
+
+@media (max-width: 1200px){
+
+}
