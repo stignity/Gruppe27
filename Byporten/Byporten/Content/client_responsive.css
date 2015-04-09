@@ -22,7 +22,7 @@
         display: none;
     }
 
-    .search-area{
+    .search-wrapper{
         display: block;
     }
 
@@ -43,6 +43,10 @@
         padding-right: 0px;
     }
 
+    .go-to-button{
+        width: 100%;
+    }
+
 }
 
 @media (max-width: 992px){
@@ -60,6 +64,10 @@
     -ms-transform: none;
     -o-transform: none;
      transform: none;
+}
+
+.carousel-wrap{
+    height: auto;
 }
 }
 

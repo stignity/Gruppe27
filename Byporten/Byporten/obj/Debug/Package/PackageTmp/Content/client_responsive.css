@@ -22,14 +22,25 @@
         display: none;
     }
 
-    .top-search-bar{
-        width: 100%;
+    .search-area{
         display: block;
-        left: 0px;
+    }
+
+    .top-search-bar{
+        width: 80%;
+    }
+
+    .go-search-button{
+        width: 20%;
     }
 
     .search-button{
         display: none;
+    }
+
+    .mobile-container{
+        padding-left: 0px;
+        padding-right: 0px;
     }
 
 }

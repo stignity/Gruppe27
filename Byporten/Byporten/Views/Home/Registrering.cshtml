@@ -4,66 +4,51 @@
     ViewBag.Title = "Registrering";
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
 }
+<div class="container pushDown">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true, "Kunne ikke registrere. Venligst prøv på nytt senere.");
+        
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="info-form">
+                    <p class="lead page-header">Registrering hos kundeklubben</p>
+                    <p>Ved å registrere deg hos Byporten kundeklubb, vil du få tilgang til rabatter, gratis wifi, invitasjoner til events, uten å måtte betale noe!</p>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="reg-form">
+                    <div class="editor-field">
+                        @Html.TextBoxFor(u => u.Name, new {@placeholder = "Navn*" })
+                        @Html.ValidationMessageFor(u => u.Name)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(u => u.Email, new {@placeholder = "E-post*" })
+                        @Html.ValidationMessageFor(u => u.Email)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(u => u.Birthdate, new { @placeholder = "Fødselsdato*" })
+                        @Html.ValidationMessageFor(u => u.Birthdate)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(u => u.ZipCode, new { @placeholder = "Postnummer" })
+                        @Html.ValidationMessageFor(u => u.ZipCode)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(u => u.City, new { @placeholder = "By" })
+                        @Html.ValidationMessageFor(u => u.City)
+                    </div>
+                    <div class="editor-field">
+                        @Html.PasswordFor(u => u.Password, new { @placeholder = "Passord*" })
+                        @Html.ValidationMessageFor(u => u.Password)
+                    </div>
+                    <hr />
+                    <input type="submit" value="Registrer" class="reg-button" />
+                </div>
+            </div>
+        </div>
 
-<h2>Registrering</h2>
+    }
 
-@using (Html.BeginForm())
-{
-    @Html.ValidationSummary(true, "Kunne ikke registrere. Venligst prøv på nytt senere.");
-    <div>
-        <fieldset>
-            <legend>Opprett Byporten Pluss Brukerkonto</legend>
-
-            <div class="editor-label">
-                @Html.LabelFor(u => u.Name)
-            </div>
-            <div class="editor-field">
-                @Html.TextBoxFor(u => u.Name)
-                @Html.ValidationMessageFor(u => u.Name)
-            </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(u => u.Email)
-            </div>
-            <div class="editor-field">
-                @Html.TextBoxFor(u => u.Email)
-                @Html.ValidationMessageFor(u => u.Email)
-            </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(u => u.Birthdate)
-            </div>
-            <div class="editor-field">
-                @Html.TextBoxFor(u => u.Birthdate)
-                @Html.ValidationMessageFor(u => u.Birthdate)
-            </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(u => u.ZipCode)
-            </div>
-            <div class="editor-field">
-                @Html.TextBoxFor(u => u.ZipCode)
-                @Html.ValidationMessageFor(u => u.ZipCode)
-            </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(u => u.City)
-            </div>
-            <div class="editor-field">
-                @Html.TextBoxFor(u => u.City)
-                @Html.ValidationMessageFor(u => u.City)
-            </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(u => u.Password)
-            </div>
-            <div class="editor-field">
-                @Html.PasswordFor(u => u.Password)
-                @Html.ValidationMessageFor(u => u.Password)
-            </div>
-
-            <input type="submit" value="Registrer" />
-        </fieldset>
-    </div>
-}
+</div>
 

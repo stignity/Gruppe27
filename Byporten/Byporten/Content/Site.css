@@ -43,6 +43,25 @@
 /*carousel*/
 .carousel-wrap {
     width: 100%;
-    height: auto;
+    height: 400px;
     background-color: #eee;
+}
+
+.go-to-button{
+    width: 250px;
+    height: 45px;
+    border: none;
+    border-radius: 0px;
+    background-color: rgb(206, 206, 206);
+    color: rgb(255, 255, 255);
+    display: block;
+    padding: 13px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.go-to-button:hover{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    background-color: rgb(255, 106, 0);
 }

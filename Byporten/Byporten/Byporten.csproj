@@ -119,6 +119,7 @@
     <Content Include="Content\client_responsive.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\kundeklubben.css" />
     <Content Include="Content\layout.css" />
     <Content Include="Content\layoutAdmin.css" />
     <Content Include="Content\portal.css" />

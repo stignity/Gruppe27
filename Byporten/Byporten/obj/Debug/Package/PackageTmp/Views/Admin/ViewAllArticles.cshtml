@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<Byporten.createpost>
+@using System.Linq
 
 @{
     ViewBag.Title = "Alle artiklene";
@@ -16,31 +17,32 @@
     <p class="createNewButton">
         @Html.ActionLink("Opprett ny artikkel", "Create")
     </p>
-
-
-        @foreach (var item in Model.Reverse())
+        @if (!Model.Any())
         {
-            <div class="last-article-wrap">
-                <div class="article-title" id="query">
-                    <h4>@Html.DisplayFor(modelitem => item.Title)</h4>
-                </div>
-                <div class="article-content">
-                    <p>@Html.DisplayFor(modelitem => item.Content)</p>
-                    <hr />
-                    <p><b>Startdato:</b> @Html.DisplayFor(modelitem => item.CreateDate)</p>
-                    <p><b>Sluttdato:</b> @Html.DisplayFor(modelitem => item.ExpireDate)</p>
-                    <p><b>BildeURL:</b> @Html.DisplayFor(modelitem => item.ImageURL)</p>
-                    <p><b>Eksterne Lenker:</b> @Html.DisplayFor(modelitem => item.ExternalLinkURL)</p>
-                    <div class="choices">
-                        <p>@Html.ActionLink("Endre", "Edit", new { id = item.Id }, new { @class = "link-button" })</p>
-                        <p>@Html.ActionLink("Detaljer", "Details", new { id = item.Id }, new { @class = "link-button" })</p>
-                        <p>@Html.ActionLink("Slett", "Delete", new { id = item.Id }, new { @class = "link-button" })</p>
+            <p class="lead page-header">Det finnes ingen artikler</p>
+        }
+        else
+        {
+            foreach (var item in Model.Reverse())
+            {
+                <div class="last-article-wrap">
+                    <div class="article-title" id="query">
+                        <h4>@Html.DisplayFor(modelitem => item.Title)</h4>
+                    </div>
+                    <div class="article-content">
+                        <p>@Html.DisplayFor(modelitem => item.Content)</p>
+                        <hr />
+                        <p><b>Startdato:</b> @Html.DisplayFor(modelitem => item.CreateDate)</p>
+                        <p><b>Sluttdato:</b> @Html.DisplayFor(modelitem => item.ExpireDate)</p>
+                        <p><b>BildeURL:</b> @Html.DisplayFor(modelitem => item.ImageURL)</p>
+                        <p><b>Eksterne Lenker:</b> @Html.DisplayFor(modelitem => item.ExternalLinkURL)</p>
+                        <div class="choices">
+                            <p>@Html.ActionLink("Endre", "Edit", new { id = item.Id }, new { @class = "link-button" })</p>
+                            <p>@Html.ActionLink("Detaljer", "Details", new { id = item.Id }, new { @class = "link-button" })</p>
+                            <p>@Html.ActionLink("Slett", "Delete", new { id = item.Id }, new { @class = "link-button" })</p>
+                        </div>
                     </div>
                 </div>
-
-                
-
-            </div>
+            }
         }
-
 </div>
