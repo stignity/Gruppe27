@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace Byporten.Controllers
 {
@@ -26,9 +27,28 @@ namespace Byporten.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult Kundeklubb()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Kundeklubb(Byporten.Models.UserLoginModel user)
+        {
+            if (ModelState.IsValid)
+            {
+                if (IsValdid(user.Email, user.Password))
+                {
+                    FormsAuthentication.SetAuthCookie(user.Email, false);
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Login feilet, vennligst prøv på nytt.");
+                }
+            }
+            return View(user);
         }
 
         [HttpGet]
