@@ -35,10 +35,10 @@
         $('.search-button').click(function () {
             if (searchbar == false) {
                 searchbar = true;
-                $('.top-search-bar').fadeIn();
+                $('.search-area').fadeIn();
             } else {
                 searchbar = false;
-                $('.top-search-bar').fadeOut();
+                $('.search-area').fadeOut();
             }
            
         })

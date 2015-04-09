@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<Byporten.aktuelt>
+@using System.Linq
 
 @{
     ViewBag.Title = "Alle tilbudene";
@@ -11,8 +12,14 @@
         @Html.ActionLink("Lag nytt tilbud", "CreateOffer")
     </p>
 
-    @foreach (var item in Model.Reverse())
+    @if (!Model.Any())
     {
+        <p class="lead page-header">Det finnes ingen tilbud</p>
+    }
+    else
+    {
+       foreach (var item in Model.Reverse())
+       {
         <div class="last-article-wrap">
             <div class="article-title" id="query">
                 <h4>@Html.DisplayFor(modelitem => item.Tittel)</h4>
@@ -33,5 +40,8 @@
 
 
         </div>
+       }
     }
+
+    
 </div>
