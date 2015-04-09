@@ -32,16 +32,17 @@
             {
                 @:<div class="row">
             }
-
+            <a href="@Url.Action("viewArticles", new {id = item.Id })">
             <div class="col-lg-3 col-md-3 col-sm-6 article-wrapper">
                 <div class="image-section">
                     <img src="~/images/uploads/@Html.DisplayFor(modelItem => item.ImageURL)"/>
                 </div>
                 <div class="title-section">
                     <h4>@Html.DisplayFor(modelItem => item.Title)</h4>
-                    @Html.ActionLink("Les mer", "viewArticles", new { id = item.Id })
+                   
                 </div>
             </div>
+            </a>
 
             itemCount++;
 

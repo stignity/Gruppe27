@@ -44,6 +44,10 @@
     .createNewButton a{
         width: 100%;
     }
+
+    .link-button{
+        width: 100%;
+    }
 }
 
 /*ipads*/
