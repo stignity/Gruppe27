@@ -87,7 +87,6 @@ namespace Byporten.Controllers
                     }
                 }
             }
-
             return isValid;
         }
         #endregion

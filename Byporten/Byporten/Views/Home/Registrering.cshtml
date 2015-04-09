@@ -1,40 +1,41 @@
-﻿@model Byporten.Models.UserModel
+﻿@model Byporten.Models.UserRegModel
+
 @{
-    ViewBag.Title = "Registrer";
+    ViewBag.Title = "Registrering";
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
 }
 
-<h2>Register</h2>
+<h2>Registrering</h2>
 
 @using (Html.BeginForm())
 {
-    @Html.ValidationSummary(true, "Kunne ikke registrere, vennligst prøv på nytt.");
+    @Html.ValidationSummary(true, "Kunne ikke registrere. Venligst prøv på nytt senere.");
     <div>
         <fieldset>
-            <legend>Opprett Byporten+ Bruker</legend>
+            <legend>Opprett Byporten Pluss Brukerkonto</legend>
 
             <div class="editor-label">
-                @Html.LabelFor(u => u.FullName)
+                @Html.LabelFor(u => u.Name)
             </div>
-            <div class="editor-field" >
-                @Html.TextBoxFor(u => u.FullName)
-                @Html.ValidationMessageFor(u => u.FullName)
+            <div class="editor-field">
+                @Html.TextBoxFor(u => u.Name)
+                @Html.ValidationMessageFor(u => u.Name)
             </div>
 
-            <div class="editor-label" >
+            <div class="editor-label">
                 @Html.LabelFor(u => u.Email)
             </div>
-            <div class="editor-field" >
+            <div class="editor-field">
                 @Html.TextBoxFor(u => u.Email)
                 @Html.ValidationMessageFor(u => u.Email)
             </div>
 
             <div class="editor-label">
-                @Html.LabelFor(u => u.Birthday)
+                @Html.LabelFor(u => u.Birthdate)
             </div>
             <div class="editor-field">
-                @Html.TextBoxFor(u => u.Birthday)
-                @Html.ValidationMessageFor(u => u.Birthday)
+                @Html.TextBoxFor(u => u.Birthdate)
+                @Html.ValidationMessageFor(u => u.Birthdate)
             </div>
 
             <div class="editor-label">
@@ -60,6 +61,7 @@
                 @Html.PasswordFor(u => u.Password)
                 @Html.ValidationMessageFor(u => u.Password)
             </div>
+
             <input type="submit" value="Registrer" />
         </fieldset>
     </div>
