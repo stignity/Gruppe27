@@ -1,0 +1,47 @@
+﻿/*CSS MEDIA QUERIES FOR CLIENT LAYOUT*/
+
+@media (max-width: 497px){
+
+}
+
+@media (max-width: 600px){
+        .carousel-wrap{
+        text-align: center;
+    }
+
+    .carousel-wrap img{
+        margin: 0 auto;
+    }
+
+    .mobile-logo{
+        display: block;
+        float: right;
+    }
+
+    .desktop-logo{
+        display: none;
+    }
+
+    .top-search-bar{
+        width: 100%;
+        display: block;
+        left: 0px;
+    }
+
+    .search-button{
+        display: none;
+    }
+
+}
+
+@media (max-width: 992px){
+
+}
+
+@media (max-width: 1024px){
+
+}
+
+@media (max-width: 1200px){
+
+}
