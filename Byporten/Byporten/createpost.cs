@@ -23,6 +23,7 @@ namespace Byporten
         [StringLength(100)]
         [Required]
         public string Title { get; set; }
+
         [Required]
         public string Content { get; set; }
         [Required]
@@ -31,5 +32,10 @@ namespace Byporten
         public string ExpireDate { get; set; }
         public string ImageURL { get; set; }
         public string ExternalLinkURL { get; set; }
+    }
+
+    public partial class createpost
+    {
+        public HttpPostedFileBase File { get; set; }
     }
 }
