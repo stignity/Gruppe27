@@ -28,17 +28,29 @@
 /*carousel*/
 .carousel-wrap {
     width: 100%;
-    height: 350px;
-    background-repeat: no-repeat;
-    background-image: url('../images/web/banner1.png');
-    background-position: center;
-    background-size: cover;
+    height: auto;
+    background-color: #eee;
+}
+
+.carousel-wrap img{
+
 }
 
 @media (max-width: 497px){
+
+}
+
+@media (max-width: 600px){
     .carousel-wrap{
-    background-image: url('../images/web/banner1_mobile.png');
-    background-position: center;
-    background-size: cover;
+        text-align: center;
+    }
+
+    .carousel-wrap img{
+        margin: 0 auto;
+    }
+
+    .top-search-bar{
+        width: 100%;
+        height: 50px;
     }
 }
