@@ -134,5 +134,10 @@ namespace Byporten.Controllers
             }
             return isValid;
         }
+
+        public ActionResult errorPage()
+        {
+            return View();
+        }
     }
 }
