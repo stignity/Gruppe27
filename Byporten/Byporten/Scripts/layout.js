@@ -62,7 +62,6 @@
         }, 7000)
     }
 
-
     //pageload function
     var init = function () {
         toggle_main_menu();

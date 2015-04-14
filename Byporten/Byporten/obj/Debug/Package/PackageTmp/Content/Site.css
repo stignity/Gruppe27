@@ -91,6 +91,19 @@
 
 }
 
+.sidebar-body-section .fb-page{
+    width: 100%;
+}
+
+.sidebar-body-section .fb-page span{
+    width: 100% !important;
+    height: auto !important;
+}
+
+.sidebar-body-section .fb-page span iframe{
+    width: 100% !important;
+}
+
 
 /*carousel*/
 .carousel-wrap {

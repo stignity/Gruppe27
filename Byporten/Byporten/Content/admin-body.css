@@ -183,6 +183,10 @@
     border-radius: 0px;
 }
 
+#ImageURL{
+    color: rgb(255, 255, 255);
+}
+
 /*details and delete*/
 
 .view-articles-details-delete{
