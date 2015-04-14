@@ -207,7 +207,10 @@ namespace Byporten.Controllers
         {
             createpost createpost = db.createpost.Find(id);
 
+            var imageLocation = Path.Combine(Server.MapPath("~/images/uploads"), createpost.ImageURL);
+
              db.createpost.Remove(createpost);
+             System.IO.File.Delete(imageLocation);
              db.SaveChanges();
              return RedirectToAction("ViewAllArticles");
             
@@ -227,7 +230,14 @@ namespace Byporten.Controllers
         #region View All current Articles in a list
         public ActionResult ViewAllArticles()
         {
-            return View(db.createpost.ToList());
+            if (Session["Username"] == null)
+            {
+                return RedirectToAction("Portal", "Admin");
+            }
+            else
+            {
+                return View(db.createpost.ToList());
+            }
         }
         #endregion
 
