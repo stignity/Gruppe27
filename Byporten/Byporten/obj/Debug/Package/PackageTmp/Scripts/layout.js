@@ -7,14 +7,14 @@
 */
 
 (function () {
-
+    /*
     var Toggled = false;
     var toggle_main_menu = function () {
         $('.menu-button').click(function () {
             if (Toggled == false) {
                 Toggled = true;
                 $('.hidden-menu-wrap').animate({ left: '0px' }, 250);
-                $('body').animate({ left: '230px' }, 250);
+                $('body').animate({ left: '250px' }, 250);
                 $('body').css('max-width', '100%');
                 $('body').css('overflow-x', 'hidden');
                 $('.menu-button').removeClass('fa fa-bars');
@@ -22,26 +22,30 @@
 
             } else {
                 Toggled = false;
-                $('.hidden-menu-wrap').animate({ left: '-230px' }, 250);
+                $('.hidden-menu-wrap').animate({ left: '-250px' }, 250);
                 $('body').animate({ left: '0px' }, 250);
                 $('.menu-button').removeClass('fa fa-remove');
                 $('.menu-button').addClass('fa fa-bars');
             }
         });
     }
+    */
 
-    var searchbar = false;
-    var toggle_searchbar = function () {
-        $('.search-button').click(function () {
-            if (searchbar == false) {
-                searchbar = true;
-                $('.search-wrapper').slideDown(100);
-            } else {
-                searchbar = false;
-                $('.search-wrapper').slideUp(100);
-            }
-           
-        })
+    var toggle_main_menu = function () {
+        $('.menu-button').click(function () {
+            $('.hidden-menu-wrap').animate({ left: '0px' }, 250);
+            $('body').animate({ left: '250px' }, 250);
+            $('body').css('max-width', '100%');
+            $('body').css('overflow-x', 'hidden');
+            $('.menu-button').fadeOut();
+        });
+        $('.menu-header').click(function () {
+            $('.hidden-menu-wrap').animate({ left: '-250px' }, 250);
+            $('body').animate({ left: '0px' }, 250);
+            $('.menu-button').fadeIn();
+        });
+
+        
     }
 
     var carousel = function () {
@@ -62,7 +66,6 @@
     //pageload function
     var init = function () {
         toggle_main_menu();
-        toggle_searchbar();
         carousel();
     }    
 

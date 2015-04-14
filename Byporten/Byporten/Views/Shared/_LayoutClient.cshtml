@@ -16,9 +16,17 @@
 
     <div class="hidden-menu-wrap">
         <div class="menu-header">
-            <p class="lead"><span class="fa fa-caret-down"></span> Meny</p>
+            <p class="lead close-menu"><span class="fa fa-remove"></span> Lukk</p>
         </div>
         <ul class="main-navigation">
+            <li>
+                <form method="post" action="">
+                    <fieldset>
+                        <input type="search" class="top-search-bar" placeholder="Søk i fritekst" />
+                        <button type="submit" class="search-button"><span class="fa fa-search"></span></button>
+                    </fieldset>
+                </form>
+            </li>
             <li>@Html.ActionLink("Forsiden", "Index", "Home")</li>
             <li>@Html.ActionLink("Aktuelt", "Aktuelt", "Home")</li>
             <li>@Html.ActionLink("Butikker", "Butikker", "Home")</li>
@@ -39,19 +47,8 @@
                 <h2 class="logo mobile-logo">Byporten<span class="fa fa-stumbleupon"></span></h2>
             </a>
             <!--SEARCH-->
-            <h3 class="fa fa-search search-button"></h3>
         </div>
     </div> <!-- Header-wrap end -->
-    <div class="search-wrapper">
-        <div class="container mobile-container">
-            <div class="search-area">
-                <button class="go-search-button"><span class="fa fa-search"></span></button>
-                <input type="search" class="top-search-bar" placeholder="Søk..." />
-            </div>
-        </div>
-    </div>
-
-
     <div class="render-body">
         @RenderBody()
     </div>

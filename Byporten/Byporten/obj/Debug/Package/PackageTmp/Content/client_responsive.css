@@ -22,22 +22,6 @@
         display: none;
     }
 
-    .search-wrapper{
-        display: block;
-    }
-
-    .top-search-bar{
-        width: 80%;
-    }
-
-    .go-search-button{
-        width: 20%;
-    }
-
-    .search-button{
-        display: none;
-    }
-
     .mobile-container{
         padding-left: 0px;
         padding-right: 0px;
@@ -96,6 +80,15 @@
 
 .carousel-wrap{
     height: auto;
+}
+
+.sidebar-section{
+    display: none;
+}
+
+.article-section{
+    width: 100%;
+    float: none;
 }
 }
 

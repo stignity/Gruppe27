@@ -11,11 +11,11 @@
 }
 
 .hidden-menu-wrap{
-    width: 230px;
+    width: 250px;
     height: 100%;
     background-color: rgb(71, 71, 71);
     position: fixed;
-    left: -230px;
+    left: -250px;
 }
 
 .menu-header{
@@ -29,6 +29,13 @@
     padding: 17px;
     padding-left: 20px;
     color: rgb(191, 191, 191);
+}
+
+.menu-header:hover{
+    background-color: rgb(50, 50, 50);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    
 }
 
 .hidden-menu-wrap ul.main-navigation{
@@ -85,43 +92,24 @@
     color: rgb(255, 255, 255);
 }
 
-.search-wrapper{
-    width: 100%;
-    height: auto;
-    background-color: #eee;
-    position: relative;
-    top: 60px;
-    display: none;
-}
-
-.search-area{
-}
-
 .search-button{
-    color: rgb(81, 81, 81);
-    font-size: 1.5em;
-    position: relative;
-    left: 20px;
-    cursor: pointer;
-}
-
-.go-search-button{
-    width: 10%;
-    height: 50px;
+    float: left;
+    width: 20%;
+    height: 40px;
     border: none;
     border-radius: 0px;
-    background-color: rgb(248, 148, 6);
 }
 
 .top-search-bar{
-    width: 90%;
-    height: 50px;
+    width: 80%;
+    height: 40px;
     border: none;
-    background-color: rgb(81, 81, 81);
+    background-color: rgb(255, 255, 255);
     box-sizing: border-box;
-    padding: 15px;
+    padding: 10px;
+    color: rgb(0, 0, 0);
+    outline: none;
     float: left;
-    color: rgb(255, 255, 255);
 }
 
 /*Footer*/

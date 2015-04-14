@@ -9,21 +9,14 @@
         <div class="jumbotron">
             <div class="row">
                 <div id="quote1">
-                    <div class="col-lg-8 col-md-10 col-sm-10">
-                        <h1>Vi ønsker deg en riktig god handel her hos Byporten!</h1>
-                        <p class="lead">Velkommen skal du være!</p>
-                    </div>
-                    <div class="col-lg-4 col-md-2 col-sm-2">
-                        <img src="~/images/web/bag.png" class="img-responsive" />
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <h1>Vi ønsker deg en riktig god handel her i Byporten!</h1>
                     </div>
                 </div>
                 <div id="quote2">
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <center>
-                            <h1>Åpningstider</h1>
-                             <hr />
-                            <p class="lead">Hverdager: 09.00 - 21.00</p>
-                            <p class="lead">Lørdager 10.00 - 21.00</p>
+                            <h1>Kampanjetekst....</h1>
                         </center>
                     </div>
                 </div>
@@ -39,39 +32,76 @@
     </div>
 </div>  
 
-<div class="container pushDown">
+<div class="container">
+    <div class="article-section pushDown">
 
-    @{
-        var itemCount = 0;
-    }
+        @{
+            var itemCount = 0;
+        }
         @foreach (var item in Model.Reverse().Take(9))
         {
-            if (itemCount % 4 == 0 || itemCount % 4 == 4)
+            if (itemCount % 3 == 0 || itemCount % 3 == 3)
             {
                 @:<div class="row">
             }
             <a href="@Url.Action("viewArticles", new {id = item.Id })">
-            <div class="col-lg-3 col-md-3 col-sm-6 article-wrapper">
-                <div class="image-section">
-                    <img src="~/images/uploads/@Html.DisplayFor(modelItem => item.ImageURL)"/>
+                <div class="col-lg-4 col-md-4 col-sm-4 article-wrapper">
+                    <div class="image-section">
+                        <img src="~/images/uploads/@Html.DisplayFor(modelItem => item.ImageURL)" />
+                    </div>
+                    <div class="title-section">
+                        <h4>@Html.DisplayFor(modelItem => item.Title)</h4>
+
+                    </div>
                 </div>
-                <div class="title-section">
-                    <h4>@Html.DisplayFor(modelItem => item.Title)</h4>
-                   
-                </div>
-            </div>
             </a>
 
             itemCount++;
 
-            if ((itemCount % 4) == 0)
+            if ((itemCount % 3) == 0)
             {
                 @:</div>
 
-         }
+
+            }
 
         }
+    </div>
+    <div class="sidebar-section">
+        <div class="sidebar-header">
+            <p class="lead">Informasjon</p>
+        </div>
+        <div class="sidebar-body">
+            <div class="sidebar-body-section">
+                <p class="lead">Åpningstider</p>
+                <p>
+                    Hverdager: 09.00 - 21.00
+                    <br />
+                    Lørdager 10.00 - 21.00
+                </p>
+            </div>
+            <div class="sidebar-body-section">
+                <p class="lead">Kontaktinformasjon</p>
+                <p>
+                    Senterdirektør: 23 36 20 00
+                    <br />
+                    Varemottak: 93 26 56 74 (Åpent 7-15)
+                    <br />
+                    Driftsteknikere 46 76 46 56 (Åpent 8-16)
+                    <br />
+                    elisabeth.jensen@byporten.no
+                </p>
+            </div>
+            <div class="sidebar-body-section">
+                <div class="social-icons">
+                    <a><span class="fa fa-facebook"></span></a>
+                    <a><span class="fa fa-instagram"></span></a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
 
  
 
