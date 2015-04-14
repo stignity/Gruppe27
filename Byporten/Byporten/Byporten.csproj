@@ -168,6 +168,7 @@
     <Content Include="Scripts\layoutAdmin.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\npm.js" />
+    <Content Include="Scripts\plugins.js" />
     <Content Include="Web.config" />
     <Content Include="Scripts\jquery-1.11.2.min.map" />
   </ItemGroup>
@@ -286,6 +287,7 @@
       <LastGenOutput>UserModel.cs</LastGenOutput>
     </Content>
     <Content Include="Views\Home\Registrering.cshtml" />
+    <Content Include="Views\Home\errorPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

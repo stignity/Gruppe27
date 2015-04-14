@@ -61,6 +61,13 @@
 
 }
 
+@media (max-width: 768px){
+    .menu-header .lead{
+    font-size: 21px !important;
+}
+
+}
+
 @media (max-width: 992px){
     .image-section img {
     -webkit-transition: none;
