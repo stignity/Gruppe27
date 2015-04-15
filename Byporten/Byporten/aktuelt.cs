@@ -11,13 +11,26 @@ namespace Byporten
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class aktuelt
     {
         public int Id { get; set; }
+
+        [Required(ErrorMessage="Feltet er påkrevd")]
+        [MinLength(6, ErrorMessage="Feltet er for kort"), MaxLength(150, ErrorMessage="Feltet er for langt")]
         public string Tittel { get; set; }
+
+        [Required(ErrorMessage = "Feltet er påkrevd")]
+        [MinLength(6, ErrorMessage="Feltet er for kort"), MaxLength(3000, ErrorMessage="Feltet er for langt")]
         public string Innhold { get; set; }
+
+        [Required(ErrorMessage = "Feltet er påkrevd")]
+        [MinLength(6, ErrorMessage="Feltet må inneholde en dato"), MaxLength(60, ErrorMessage="Feltet må inneholde en dato")]
         public string Startdato { get; set; }
+
+        [Required(ErrorMessage = "Feltet er påkrevd")]
+        [MinLength(6, ErrorMessage = "Feltet må inneholde en dato"), MaxLength(60, ErrorMessage = "Feltet må inneholde en dato")]
         public string Sluttdato { get; set; }
         public string Bilde { get; set; }
     }
