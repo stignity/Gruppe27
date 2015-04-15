@@ -29,6 +29,7 @@ namespace Byporten
         [Required(ErrorMessage="Artikkelen må ha en startdato")]
         public string CreateDate { get; set; }
 
+        [Required(ErrorMessage = "Artikkelen må ha en sluttdato")]
         public string ExpireDate { get; set; }
         public string ImageURL { get; set; }
         public string ExternalLinkURL { get; set; }

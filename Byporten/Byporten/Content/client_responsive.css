@@ -5,7 +5,8 @@
 }
 
 @media (max-width: 600px){
-        .carousel-wrap{
+    .carousel-wrap{
+        display: none;
         text-align: center;
     }
 
@@ -15,7 +16,7 @@
 
     .mobile-logo{
         display: block;
-        float: right;
+        float: left;
     }
 
     .desktop-logo{
@@ -97,6 +98,16 @@
     width: 100%;
     float: none;
 }
+
+ul.top-nav-most-used li{
+    display: none;
+}
+
+ul.top-nav-most-used li:last-child{
+    display: block;
+}
+
+
 }
 
 @media (max-width: 1024px){

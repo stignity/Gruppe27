@@ -33,19 +33,19 @@
 </div>  
 
 <div class="container">
+    <p class="page-header lead">Artikler</p>
     <div class="article-section pushDown">
-
         @{
             var itemCount = 0;
         }
         @foreach (var item in Model.Reverse().Take(9))
         {
-            if (itemCount % 3 == 0 || itemCount % 3 == 3)
+            if (itemCount % 2 == 0 || itemCount % 2 == 2)
             {
                 @:<div class="row">
             }
             <a href="@Url.Action("viewArticles", new {id = item.Id })">
-                <div class="col-lg-4 col-md-4 col-sm-4 article-wrapper">
+                <div class="col-lg-6 col-md-6 col-sm-6 article-wrapper">
                     <div class="image-section">
                         <img class="image-placeholder" src="~/images/uploads/@Html.DisplayFor(modelItem => item.ImageURL)" />
                     </div>
@@ -58,7 +58,7 @@
 
             itemCount++;
 
-            if ((itemCount % 3) == 0)
+            if ((itemCount % 2) == 0)
             {
                 @:</div>
                 @:<hr class="divider" />

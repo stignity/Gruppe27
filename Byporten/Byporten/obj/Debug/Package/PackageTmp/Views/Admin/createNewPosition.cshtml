@@ -7,7 +7,7 @@
 <div class="container">
     <h2>Ny stilling</h2>
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
 

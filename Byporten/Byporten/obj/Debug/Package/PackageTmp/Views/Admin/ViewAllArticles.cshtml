@@ -8,15 +8,15 @@
 <div class="container">
     <h2 class="page-header">Alle artiklene!</h2>
 
+    <p class="createNewButton">
+        @Html.ActionLink("Opprett ny artikkel", "Create")
+    </p>
     <div class="search-area">
         <form id="live-search" action="" method="post">
             <input type="search" class="search-bar" id="filter" placeholder="Søk igjennom artiklene!" />
         </form>
-    </div>
     <hr />
-    <p class="createNewButton">
-        @Html.ActionLink("Opprett ny artikkel", "Create")
-    </p>
+    </div>
         @if (!Model.Any())
         {
             <p class="lead page-header">Det finnes ingen artikler</p>
