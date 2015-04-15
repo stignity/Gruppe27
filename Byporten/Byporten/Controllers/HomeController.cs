@@ -45,7 +45,7 @@ namespace Byporten.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Login feilet, vennligst prøv på nytt.");
+                    ModelState.AddModelError("", "Feil Brukernavn eller Passord.");
                 }
             }
             return View(user);
