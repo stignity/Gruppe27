@@ -10,18 +10,18 @@ namespace Byporten.Models
     public class UserRegModel
     {
 
-        [Required]
+        [Required(ErrorMessage="Feltet er påkrevd")]
         [Display(Name = "Navn*")]
-        [MinLength(3), MaxLength(100)]
+        [MinLength(3, ErrorMessage="Navnet er for kort"), MaxLength(100, ErrorMessage="Navnet er for langt")]
         public string Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Feltet er påkrevd")]
         [Display(Name = "Epost*")]
         [DataType(DataType.EmailAddress)]
         [MinLength(5), MaxLength(200)]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Feltet er påkrevd")]
         [Display(Name = "Burdag*")]
         public string Birthdate { get; set; }
 
@@ -33,7 +33,7 @@ namespace Byporten.Models
         [Display(Name="By")]
         public string City { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Feltet er påkrevd")]
         [DataType(DataType.Password)]
         [MinLength(7), MaxLength(250)]
         [Display(Name = "Passord")]
@@ -42,21 +42,23 @@ namespace Byporten.Models
     }
     public class UserLoginModel {
 
-        [Required]
+        [Required(ErrorMessage="Kan ikke være tom")]
+        [DataType(DataType.EmailAddress, ErrorMessage="Må være en epost")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage="Husk passord")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
     }
     public class AdminModel
     {
 
-        [Required]
+        [Required(ErrorMessage="Feltet er påkrevd")]
         [Display(Name = "Brukernavn")]
         [StringLength(100)]
         public string Username { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Feltet er påkrevd")]
         [Display(Name = "Passord")]
         [DataType(DataType.Password)]
         public string Password { get; set; }

@@ -78,4 +78,4 @@ C:\Users\Anders\Documents\Gruppe27\Byporten\Byporten\obj\Debug\Byporten.dll
 C:\Users\Anders\Documents\Gruppe27\Byporten\Byporten\obj\Debug\Byporten.pdb
 C:\Users\Jon\Documents\Gruppe27\Byporten\Byporten\bin\System.Data.dll
 C:\Users\Øyvind\Documents\Gruppe27\Byporten\Byporten\obj\Debug\Byporten.csprojResolveAssemblyReference.cache
-C:\Users\Anders\Documents\Gruppe27\Byporten\Byporten\obj\Debug\Byporten.csprojResolveAssemblyReference.cache
+C:\Users\Anders\Documents\gruppe27\Byporten\Byporten\obj\Debug\Byporten.csprojResolveAssemblyReference.cache

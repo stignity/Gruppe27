@@ -11,13 +11,26 @@ namespace Byporten
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class availablepositions
     {
         public int Id { get; set; }
+        
+        [Required(ErrorMessage="Feltet er påkrevd")]
+        [MinLength(6, ErrorMessage="Feltet er for kort"), MaxLength(100, ErrorMessage="Feltet er for langt")]
         public string Title { get; set; }
+
+        [Required(ErrorMessage="Feltet er påkrevd")]
+        [MinLength(3, ErrorMessage="Feltet er for kort"), MaxLength(3000, ErrorMessage="Feltet er for langt")]
         public string Description { get; set; }
+
+        [Required(ErrorMessage="Feltet er påkrevd")]
+        [MinLength(8, ErrorMessage="Feltet er for kort"), MaxLength(128, ErrorMessage="Feltet er for langt")]
         public string CreateDate { get; set; }
+
+        [Required(ErrorMessage="Feltet er påkrevd")]
+        [MinLength(8, ErrorMessage="Feltet er for kort"), MaxLength(128, ErrorMessage="Feltet er for langt")]
         public string ExpireDate { get; set; }
         public string ImageURL { get; set; }
         public string ExternalLinkURL { get; set; }

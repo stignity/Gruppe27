@@ -1,0 +1,7 @@
+var storeImage = [
+	{"Category":"shoes", "src":"lille_grensen_sko.png", "url":"~/Images/Stores/lille_grensen_sko.png", "name":"Lille Grensen Sko"},
+	{"Category":"makeup", "src":"kicks.png", "url":"~/Images/Stores/kicks.png", "name":"Kicks"},
+	{"Category":"clothes", "src":"lille_grensen_sko.png", "url":"~/Images/Stores/lille_grensen_sko.png", "name":"Lille Grensen Sko"},
+	{"Category":"shoes", "src":"lille_grensen_sko.png", "url":"~/Images/Stores/lille_grensen_sko.png", "name":"Lille Grensen Sko"},
+	{"Category":"shoes", "src":"lille_grensen_sko.png", "url":"~/Images/Stores/lille_grensen_sko.png", "name":"Lille Grensen Sko"}
+	]

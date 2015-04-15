@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using System.IO;
 using System.Data;
+using System.Text.RegularExpressions;
 
 namespace Byporten.Controllers
 {
@@ -131,8 +132,49 @@ namespace Byporten.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(createpost createpost, HttpPostedFileBase imageURL)
         {
+
+            const int ImageMinimumBytes = 1024;
+
             if (imageURL != null && imageURL.ContentLength > 0)
             {
+                //Check image mime type
+                if(imageURL.ContentType.ToLower() != "image/jpg" &&
+                    imageURL.ContentType.ToLower() != "image/jpeg" &&
+                    imageURL.ContentType.ToLower() != "image/png" &&
+                    imageURL.ContentType.ToLower() != "image/gif" &&
+                    imageURL.ContentType.ToLower() != "image/psd" &&
+                    imageURL.ContentType.ToLower() != "image/pdf") 
+                {
+
+                    ModelState.AddModelError("ImageURL", "Må være bildefil");
+
+                }
+
+                try
+                {
+                    if(!imageURL.InputStream.CanRead)
+                    {
+                        ModelState.AddModelError("ImageURL", "Må være en bildefil!");
+                    }
+                    if(imageURL.ContentLength < ImageMinimumBytes) 
+                    {
+                        ModelState.AddModelError("ImageURL", "Bilde må være større enn 1024 bytes");
+                    }
+
+                    byte[] buffer = new byte[1024];
+                    imageURL.InputStream.Read(buffer, 0, 1024);
+                    string content = System.Text.Encoding.UTF8.GetString(buffer);
+                    if(Regex.IsMatch(content, @"<script|<html|<head|<title|<body|<pre|<table|<a\s+href|<img|<plaintext|<cross\-domain\-policy",
+                        RegexOptions.IgnoreCase | RegexOptions.CultureInvariant | RegexOptions.Multiline))
+                    {
+                        ModelState.AddModelError("model.ImageURL", "Potensiell farlig fil funnet!");
+                    }
+                }
+                catch (Exception)
+                {
+                    ModelState.AddModelError("model.ImageURL", "Noe gikk galt");
+                }
+
                 var imageName = Path.GetFileName(imageURL.FileName);
                 var path = Path.Combine(Server.MapPath("~/images/uploads/"), imageName);
 
@@ -208,12 +250,21 @@ namespace Byporten.Controllers
         {
             createpost createpost = db.createpost.Find(id);
 
-            var imageLocation = Path.Combine(Server.MapPath("~/images/uploads"), createpost.ImageURL);
+            try
+            {
+                var imageLocation = Path.Combine(Server.MapPath("~/images/uploads"), createpost.ImageURL);
 
-             db.createpost.Remove(createpost);
-             System.IO.File.Delete(imageLocation);
-             db.SaveChanges();
-             return RedirectToAction("ViewAllArticles");
+                db.createpost.Remove(createpost);
+                System.IO.File.Delete(imageLocation);
+                db.SaveChanges();
+                return RedirectToAction("ViewAllArticles");
+            }
+            catch
+            {
+                db.createpost.Remove(createpost);
+                db.SaveChanges();
+                return RedirectToAction("ViewAllArticles");
+            }
             
         }
 
