@@ -15,7 +15,9 @@
         <div class="container">
             @if (Request.IsAuthenticated)
             {
-                <h2 class="logo pull-left">Byporten<span class="fa fa-stumbleupon"></span>Shopping</h2>
+                <a href="@Url.Action("index")">
+                    <h2 class="logo pull-left">Byporten<span class="fa fa-stumbleupon"></span>Shopping</h2>
+                </a>
                 <h2 class="fa fa-bars menu-button-mobile"></h2>
                 <ul class="user-logged-in pull-right">
                     <li role="presentation" class="dropdown">
@@ -34,7 +36,7 @@
 
     <div class="menu-wrap">
         <div class="container">
-            <ul class="admin-navigation pull-right">
+            <ul class="admin-navigation pull-left">
                 <li>@Html.ActionLink("Forsiden", "index", "Admin")</li>
                 <li>@Html.ActionLink("Artikler", "ViewAllArticles", "Admin")</li>
                 <li>@Html.ActionLink("Stillinger", "AllPositions", "Admin")</li>
