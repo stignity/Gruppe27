@@ -137,6 +137,7 @@
     <Content Include="images\web\bag.png" />
     <Content Include="images\web\banner1.png" />
     <Content Include="images\web\banner1_mobile.png" />
+    <Content Include="images\web\loader.gif" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\fontawesome-webfont.woff" />

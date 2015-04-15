@@ -20,6 +20,17 @@
     height: 200px;
     width: 100%;
 }
+/*
+.image-placeholder {
+
+    background-image: url('../images/web/loader.gif');
+    background-position: center;
+    background-size: 20%;
+    background-repeat: no-repeat;
+    z-index: 100000;
+}
+
+*/
 
 .image-section img {
     -webkit-transition: all 1s ease; /* Safari and Chrome */
@@ -89,6 +100,19 @@
     width: 100%;
     height: auto;
 
+}
+
+.sidebar-body-section .fb-page{
+    width: 100%;
+}
+
+.sidebar-body-section .fb-page span{
+    width: 100% !important;
+    height: auto !important;
+}
+
+.sidebar-body-section .fb-page span iframe{
+    width: 100% !important;
 }
 
 
