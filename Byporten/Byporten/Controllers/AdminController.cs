@@ -166,7 +166,8 @@ namespace Byporten.Controllers
                 createpost createpost = db.createpost.Find(id);
                 if (createpost == null)
                 {
-                    return HttpNotFound();
+                    //return HttpNotFound();
+                    throw new HttpException(404, "Du har ikke valgt en artikkel!");
                 }
                 return View(createpost);
             }
@@ -665,5 +666,10 @@ namespace Byporten.Controllers
             return RedirectToAction("ViewAllOffers", "Admin");
         }
         #endregion
+
+        public ActionResult errorPage()
+        {
+            return View();
+        }
     }
 }
