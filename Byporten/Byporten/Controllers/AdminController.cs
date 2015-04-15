@@ -133,10 +133,11 @@ namespace Byporten.Controllers
         public ActionResult Create(createpost createpost, HttpPostedFileBase imageURL)
         {
 
-            const int ImageMinimumBytes = 512;
+            const int ImageMinimumBytes = 1024;
 
             if (imageURL != null && imageURL.ContentLength > 0)
             {
+                //Check image mime type
                 if(imageURL.ContentType.ToLower() != "image/jpg" &&
                     imageURL.ContentType.ToLower() != "image/jpeg" &&
                     imageURL.ContentType.ToLower() != "image/png" &&
@@ -145,7 +146,7 @@ namespace Byporten.Controllers
                     imageURL.ContentType.ToLower() != "image/pdf") 
                 {
 
-                    ModelState.AddModelError("ImageURL", "Må være bildefil!");
+                    ModelState.AddModelError("ImageURL", "Må være bildefil");
 
                 }
 
@@ -157,11 +158,11 @@ namespace Byporten.Controllers
                     }
                     if(imageURL.ContentLength < ImageMinimumBytes) 
                     {
-                        ModelState.AddModelError("ImageURL", "Bilde må være større enn 0.5MB!");
+                        ModelState.AddModelError("ImageURL", "Bilde må være større enn 1024 bytes");
                     }
 
-                    byte[] buffer = new byte[512];
-                    imageURL.InputStream.Read(buffer, 0, 512);
+                    byte[] buffer = new byte[1024];
+                    imageURL.InputStream.Read(buffer, 0, 1024);
                     string content = System.Text.Encoding.UTF8.GetString(buffer);
                     if(Regex.IsMatch(content, @"<script|<html|<head|<title|<body|<pre|<table|<a\s+href|<img|<plaintext|<cross\-domain\-policy",
                         RegexOptions.IgnoreCase | RegexOptions.CultureInvariant | RegexOptions.Multiline))
