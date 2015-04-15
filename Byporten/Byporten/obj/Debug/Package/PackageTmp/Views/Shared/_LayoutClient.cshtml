@@ -46,7 +46,15 @@
                     <h2 class="logo desktop-logo">Byporten<span class="fa fa-stumbleupon"></span>Shopping</h2>
                     <h2 class="logo mobile-logo">Byporten<span class="fa fa-stumbleupon"></span></h2>
                 </a>
-                <h3 class="fa fa-bars pull-right menu-button"></h3>
+                <!--MOST USED LINKS MENU-->
+                <ul class="top-nav-most-used">
+                    <li>@Html.ActionLink("Forsiden", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Kundeklubben", "Kundeklubb", "Home")</li>
+                    <li>@Html.ActionLink("Butikker", "Butikker", "Home")</li>
+                    <li>@Html.ActionLink("Ledige Stillinger", "Stillinger", "Home")</li>
+                    <li class="menu-trigger"><a class="menu-button"><span class="fa fa-bars"></span></a></li>
+                </ul>
+                <!--<h3 class="fa fa-bars pull-right menu-button"></h3>-->
                 <!--SEARCH-->
             </div>
         </div> <!-- Header-wrap end -->

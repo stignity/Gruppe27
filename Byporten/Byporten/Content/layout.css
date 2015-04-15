@@ -102,12 +102,20 @@ ul.top-nav-most-used li a:hover{
     background-color: rgb(30, 139, 195);
 }
 
+.menu-button{
+    font-size: 1.8em;
+    position: relative;
+    top: -3px;
+    padding: 14px !important;
+}
+
 .logo{
     color: rgb(255, 255, 255);
     position: relative;
     top: -5px;
     float: left;
 }
+
 
 .logo span{
     color: rgb(34, 49, 63);
@@ -135,6 +143,13 @@ ul.top-nav-most-used li a:hover{
     color: rgb(0, 0, 0);
     outline: none;
     float: left;
+}
+
+.blur{
+  -webkit-filter: blur(3px);
+  -moz-filter: blur(3px);
+  -o-filter: blur(3px);
+  filter: blur(3px);
 }
 
 /*Footer*/

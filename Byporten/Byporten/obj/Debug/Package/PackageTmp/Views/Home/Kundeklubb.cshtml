@@ -25,13 +25,14 @@
                 <div class="login-kunde-form">
                     <p class="lead">Logg inn</p>
                     <div class="editor-field">
-                        @Html.TextBoxFor(u => u.Email, new { @placeholder = "E-post*" })
+                        @Html.TextBoxFor(u => u.Email, new { @placeholder = "E-post" })
                         @Html.ValidationMessageFor(u => u.Email)
                     </div>
                     <div class="editor-field">
-                        @Html.PasswordFor(u => u.Password, new { @placeholder = "Passord*" })
+                        @Html.PasswordFor(u => u.Password, new { @placeholder = "Passord" })
                         @Html.ValidationMessageFor(u => u.Password)
                     </div>
+                    @Html.ValidationSummary(true)
                     <input type="submit" value="Logg inn" class="reg-button" />
                     <hr />
                     @Html.ActionLink("Ikke medlem? Registrer deg her", "Registrering", "Home")

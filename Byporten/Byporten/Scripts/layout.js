@@ -20,23 +20,20 @@
             $('.hidden-menu-wrap').animate({ right: '-250px' }, 250);
             $('.master').animate({ right: '0px' }, 250);
             $('.menu-trigger').fadeIn();
-        });
-
-        
+        });   
     }
 
     var carousel = function () {
-        var $els = $('div[id^=quote]'),
-        i = 0,
-        len = $els.length;
+        $("#slideshow > div:gt(0)").hide();
 
-        $els.slice(1).hide();
         setInterval(function () {
-            $els.eq(i).fadeOut(function () {
-                i = (i + 1) % len
-                $els.eq(i).fadeIn();
-            })
-        }, 7000)
+            $('#slideshow > div:first')
+              .fadeOut(1000)
+              .next()
+              .fadeIn(1000)
+              .end()
+              .appendTo('#slideshow');
+        }, 3000);
     }
 
     //pageload function
