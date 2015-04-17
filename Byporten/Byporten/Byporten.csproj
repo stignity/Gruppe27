@@ -116,6 +116,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\butikker.css" />
     <Content Include="Content\client_responsive.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
@@ -125,6 +126,7 @@
     <Content Include="Content\portal.css" />
     <Content Include="Content\senterinfo.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\stillinger.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -293,6 +295,8 @@
     </Content>
     <Content Include="Views\Home\Registrering.cshtml" />
     <Content Include="Views\Home\errorPage.cshtml" />
+    <Content Include="Views\Home\viewStore.cshtml" />
+    <Content Include="Views\Home\viewPosition.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

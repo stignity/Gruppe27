@@ -1,8 +1,38 @@
-﻿
+﻿@model IEnumerable<Byporten.butikker>
 @{
     ViewBag.Title = "Butikker";
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
 }
 
-<h2>Butikker</h2>
 
+<div class="container butikk-container">
+    <h2 class="page-header">Butikker</h2>
+
+    @{
+        var itemcount = 0;
+    }
+
+    @foreach (var store in Model.Reverse())
+    {
+
+        if (itemcount % 3 == 0 || itemcount % 3 == 3)
+        {
+            @:<div class="row">
+        }
+        <a class="store-link" href="@Url.Action("viewStore", new {id = store.Id })">
+            <div class="wrap col-lg-4">
+                <div class="store">
+                    <p class="lead"><span class="fa fa-shopping-cart"></span> @Html.DisplayFor(modelItem => store.Navn)</p>
+                </div>
+            </div>
+        </a>
+        
+        itemcount++;
+        
+        if((itemcount % 3) == 0)
+        {
+            @:</div>
+        }
+    }
+
+</div>

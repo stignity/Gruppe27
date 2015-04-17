@@ -15,3 +15,9 @@
     js.src = "//connect.facebook.net/nb_NO/sdk.js#xfbml=1&version=v2.3";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
+
+
+(function () {
+
+    
+})();
