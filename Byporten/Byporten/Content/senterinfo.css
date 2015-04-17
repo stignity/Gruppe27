@@ -2,7 +2,7 @@
     
 }
 /*Kun for å dytte innhold ned fra header*/
-#content-wrap{
+.content-wrap{
     padding-top: 20px;
     padding-bottom:20px;
     height: auto;

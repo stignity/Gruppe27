@@ -7,7 +7,7 @@
     <WebStackScaffolding_IsReferencingScriptLibrariesSelected>False</WebStackScaffolding_IsReferencingScriptLibrariesSelected>
     <WebStackScaffolding_LayoutPageFile>~/Views/Shared/_LayoutClient.cshtml</WebStackScaffolding_LayoutPageFile>
     <WebStackScaffolding_ViewDialogWidth>600</WebStackScaffolding_ViewDialogWidth>
-    <ProjectView>ProjectFiles</ProjectView>
+    <ProjectView>ShowAllFiles</ProjectView>
     <WebStackScaffolding_DbContextTypeFullName>Byporten.byportenEntities</WebStackScaffolding_DbContextTypeFullName>
     <NameOfLastUsedPublishProfile>bpshopping</NameOfLastUsedPublishProfile>
   </PropertyGroup>
