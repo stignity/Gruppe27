@@ -20,9 +20,15 @@
                     <center>
                         <h2 class="logo">Byporten<span class="fa fa-stumbleupon"></span>Shopping</h2>
                         <p class="lead">Administrator</p>
-                        <div>@Html.TextBoxFor(u => u.Username, new { @placeholder = "Brukernavn" })</div>
+                        <div>
+                            @Html.TextBoxFor(u => u.Username, new { @placeholder = "Brukernavn" })
+                            @Html.ValidationMessageFor(u => u.Username)
+                        </div>
 
-                        <div>@Html.PasswordFor(u => u.Password, new { @placeholder = "Passord" })</div>
+                        <div>
+                            @Html.PasswordFor(u => u.Password, new { @placeholder = "Passord" })
+                            @Html.ValidationMessageFor(u => u.Password)
+                        </div>
                         <br />
                         @Html.ValidationSummary(true)
                         <input type="submit" value="Login" />

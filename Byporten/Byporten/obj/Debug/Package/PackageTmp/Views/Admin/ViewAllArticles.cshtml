@@ -11,12 +11,13 @@
     <p class="createNewButton">
         @Html.ActionLink("Opprett ny artikkel", "Create")
     </p>
+    <hr />
     <div class="search-area">
         <form id="live-search" action="" method="post">
             <input type="search" class="search-bar" id="filter" placeholder="Søk igjennom artiklene!" />
         </form>
-    <hr />
     </div>
+    <hr />
         @if (!Model.Any())
         {
             <p class="lead page-header">Det finnes ingen artikler</p>
