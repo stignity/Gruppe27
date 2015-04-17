@@ -1,0 +1,24 @@
+﻿body {
+}
+
+.position{
+    width: 100%;
+    height: auto;
+    background-color: rgb(235, 149, 50);
+    color: rgb(255, 255, 255);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.position:hover{
+    transition: 0.4s ease all;
+    background-color: rgb(232, 126, 4);
+}
+
+.position img{
+    height: 300px;
+    width: 100%;
+}
+
+.view-container{
+
+}

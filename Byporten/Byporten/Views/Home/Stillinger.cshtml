@@ -1,8 +1,38 @@
-﻿
+﻿@model IEnumerable<Byporten.availablepositions>
 @{
     ViewBag.Title = "Stillinger";
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
 }
 
-<h2>Stillinger</h2>
+
+<div class="container">
+    <h2 class="page-header">Ledige stillinger</h2>
+    @{
+        var itemcount = 0;
+    }
+
+    @foreach (var position in Model.Reverse())
+    {
+
+        if (itemcount % 3 == 0 || itemcount % 3 == 3)
+        {
+            @:<div class="row">
+        }
+        <a class="link" href="@Url.Action("viewPosition", new {id = position.Id })">
+            <div class="wrap col-lg-4">
+                <div class="position">
+                    <p class="lead"><span class="fa fa-shopping-cart"></span> @Html.DisplayFor(modelItem => position.Title)</p>
+                </div>
+            </div>
+        </a>
+
+        itemcount++;
+
+        if ((itemcount % 3) == 0)
+        {
+            @:</div>
+        }
+    }
+    
+</div>
 

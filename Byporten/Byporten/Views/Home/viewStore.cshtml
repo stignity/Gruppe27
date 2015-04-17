@@ -1,0 +1,23 @@
+﻿@model Byporten.butikker
+@{
+    ViewBag.Title = "viewStore";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+
+<div class="container view-container">
+    <div class="row">
+        <div class="col-lg-4 contain-image">
+            <img src="~/images/stores/@Html.DisplayFor(model => model.Logo)" class="img-responsive" />
+        </div>
+        <div class="col-lg-8 contain-content">
+            <h2 class="page-header">@Html.DisplayFor(model => model.Navn)</h2>
+            <p>@Html.DisplayFor(model => model.Beskrivelse)</p>
+            <hr class="divider" />
+            <p>Kategori: @Html.DisplayFor(model => model.Kategori)</p>
+            <p>Telefon: @Html.DisplayFor(model => model.Telefon)</p>
+            <p>Hjemmeside: @Html.DisplayFor(model => model.Hjemmeside)</p> 
+        </div>
+    </div>
+</div>
+
+
