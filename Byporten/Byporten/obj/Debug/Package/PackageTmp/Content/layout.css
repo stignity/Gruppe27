@@ -132,6 +132,7 @@ ul.top-nav-most-used li a:hover{
     height: 40px;
     border: none;
     border-radius: 0px;
+    background-color: rgb(236, 236, 236);
 }
 
 .top-search-bar{
@@ -204,5 +205,23 @@ ul.top-nav-most-used li a:hover{
     color: rgb(101, 101, 101);
     font-size: 0.9em;
 }
+/*PLugins*/
 
+.to-top{
+    width: 50px;
+    height: 50px;
+    background-color: rgb(34, 49, 63);
+    color: rgb(255, 255, 255);
+    position: fixed;
+    top: 85%;
+    right: 0px;
+    padding: 15px;
+    cursor: pointer;
+    display: none;
+}
+
+.to-top:hover{
+    transition: 0.4s ease all;
+    background-color: rgb(30, 139, 195);
+}
 

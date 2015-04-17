@@ -36,10 +36,26 @@
         }, 3000);
     }
 
+    var to_top = function () {
+        $(document).scroll(function () {
+            var y = $(this).scrollTop();
+            if (y > 800) {
+                $('.to-top').fadeIn();
+            } else {
+                $('.to-top').fadeOut();
+            }
+        });
+
+        $('.to-top').click(function () {
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+        })
+    }
+
     //pageload function
     var init = function () {
         toggle_main_menu();
         carousel();
+        to_top();
     }    
 
     
