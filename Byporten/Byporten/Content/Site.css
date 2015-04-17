@@ -1,18 +1,51 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿/*index*/
+.article-wrapper{
+    height: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+.article-wrapper:hover{
+    background-color: rgb(236, 236, 236);
+    cursor: pointer;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+.image-section img{
+    height: 200px;
+    width: 100%;
 }
 
+.pushDown{
+    padding-top: 20px;
+    padding-bottom: 150px;
+}
+
+/*carousel*/
+.carousel-wrap {
+    width: 100%;
+    height: auto;
+    background-color: #eee;
+}
+
+.carousel-wrap img{
+
+}
+
+@media (max-width: 497px){
+
+}
+
+@media (max-width: 600px){
+    .carousel-wrap{
+        text-align: center;
+    }
+
+    .carousel-wrap img{
+        margin: 0 auto;
+    }
+
+    .top-search-bar{
+        width: 100%;
+        height: 50px;
+    }
+}

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="byportenEntities-Web.config Connection String" description="byportenEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/ByportenModel.csdl|res://*/ByportenModel.ssdl|res://*/ByportenModel.msl;provider=MySql.Data.MySqlClient;provider connection string=&quot;server=46.226.13.53;user id=Administrator;password=AlfaRomeoGTV86;persistsecurityinfo=True;database=byporten&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Øyvind\\Documents\\Gruppe27\\Byporten\\Byporten\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='byportenEntities']/@connectionString" />
+  </parameter>
+</parameters>

@@ -1,0 +1,56 @@
+﻿@model Byporten.butikker
+
+@{
+    ViewBag.Title = "CreateStore";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="container">
+    <h2>Ny butikk</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="create-new-wrap">
+            <div class="main-board">
+                <!--Tittel-->
+                @Html.EditorFor(model => model.Navn, new { htmlAttributes = new { @class = "inputField", @placeholder = "Navn" } })
+                @Html.ValidationMessageFor(model => model.Navn, "", new { @class = "text-danger" })
+                <!--Artikkel-->
+                @Html.TextAreaFor(model => model.Beskrivelse, new { htmlAttributes = new { @class = "inputField" } })
+                @Html.ValidationMessageFor(model => model.Beskrivelse, "", new { @class = "text-danger" })
+        </div>
+        <div class="settings-sidebar">
+            <div class="sidebar-header-settings">
+                <h4>Egenskaper</h4>
+            </div>
+            <div class="sidebar-content">
+                <center>
+                    <!--Startdato-->
+                    <p>Kategori</p>
+                    @Html.EditorFor(model => model.Kategori, new { htmlAttributes = new { @class = "inputField"} })
+                    @Html.ValidationMessageFor(model => model.Kategori, "", new { @class = "text-danger" })
+                    <!--Sluttdato-->
+                    <p>Hjemmeside</p>
+                    @Html.EditorFor(model => model.Hjemmeside, new { htmlAttributes = new { @class = "inputField"} })
+                    @Html.ValidationMessageFor(model => model.Hjemmeside, "", new { @class = "text-danger" })
+                    <!--BildeURL-->
+                    <p>Logo</p>
+                    @Html.EditorFor(model => model.Logo, new { htmlAttributes = new { @class = "inputField", @type = "file" } })
+                    @Html.ValidationMessageFor(model => model.Logo, "", new { @class = "text-danger" })
+                    <!--Eksterne Lenker-->
+                    <p>Telefon</p>
+                    @Html.EditorFor(model => model.Telefon, new { htmlAttributes = new { @class = "inputField file", @placeholder = "Eksterne lenker" } })
+                    @Html.ValidationMessageFor(model => model.Telefon, "", new { @class = "text-danger" })
+                    <!--Publish button-->
+                    <form>
+                        <input type="submit" value="Publiser" class="publish-btn" />
+                    </form>
+                    <!--Back to list-->
+                </center>
+            </div>
+        </div>
+        </div>
+    }
+
+</div>
