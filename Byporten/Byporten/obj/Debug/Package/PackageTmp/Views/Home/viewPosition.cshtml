@@ -1,0 +1,20 @@
+﻿@model Byporten.availablepositions
+@{
+    ViewBag.Title = "viewPosition";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+
+<div class="container view-container">
+    <div class="row">
+        <div class="col-lg-4 contain-image">
+            <img src="~/images/stores/@Html.DisplayFor(model => model.ImageURL)" class="img-responsive" />
+        </div>
+        <div class="col-lg-8 contain-content">
+            <h2 class="page-header">@Html.DisplayFor(model => model.Title)</h2>
+            <p>@Html.DisplayFor(model => model.Description)</p>
+            <hr class="divider" />
+            <p>Sluttdato: @Html.DisplayFor(model => model.ExpireDate)</p>
+        </div>
+    </div>
+</div>
+

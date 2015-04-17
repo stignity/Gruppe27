@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<Byporten.butikker>
+@using System.Linq
 @{
     ViewBag.Title = "Butikker";
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
@@ -8,16 +9,26 @@
 <div class="container butikk-container">
     <h2 class="page-header">Butikker</h2>
 
+    <input type="search" id="filter" class="search-store" placeholder="Søk på butikker!" />
+    <p class="lead no-store"></p>
+    </p>    <hr class="divider" />
+
     @{
         var itemcount = 0;
     }
 
-    @foreach (var store in Model.Reverse())
+    @if (!Model.Any())
     {
-
-        if (itemcount % 3 == 0 || itemcount % 3 == 3)
+        <p class="lead">Det finnes ingen butikker!</p>
+    }
+    else
+    {
+        foreach (var store in Model.Reverse())
         {
-            @:<div class="row">
+
+            if (itemcount % 3 == 0 || itemcount % 3 == 3)
+            {
+                @:<div class="row">
         }
         <a class="store-link" href="@Url.Action("viewStore", new {id = store.Id })">
             <div class="wrap col-lg-4">
@@ -26,13 +37,16 @@
                 </div>
             </div>
         </a>
-        
-        itemcount++;
-        
-        if((itemcount % 3) == 0)
-        {
-            @:</div>
+
+            itemcount++;
+
+            if ((itemcount % 3) == 0)
+            {
+                @:</div>
+        }
         }
     }
+
+    
 
 </div>

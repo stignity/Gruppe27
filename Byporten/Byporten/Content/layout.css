@@ -15,11 +15,11 @@
 }
 
 .hidden-menu-wrap{
-    width: 250px;
+    width: 290px;
     height: 100%;
     background-color: rgb(71, 71, 71);
     position: fixed;
-    right: -250px;
+    right: -290px;
     -webkit-transform: translate3d(0,0,0);
     z-index: 10001;
 }
@@ -60,6 +60,7 @@
     display: block;
     color: rgb(191, 191, 191);
     text-decoration: none;
+    font-size: 1.2em;
 }
 
 .hidden-menu-wrap ul.main-navigation li a:hover{

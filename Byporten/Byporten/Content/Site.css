@@ -52,10 +52,10 @@
 }
 
 .sidebar-section .sidebar-header p {
-
+    padding: 10px;
 }
 
-.sidebar-section .sidebar-body, p{
+.sidebar-section .sidebar-body p{
     padding: 10px;
 }
 
