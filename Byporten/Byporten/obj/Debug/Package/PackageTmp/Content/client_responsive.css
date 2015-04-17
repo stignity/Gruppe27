@@ -111,7 +111,9 @@ ul.top-nav-most-used li:last-child{
 }
 
 @media (max-width: 1024px){
-
+    .front-page-container{
+        padding-top: 0px;
+    }
 }
 
 @media (max-width: 1200px){
