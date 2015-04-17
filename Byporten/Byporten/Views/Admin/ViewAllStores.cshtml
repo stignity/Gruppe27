@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<Byporten.butikker>
+@using System.Linq
 
 @{
     ViewBag.Title = "Alle butikkene";
@@ -12,29 +13,38 @@
         @Html.ActionLink("Legg til ny butikk", "CreateStore")
     </p>
 
-    @foreach (var item in Model.Reverse())
+    @if (!Model.Any())
     {
-        <div class="last-article-wrap">
-            <div class="article-title" id="query">
-                <h4>@Html.DisplayFor(modelitem => item.Navn)</h4>
-            </div>
-            <div class="article-content">
-                <p>@Html.DisplayFor(modelitem => item.Beskrivelse)</p>
-                <hr />
-                <p><b>Kategori:</b> @Html.DisplayFor(modelitem => item.Kategori)</p>
-                <p><b>Hjemmeside:</b> @Html.DisplayFor(modelitem => item.Hjemmeside)</p>
-                <p><b>Logo:</b> @Html.DisplayFor(modelitem => item.Logo)</p>
-                <p><b>Telefon:</b> @Html.DisplayFor(modelitem => item.Telefon)</p>
-                <div class="choices">
-                    <p>@Html.ActionLink("Endre", "EditStore", new { id = item.Id }, new { @class = "link-button" })</p>
-                    <p>@Html.ActionLink("Detaljer", "StoreDetails", new { id = item.Id }, new { @class = "link-button" })</p>
-                    <p>@Html.ActionLink("Slett", "DeleteStore", new { id = item.Id }, new { @class = "link-button" })</p>
-                </div>
-            </div>
-
-
-
-        </div>
+        <p class="lead page-header">Det finnes ingen butikker</p>
     }
+    else
+    {
+        foreach (var item in Model.Reverse())
+        {
+            <div class="last-article-wrap">
+                <div class="article-title" id="query">
+                    <h4>@Html.DisplayFor(modelitem => item.Navn)</h4>
+                </div>
+                <div class="article-content">
+                    <p>@Html.DisplayFor(modelitem => item.Beskrivelse)</p>
+                    <hr />
+                    <p><b>Kategori:</b> @Html.DisplayFor(modelitem => item.Kategori)</p>
+                    <p><b>Hjemmeside:</b> @Html.DisplayFor(modelitem => item.Hjemmeside)</p>
+                    <p><b>Logo:</b> @Html.DisplayFor(modelitem => item.Logo)</p>
+                    <p><b>Telefon:</b> @Html.DisplayFor(modelitem => item.Telefon)</p>
+                    <div class="choices">
+                        <p>@Html.ActionLink("Endre", "EditStore", new { id = item.Id }, new { @class = "link-button" })</p>
+                        <p>@Html.ActionLink("Detaljer", "StoreDetails", new { id = item.Id }, new { @class = "link-button" })</p>
+                        <p>@Html.ActionLink("Slett", "DeleteStore", new { id = item.Id }, new { @class = "link-button" })</p>
+                    </div>
+                </div>
+
+
+
+            </div>
+        }
+    }
+
+    
 
 </div>

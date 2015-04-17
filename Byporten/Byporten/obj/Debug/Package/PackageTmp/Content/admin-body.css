@@ -101,6 +101,7 @@
 
 .link-button:hover{
     color: rgb(255, 255, 255);
+    text-decoration: none;
 }
 
 
@@ -180,6 +181,10 @@
     color: rgb(255, 255, 255);
     border: none;
     border-radius: 0px;
+}
+
+#ImageURL{
+    color: rgb(255, 255, 255);
 }
 
 /*details and delete*/

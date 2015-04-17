@@ -1,13 +1,13 @@
 ﻿@model Byporten.butikker
 
 @{
-    ViewBag.Title = "CreateStore";
+    ViewBag.Title = "Ny butikk";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 <div class="container">
     <h2>Ny butikk</h2>
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
 

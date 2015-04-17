@@ -4,7 +4,44 @@
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
 }
 
-<h2>Kundeklubb</h2>
+<div class="container pushDown">
+    <p class="lead page-header">Kundeklubben</p>
+    <div class="row">
+        <div class="col-lg-8">
+            <ul>
+                <li>-20% på alle ordinære varer, samt -15% på skipakker hos G-Sport</li>
+                <li>-30% på valgfri behandling hos Headmasters</li>
+                <li>-20% på alle varer (unntatt Samsonite) hos BagOrama</li>
+                <li>Kanelbolle kr 20,- (ord. pris kr 36,-) hos BIT</li>
+                <li>-25% på all Basic VILA hos Camilla Risøe</li>
+                <li>Gratis WiFi</li>
+                <li>OG MASSE MASSE MER.....</li>
 
-@Html.ActionLink("Registrer deg her", "Register", "Home")
+            </ul>
+        </div>
+        <div class="col-lg-4">
+            @using (Html.BeginForm())
+            {
+                <div class="login-kunde-form">
+                    <p class="lead">Logg inn</p>
+                    <div class="editor-field">
+                        @Html.ValidationMessageFor(u => u.Email)
+                        @Html.TextBoxFor(u => u.Email, new { @placeholder = "E-post" })    
+                    </div>
+                    <div class="editor-field">
+                        @Html.ValidationMessageFor(u => u.Password)
+                        @Html.PasswordFor(u => u.Password, new { @placeholder = "Passord" })     
+                    </div>
+                    @Html.ValidationSummary(true)
+                    <input type="submit" value="Logg inn" class="reg-button" />
+                    <hr />
+                    @Html.ActionLink("Ikke medlem? Registrer deg her", "Registrering", "Home")
+                </div>
+            }
+            
+        </div>
+    </div>
 
+   
+
+</div>

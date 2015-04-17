@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace Byporten.Controllers
 {
@@ -26,40 +27,58 @@ namespace Byporten.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult Kundeklubb()
         {
             return View();
         }
 
-        [HttpGet]
-        public ActionResult Register()
-        {
-            return View();
-        }
         [HttpPost]
-        public ActionResult Register(Byporten.Models.UserCreateModel createuser)
+        public ActionResult Kundeklubb(Byporten.Models.UserLoginModel user)
         {
             if (ModelState.IsValid)
             {
-                using(var db = new byportenEntities()) 
-                 {
-                    var crypto = new SimpleCrypto.PBKDF2();
-                    var encryptPass = crypto.Compute(createuser.Password);
+                if (IsValdid(user.Email, user.Password))
+                {
+                    FormsAuthentication.SetAuthCookie(user.Email, false);
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Feil Brukernavn eller Passord.");
+                }
+            }
+            return View(user);
+        }
 
+        [HttpGet]
+        public ActionResult Registrering()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Registrering(Byporten.Models.UserRegModel user) {
+            if (ModelState.IsValid)
+            {
+                using (var db = new userEntities())
+                {
+                    var crypto = new SimpleCrypto.PBKDF2();
+                    var encryptPass = crypto.Compute(user.Password);
                     var sysUser = db.user.Create();
 
-                    sysUser.FullName = createuser.FullName;
-                    sysUser.Email = createuser.Email;
-                    sysUser.Birthday = createuser.Birthday;
-                    sysUser.ZipCode = createuser.ZipCode;
-                    sysUser.City = createuser.City;
+                    sysUser.Name = user.Name;
+                    sysUser.Email = user.Email;
+                    sysUser.Birthdate = user.Birthdate;
+                    sysUser.ZipCode = user.ZipCode;
+                    sysUser.City = user.City;
                     sysUser.Password = encryptPass;
                     sysUser.PasswordSalt = crypto.Salt;
 
                     db.user.Add(sysUser);
                     db.SaveChanges();
 
-                    return RedirectToAction("Kundeklubb", "Home");
+                    return RedirectToAction("kundeklubb", "Home");
                 }
             }
             return View();
@@ -80,27 +99,6 @@ namespace Byporten.Controllers
             return View();
         }
 
-        private bool IsValid(string email, string password)
-        {
-            var crypto = new SimpleCrypto.PBKDF2();
-            bool isValid = false;
-            using (db)
-            {
-                var user = db.user.FirstOrDefault(u => u.Email == email);
-
-                if (user != null)
-                {
-                    if (user.Password == crypto.Compute(password, user.PasswordSalt))
-                    {
-                        isValid = true;
-                        Session["User"] = user.Email;
-                    }
-                }
-            }
-            return isValid;
-        }
-
-
         public ActionResult viewArticles(int? id)
         {
             if (id == null)
@@ -116,6 +114,30 @@ namespace Byporten.Controllers
             }
 
             return View(createpost);
+        }
+
+        private bool IsValdid(string email, string password)
+        {
+            var crypto = new SimpleCrypto.PBKDF2();
+            bool isValid = false;
+            using (var db = new userEntities())
+            {
+                var user = db.user.FirstOrDefault(u => u.Email == email);
+                if (user != null)
+                {
+                    if (user.Password == crypto.Compute(password, user.PasswordSalt))
+                    {
+                        isValid = true;
+                        Session["User"] = user.Email;
+                    }
+                }
+            }
+            return isValid;
+        }
+
+        public ActionResult errorPage()
+        {
+            return View();
         }
     }
 }

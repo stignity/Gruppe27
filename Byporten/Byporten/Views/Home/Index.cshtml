@@ -6,53 +6,90 @@
 
 <div class="carousel-wrap">
     <div class="container">
-        <div class="jumbotron">
-            <div class="row">
-                    <div class="col-lg-8 col-md-10 col-sm-10">
-                        <h1>Vi ønsker deg en riktig god handel her hos Byporten!</h1>
-                        <p class="lead">Velkommen skal du være!</p>
-                    </div>
-                    <div class="col-lg-4 col-md-2 col-sm-2">
-                        <img src="~/images/web/bag.png" class="img-responsive" />
-                    </div>
+        <div id="slideshow">
+            <div>
+                <img src="~/images/web/image2_stairs.png" alt="carousel_image_1" class="img-responsive" />
             </div>
-            
+            <div>
+                <img src="~/images/web/image3_upTop.png" alt="carousel_image_2" class="img-responsive" />
+            </div>
+            <div>
+                <img src="~/images/web/image4_kremmerhuset.png" alt="carousel_image_3" class="img-responsive" />
+            </div>
         </div>
     </div>
 </div>  
 
-<div class="container pushDown">
-
-    @{
-        var itemCount = 0;
-    }
+<div class="container front-page-container">
+    <p class="page-header lead">Artikler</p>
+    <div class="article-section">
+        @{
+            var itemCount = 0;
+        }
         @foreach (var item in Model.Reverse().Take(9))
         {
-            if (itemCount % 4 == 0 || itemCount % 4 == 4)
+            if (itemCount % 2 == 0 || itemCount % 2 == 2)
             {
                 @:<div class="row">
             }
+            <a href="@Url.Action("viewArticles", new {id = item.Id })">
+                <div class="col-lg-6 col-md-6 col-sm-6 article-wrapper">
+                    <div class="image-section">
+                        <img class="image-placeholder" src="~/images/uploads/@Html.DisplayFor(modelItem => item.ImageURL)" />
+                    </div>
+                    <div class="title-section">
+                        <h4>@Html.DisplayFor(modelItem => item.Title)</h4>
 
-            <div class="col-lg-3 col-md-3 col-sm-6 article-wrapper">
-                <div class="image-section">
-                    <img src="~/images/uploads/@Html.DisplayFor(modelItem => item.ImageURL)"/>
+                    </div>
                 </div>
-                <div class="title-section">
-                    <h4>@Html.DisplayFor(modelItem => item.Title)</h4>
-                    @Html.ActionLink("Les mer", "viewArticles", new { id = item.Id })
-                </div>
-            </div>
+            </a>
 
             itemCount++;
 
-            if ((itemCount % 4) == 0)
+            if ((itemCount % 2) == 0)
             {
                 @:</div>
+                @:<hr class="divider" />
 
-         }
+
+            }
 
         }
+    </div>
+    <div class="sidebar-section">
+        <div class="sidebar-header">
+            <p class="lead">Informasjon</p>
+        </div>
+        <div class="sidebar-body">
+            <div class="sidebar-body-section">
+                <p class="lead">Åpningstider</p>
+                <p>
+                    Hverdager: 09.00 - 21.00
+                    <br />
+                    Lørdager 10.00 - 21.00
+                </p>
+            </div>
+            <div class="sidebar-body-section">
+                <p class="lead">Kontaktinformasjon</p>
+                <p>
+                    Senterdirektør: 23 36 20 00
+                    <br />
+                    Varemottak: 93 26 56 74 (Åpent 7-15)
+                    <br />
+                    Driftsteknikere 46 76 46 56 (Åpent 8-16)
+                    <br />
+                    elisabeth.jensen@byporten.no
+                </p>
+            </div>
+            <hr />
+            <div class="sidebar-body-section">
+                <div id="fb-root"></div>
+                <div class="fb-page" data-href="https://www.facebook.com/Bypadmin?ref=br_rs" data-width="100%" data-height="auto" data-hide-cover="true" data-show-facepile="true" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/Bypadmin?ref=br_rs"><a href="https://www.facebook.com/Bypadmin?ref=br_rs">Byporten Shopping</a></blockquote></div></div>
+            </div>
+        </div>
+    </div>
 </div>
+
 
  
 

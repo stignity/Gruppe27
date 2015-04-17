@@ -10,24 +10,26 @@
 namespace Byporten
 {
     using System;
-    using System.Data.Entity;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Web;
     using System.ComponentModel.DataAnnotations;
     
     public partial class createpost
     {
         public int Id { get; set; }
 
-        [StringLength(100)]
-        [Required]
+        [Required(ErrorMessage="Tittel er påkrevd.")]
+        [MinLength(6, ErrorMessage="Tittel må være lengre enn 6 tegn."), MaxLength(150, ErrorMessage="Tittelen er for lang.")]
         public string Title { get; set; }
-        [Required]
+
+        [Required(ErrorMessage="Dette er påkrevd")]
+        [DataType(DataType.Text)]
+        [MinLength(1, ErrorMessage="For lite innhold."), MaxLength(3000, ErrorMessage="For mye innhold")]
         public string Content { get; set; }
-        [Required]
+
+        [Required(ErrorMessage="Artikkelen må ha en startdato")]
         public string CreateDate { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "Artikkelen må ha en sluttdato")]
         public string ExpireDate { get; set; }
         public string ImageURL { get; set; }
         public string ExternalLinkURL { get; set; }

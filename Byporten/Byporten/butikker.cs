@@ -11,16 +11,31 @@ namespace Byporten
 {
     using System;
     using System.Collections.Generic;
-using System.Web;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class butikker
     {
         public int Id { get; set; }
+
+        [Required(ErrorMessage="¨Feltet er påkrevd")]
+        [MinLength(2, ErrorMessage="Navnet er for kort"), MaxLength(150, ErrorMessage="For langt")]
         public string Navn { get; set; }
+
+        [Required(ErrorMessage="Feltet er påkrevd.")]
+        [MinLength(2, ErrorMessage="Kategorien eksisterer ikke"), MaxLength(100, ErrorMessage="For langt")]
         public string Kategori { get; set; }
+
+        [Required(ErrorMessage="Butikken må ha en beskrivelse")]
+        [MinLength(6, ErrorMessage="Beskrivelsen er fort kort"), MaxLength(3000, ErrorMessage="Beskrivelsen er for lang")]
         public string Beskrivelse { get; set; }
         public string Logo { get; set; }
+
+        [Required(ErrorMessage="Felt påkrevd")]
+        [MinLength(4, ErrorMessage="For kort"), MaxLength(15, ErrorMessage="Sikker på at nummeret er norsk?")]
         public string Telefon { get; set; }
+
+        [Required(ErrorMessage="Feltet er påkrevd")]
+        [MinLength(8, ErrorMessage="Linken er fort kort"), MaxLength(100, ErrorMessage="Linken er for lang")]
         public string Hjemmeside { get; set; }
     }
 }
