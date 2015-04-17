@@ -46,6 +46,15 @@
         });
     }
 
+    function checkURL() {
+        // Can 'fix' many imgs at once (with the appropriate logic in the body)
+        $('.contain-image img').attr('src', function (i, src) {
+            // If it's a JPG, leave it alone, otherwise...
+            return /\.(jpg|png|pdf)$/.test(src) ? src : '/images/web/image_error.jpg';
+        });
+    }
+
+    checkURL();
     search_stores();
     
 })();
