@@ -6,7 +6,7 @@
 }
 
 
-<div class="container">
+<div class="container stilling-wrap">
     <h2 class="page-header">Ledige stillinger</h2>
     @{
         var itemcount = 0;
@@ -26,8 +26,8 @@
                 @:<div class="row">
             }
             <a class="link" href="@Url.Action("viewPosition", new {id = position.Id })">
-                <div class="wrap col-lg-4">
-                    <div class="position">
+                <div class="wrap col-lg-4 position">
+                    <div class="inner-position">
                         <p class="lead">@Html.DisplayFor(modelItem => position.Title)</p>
                     </div>
                 </div>
@@ -38,6 +38,7 @@
                 if ((itemcount % 3) == 0)
                 {
                     @:</div>
+                    @:<hr class="divider" />
             }
         }
     }
