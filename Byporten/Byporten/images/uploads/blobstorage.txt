@@ -1,0 +1,34 @@
+string accountName = "byportenimages";
+            string accountKey = "4xL++SM83aQqXGo7cBYK/iWQ9D5sX78LwbONZgq/6RqsLsJNN2caHZJMy1rdCpRdcTJR/dZLJYhVBzn6Y7gxUA==";
+
+            if (imageURL != null && imageURL.ContentLength > 0)
+            {
+                var imageName = Path.GetFileName(imageURL.FileName);
+                try
+                {
+                    StorageCredentials credentials = new StorageCredentials(accountName, accountKey);
+                    CloudStorageAccount account = new CloudStorageAccount(credentials, useHttps: true);
+
+                    CloudBlobClient client = account.CreateCloudBlobClient();
+
+                    CloudBlobContainer container = client.GetContainerReference("Images");
+                    container.CreateIfNotExists();
+
+                    container.SetPermissions(
+                        new BlobContainerPermissions
+                        {
+                            PublicAccess = BlobContainerPublicAccessType.Blob
+                        });
+
+                    CloudBlockBlob blockBlob = container.GetBlockBlobReference("MyBlob");
+                    using (Stream file = System.IO.File.OpenRead(@"post/APictureFile.jpg"))
+                    {
+                        blockBlob.UploadFromStream(file);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+
+                createpost.ImageURL = imageName;
