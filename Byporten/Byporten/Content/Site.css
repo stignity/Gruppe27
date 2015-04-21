@@ -6,13 +6,12 @@
 }
 
 .article-wrapper:hover {
-    color: rgb(226, 226, 226);
+    color: rgb(71, 71, 71);
     cursor: pointer;
-    background-color: rgb(238, 238, 238);
 }
 
 .title-section{
-    color: rgb(71, 71, 71);
+
 }
 
 .the-image img{
