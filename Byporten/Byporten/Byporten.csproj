@@ -305,11 +305,8 @@
     <Content Include="Views\Home\errorPage.cshtml" />
     <Content Include="Views\Home\viewStore.cshtml" />
     <Content Include="Views\Home\viewPosition.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Home\serverError.cshtml" />
-=======
     <Content Include="Views\Home\SearchResult.cshtml" />
->>>>>>> 6b197384a5dedf34e3e5f44bfdc01bac8da428b8
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
