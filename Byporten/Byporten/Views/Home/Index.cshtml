@@ -30,12 +30,14 @@
         {
             if (itemCount % 2 == 0 || itemCount % 2 == 2)
             {
-                @:<div class="row">
+                @:<div class="row article-row">
             }
             <a href="@Url.Action("viewArticles", new {id = item.Id })">
                 <div class="col-lg-6 col-md-6 col-sm-6 article-wrapper">
                     <div class="image-section">
-                        <img class="image-placeholder" src="~/images/uploads/@Html.DisplayFor(modelItem => item.ImageURL)" />
+                        <div class="the-image">
+                            <img class="image-placeholder" src="~/images/uploads/@Html.DisplayFor(modelItem => item.ImageURL)" />
+                        </div>
                     </div>
                     <div class="title-section">
                         <h4>@Html.DisplayFor(modelItem => item.Title)</h4>

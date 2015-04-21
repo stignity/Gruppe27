@@ -54,6 +54,21 @@
         });
     }
 
+    function activeNav() {
+        var path = window.location.pathname;
+        path = path.replace(/\/$/, "");
+        path = decodeURIComponent(path);
+
+        $('.top-nav-most-used').each(function () {
+            var href = $(this).attr('href');
+            if (path.substring(0, href.length) === href) {
+                $(this).closest('li').addClass('active');
+            }
+        });
+
+    }
+
+    //activeNav();
     checkURL();
     search_stores();
     
