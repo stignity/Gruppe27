@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using System.Web.Security;
 using System.IO;
 using System.Data;
@@ -257,6 +258,7 @@ namespace Byporten.Controllers
                 db.createpost.Remove(createpost);
                 System.IO.File.Delete(imageLocation);
                 db.SaveChanges();
+                TempData["message"] = "Artikkelen har blitt slettet";
                 return RedirectToAction("ViewAllArticles");
             }
             catch
@@ -288,7 +290,9 @@ namespace Byporten.Controllers
             }
             else
             {
+                var message = TempData["message"];
                 return View(db.createpost.ToList());
+                
             }
         }
         #endregion

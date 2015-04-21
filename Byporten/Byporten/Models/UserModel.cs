@@ -17,7 +17,7 @@ namespace Byporten.Models
 
         [Required(ErrorMessage = "Feltet er påkrevd")]
         [Display(Name = "Epost*")]
-        [DataType(DataType.EmailAddress)]
+        [DataType(DataType.EmailAddress, ErrorMessage="Må være en gydlig epost")]
         [MinLength(5), MaxLength(200)]
         public string Email { get; set; }
 
@@ -25,17 +25,17 @@ namespace Byporten.Models
         [Display(Name = "Burdag*")]
         public string Birthdate { get; set; }
 
-        [MinLength(3)]
+        [MinLength(3, ErrorMessage="For kort")]
         [Display(Name="Postkode")]
         public string ZipCode { get; set; }
 
-        [MinLength(3)]
+        [MinLength(3, ErrorMessage="Fort kort")]
         [Display(Name="By")]
         public string City { get; set; }
 
         [Required(ErrorMessage = "Feltet er påkrevd")]
         [DataType(DataType.Password)]
-        [MinLength(7), MaxLength(250)]
+        [MinLength(7, ErrorMessage="Passordet må inneholde minst 7 tegn"), MaxLength(250)]
         [Display(Name = "Passord")]
         public string Password { get; set; }
     
