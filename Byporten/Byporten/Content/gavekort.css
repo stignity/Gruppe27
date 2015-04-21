@@ -1,0 +1,25 @@
+﻿/*GAVEKORT*/
+body {
+}
+.content-wrap{
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.content-divider{
+
+}
+.btn-saldo{
+    padding: 20px;
+    background-color: rgb(3, 166, 120);
+    color: rgb(255, 255, 255);
+    margin-bottom: 10px;
+}
+
+.btn-saldo:hover{
+    color: rgb(255, 255, 255);
+    text-decoration: none !important;
+}
+
+.text{
+    padding: 40px;
+}

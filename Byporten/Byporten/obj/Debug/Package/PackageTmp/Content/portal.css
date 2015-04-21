@@ -53,9 +53,20 @@ input[type="submit"]:hover{
     color: rgb(210, 77, 87);
 }
 
+.field-validation-error{
+    padding: 10px;
+    display: block;
+    margin-top: 10px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(214, 69, 65);
+    width: 90%;
+}
+
 /*Login on mobile*/
 @media (max-width: 497px){
     .login-form{
         width: 100%;
     }
+
+
 }

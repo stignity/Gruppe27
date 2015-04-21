@@ -98,10 +98,22 @@
     width: 100%;
     float: none;
 }
+
+ul.top-nav-most-used li{
+    display: none;
+}
+
+ul.top-nav-most-used li:last-child{
+    display: block;
+}
+
+
 }
 
 @media (max-width: 1024px){
-
+    .front-page-container{
+        padding-top: 0px;
+    }
 }
 
 @media (max-width: 1200px){

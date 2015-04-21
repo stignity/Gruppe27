@@ -1,8 +1,52 @@
-﻿
+﻿@model IEnumerable<Byporten.butikker>
+@using System.Linq
 @{
     ViewBag.Title = "Butikker";
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
 }
 
-<h2>Butikker</h2>
 
+<div class="container butikk-container">
+    <h2 class="page-header">Butikker</h2>
+
+    <input type="search" id="filter" class="search-store" placeholder="Søk på butikker!" />
+    <p class="lead no-store"></p>
+
+    @{
+        var itemcount = 0;
+    }
+
+    @if (!Model.Any())
+    {
+        <p class="lead">Det finnes ingen butikker!</p>
+    }
+    else
+    {
+        foreach (var store in Model.Reverse())
+        {
+
+             if (itemcount % 3 == 0 || itemcount % 3 == 3)
+            {
+               @:<div class="row">
+            }
+
+        <a class="store-link" href="@Url.Action("viewStore", new {id = store.Id })">
+            <div class="col-lg-4 store">
+                <div class="inner-store">
+                    <p class="lead">@Html.DisplayFor(modelItem => store.Navn)</p>
+                </div>
+            </div>
+        </a>
+
+            itemcount++;
+
+            if ((itemcount % 3) == 0)
+            {
+                @:</div>
+            }
+        }
+    }
+
+    
+
+</div>

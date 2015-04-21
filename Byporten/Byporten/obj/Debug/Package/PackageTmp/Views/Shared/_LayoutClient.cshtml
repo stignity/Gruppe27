@@ -11,6 +11,10 @@
     <link href="~/Content/Site.css" rel="stylesheet" />
     <link href="~/Content/client_responsive.css" rel="stylesheet" />
     <link href="~/Content/kundeklubben.css" rel="stylesheet" />
+    <link href="~/Content/butikker.css" rel="stylesheet" />
+    <link href="~/Content/stillinger.css" rel="stylesheet" />
+    <link href="~/Content/gavekort.css" rel="stylesheet" />
+
 </head>
 <body>
 
@@ -46,7 +50,15 @@
                     <h2 class="logo desktop-logo">Byporten<span class="fa fa-stumbleupon"></span>Shopping</h2>
                     <h2 class="logo mobile-logo">Byporten<span class="fa fa-stumbleupon"></span></h2>
                 </a>
-                <h3 class="fa fa-bars pull-right menu-button"></h3>
+                <!--MOST USED LINKS MENU-->
+                <ul class="top-nav-most-used">
+                    <li>@Html.ActionLink("Forsiden", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Kundeklubben", "Kundeklubb", "Home")</li>
+                    <li>@Html.ActionLink("Butikker", "Butikker", "Home")</li>
+                    <li>@Html.ActionLink("Ledige Stillinger", "Stillinger", "Home")</li>
+                    <li class="menu-trigger"><a class="menu-button"><span class="fa fa-bars"></span></a></li>
+                </ul>
+                <!--<h3 class="fa fa-bars pull-right menu-button"></h3>-->
                 <!--SEARCH-->
             </div>
         </div> <!-- Header-wrap end -->
@@ -54,48 +66,53 @@
             @RenderBody()
         </div>
 
+        <div class="to-top">
+            <center>
+                <i class="fa fa-chevron-up"></i>
+            </center>
+        </div>
+
         <div class="footer-wrap">
             <div class="footer-main">
                 <div class="container">
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <h2>Meny</h2>
+                    <div class="col-lg-4 col-md-6 col-sm-2 col-xs-12">
                         <ul class="footer-navigation">
-                            <li>@Html.ActionLink("Forsiden", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Aktuelt", "Aktuelt", "Home")</li>
-                            <li>@Html.ActionLink("Butikker", "Butikker", "Home")</li>
-                            <li>@Html.ActionLink("Kundeklubben", "Kundeklubb", "Home")</li>
-                            <li>@Html.ActionLink("Gavekort", "Gavekort", "Home")</li>
-                            <li>@Html.ActionLink("Senterinformasjon", "Senterinformasjon", "Home")</li>
-                            <li>@Html.ActionLink("Ledige Stillinger", "Stillinger", "Home")</li>
+                            <li class="footer-heading">Åpningstider</li>
+                            <li>Hverdager: 09.00 - 21.00</li>
+                            <li>Lørdager 10.00 - 21.00</li>
                         </ul>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-2 col-xs-12">
-                        <h2>Åpningstider</h2>
-                        <p>Hverdager: 09.00 - 21.00</p>
-                        <p>Lørdager 10.00 - 21.00</p>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                        <ul class="footer-navigation social">
+                            <li class="footer-heading">Sosiale medier</li>
+                            <li><a class="fa fa-facebook-square fa-2x" href="https://www.facebook.com/Bypadmin?ref=br_rs"></a></li>
+                            <li><a class="fa fa-instagram fa-2x" href="#"></a></li>
+                        </ul>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <h2>Sosiale medier</h2>
-                        <p class="fa fa-facebook fa-2x"></p>
-                        <p class="fa fa-instagram fa-2x"></p>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <h2>Kontaktinfo</h2>
-                        <p>Informasjonsskranken 23 36 21 30 (Åpent 11-20/12-19)</p>
-                        <p>Driftsteknikere 46 76 46 56 (Åpent 8-16)</p>
-                        <p>Varemottak: 93 26 56 74 (Åpent 7-15)</p>
-                        <p>Senterdirektør: 23 36 20 00 </p>
-                        <p>elisabeth.jensen@byporten.no</p>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                        <ul class="footer-navigation">
+                            <li class="footer-heading">Kontaktinfo</li>
+                            <li>Informasjonsskranken 23 36 21 30 (Åpent 11-20/12-19)</li>
+                            <li>Driftsteknikere 46 76 46 56 (Åpent 8-16)</li>
+                            <li>Varemottak: 93 26 56 74 (Åpent 7-15)</li>
+                            <li>Senterdirektør: 23 36 20 00 </li>
+                            <li>elisabeth.jensen@byporten.no</li>
+                        </ul>
                     </div>
                 </div>
             </div>
+            
+            <div class="container">
+                <hr class="divider" />
+            </div>
             <div class="footer-end">
-                <div class="container-fluid">
+                <div class="container">
                     &copy; Gruppe 27
                 </div>
             </div>
         </div>
     </div>
+
 
 
 

@@ -1,0 +1,36 @@
+﻿body {
+}
+
+.position{
+    height: auto;
+}
+
+.inner-position{
+    
+    padding: 15px;
+}
+
+.position p{
+}
+
+.link{
+    box-sizing: border-box;
+    list-style: none !important;
+    text-decoration: none !important;
+}
+
+.position .inner-position p{
+    color: rgb(71, 71, 71);
+}
+
+.inner-position .lead{
+    margin-bottom: 0px;
+}
+
+.position:hover{
+    background-color: rgb(236, 236, 236);
+}
+
+.stilling-wrap{
+    padding-bottom: 150px;
+}

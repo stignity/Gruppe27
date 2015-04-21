@@ -2,13 +2,10 @@
     
 }
 /*Kun for å dytte innhold ned fra header*/
-#content-wrap{
+.content-wrap{
     padding-top: 20px;
     padding-bottom:20px;
     height: auto;
-}
-#content-main{
-    font-size: 1.2em;
 }
 #content-map{
     z-index: -1;

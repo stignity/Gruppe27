@@ -19,34 +19,7 @@
     height: 300px;
     width: 100%;
 }
-/*
-.image-placeholder {
 
-    background-image: url('../images/web/loader.gif');
-    background-position: center;
-    background-size: 20%;
-    background-repeat: no-repeat;
-    z-index: 100000;
-}
-
-
-
-.image-section img {
-    -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease; 
-    -ms-transition: all 1s ease;
-    -o-transition: all 1s ease; 
-    transition: all 1s ease;
-}
-
-.image-section:hover img {
-    -webkit-transform:scale(1.05);
-    -moz-transform:scale(1.05); 
-    -ms-transform:scale(1.05); 
-    -o-transform:scale(1.05); 
-     transform:scale(1.05);
-}
-*/
 .pushDown{
     padding-top: 20px;
     padding-bottom: 150px;
@@ -62,7 +35,7 @@
     width: 25%;
     height: auto;
     float: left;
-    margin: 20px 0px 0px 5%;
+    margin: 9px 0px 0px 5%;
     background-color: rgb(236, 236, 236);
 }
 
@@ -75,18 +48,15 @@
 }
 
 .sidebar-section .lead{
-    margin-bottom: 5px;
+    margin-bottom: 0px;
 }
 
 .sidebar-section .sidebar-header p {
     padding: 10px;
 }
 
-.sidebar-section .sidebar-body h3, p{
-    /*The body section*/
-    width: 100%;
-    box-sizing: border-box;
-    padding-left: 10px;
+.sidebar-section .sidebar-body p{
+    padding: 10px;
 }
 
 .sidebar-section .sidebar-body{
@@ -106,36 +76,36 @@
 
 .sidebar-body-section .fb-page span{
     width: 100% !important;
-    height: auto !important;
+    height: 500px !important;
 }
 
 .sidebar-body-section .fb-page span iframe{
     width: 100% !important;
 }
 
+.front-page-container{
+    padding-top: 80px;
+}
+
 
 /*carousel*/
 .carousel-wrap {
     width: 100%;
-    height: 300px;
-    background-color: #eee;
+    height: 350px;
+    background-color: rgb(255, 255, 255);
+    padding-top: 20px;
 }
 
-.go-to-button{
-    width: 250px;
-    height: 45px;
-    border: none;
-    border-radius: 0px;
-    background-color: rgb(206, 206, 206);
-    color: rgb(255, 255, 255);
-    display: block;
-    padding: 13px;
-    text-align: center;
-    text-decoration: none;
+#slideshow { 
+    position: relative; 
+    width: 100%; 
+    height: 350px; 
 }
 
-.go-to-button:hover{
-    text-decoration: none;
-    color: rgb(255, 255, 255);
-    background-color: rgb(255, 106, 0);
+#slideshow > div { 
+    position: absolute; 
+}
+
+#slideshow img{
+    width: 1140px;
 }

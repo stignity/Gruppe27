@@ -1,0 +1,49 @@
+﻿/*BUTIKKER*/
+
+body {
+}
+
+.butikk-container{
+    padding-bottom: 150px;
+}
+
+.view-container{
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.store-link{
+    box-sizing: border-box;
+    list-style: none !important;
+    text-decoration: none !important;
+}
+
+.store{
+    height: auto;
+}
+
+.inner-store{
+    border-bottom: 1px solid rgb(236, 236, 236);
+    padding: 15px;
+}
+
+.store .inner-store p{
+    color: rgb(71, 71, 71);
+}
+
+.inner-store .lead{
+    margin-bottom: 0px;
+}
+
+.store:hover{
+    background-color: rgb(236, 236, 236);
+}
+
+.search-store{
+    width: 100%;
+    border: none;
+    height: 55px;
+    background-color: rgb(236, 236, 236);
+    padding-left: 15px;
+    color: rgb(71, 71, 71);
+}

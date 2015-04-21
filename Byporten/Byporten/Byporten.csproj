@@ -116,15 +116,18 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\butikker.css" />
     <Content Include="Content\client_responsive.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\gavekort.css" />
     <Content Include="Content\kundeklubben.css" />
     <Content Include="Content\layout.css" />
     <Content Include="Content\layoutAdmin.css" />
     <Content Include="Content\portal.css" />
     <Content Include="Content\senterinfo.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\stillinger.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -134,9 +137,17 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="images\stores\JUVlogo_rd_0208.jpg" />
     <Content Include="images\web\bag.png" />
     <Content Include="images\web\banner1.png" />
     <Content Include="images\web\banner1_mobile.png" />
+    <Content Include="images\web\gavekort-bakside-kant.png" />
+    <Content Include="images\web\gavekort-forside.png" />
+    <Content Include="images\web\image2_stairs.png" />
+    <Content Include="images\web\image3_upTop.png" />
+    <Content Include="images\web\image4_kremmerhuset.png" />
+    <Content Include="images\web\image5_corner.png" />
+    <Content Include="images\web\image_error.jpg" />
     <Content Include="images\web\loader.gif" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -289,6 +300,8 @@
     </Content>
     <Content Include="Views\Home\Registrering.cshtml" />
     <Content Include="Views\Home\errorPage.cshtml" />
+    <Content Include="Views\Home\viewStore.cshtml" />
+    <Content Include="Views\Home\viewPosition.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -300,7 +313,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="images\offers\" />
     <Folder Include="images\positions\" />
-    <Folder Include="images\stores\" />
     <Folder Include="images\uploads\" />
   </ItemGroup>
   <ItemGroup>

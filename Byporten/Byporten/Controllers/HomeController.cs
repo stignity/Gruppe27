@@ -15,17 +15,38 @@ namespace Byporten.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return View(db.createpost.ToList());
+            try
+            {
+                return View(db.createpost.ToList());
+            }
+            catch
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.GatewayTimeout);
+            }
         }
 
         public ActionResult Aktuelt()
         {
-            return View();
+            try
+            {
+                return View();
+            }
+            catch
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.GatewayTimeout);
+            }
         }
 
         public ActionResult Butikker()
         {
-            return View();
+            try
+            {
+                return View(db.butikker.ToList());
+            }
+            catch
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.GatewayTimeout);
+            }
         }
 
         [HttpGet]
@@ -105,9 +126,9 @@ namespace Byporten.Controllers
             return View();
         }
 
-        public ActionResult Stillinger()
+        public ActionResult Stillinger(int? id)
         {
-            return View();
+            return View(db.availablepositions.ToList());
         }
 
         public ActionResult viewArticles(int? id)
@@ -144,6 +165,40 @@ namespace Byporten.Controllers
                 }
             }
             return isValid;
+        }
+
+        public ActionResult viewStore(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+
+            butikker butikker = db.butikker.Find(id);
+
+            if (butikker == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(butikker);
+        }
+
+        public ActionResult viewPosition(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+
+            availablepositions availablepositions = db.availablepositions.Find(id);
+
+            if (availablepositions == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(availablepositions);
         }
 
         public ActionResult errorPage()

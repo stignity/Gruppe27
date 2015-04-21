@@ -7,7 +7,6 @@
 <div class="container pushDown">
     @using (Html.BeginForm())
     {
-        @Html.ValidationSummary(true, "Kunne ikke registrere. Venligst prøv på nytt senere.");
         <p class="lead page-header">Registrering hos kundeklubben</p>
         <div class="row">
             <div class="col-lg-6">
@@ -18,29 +17,30 @@
             <div class="col-lg-6">
                 <div class="reg-form">
                     <p class="lead">Registrering</p>
+                    @Html.ValidationSummary(true, "Registrering ikke godkjent!")
                     <div class="editor-field">
-                        @Html.TextBoxFor(u => u.Name, new {@placeholder = "Navn*" })
                         @Html.ValidationMessageFor(u => u.Name)
+                        @Html.TextBoxFor(u => u.Name, new {@placeholder = "Navn*" })       
                     </div>
                     <div class="editor-field">
-                        @Html.TextBoxFor(u => u.Email, new {@placeholder = "E-post*" })
                         @Html.ValidationMessageFor(u => u.Email)
+                        @Html.TextBoxFor(u => u.Email, new {@placeholder = "E-post*" })                        
                     </div>
                     <div class="editor-field">
-                        @Html.TextBoxFor(u => u.Birthdate, new { @placeholder = "Fødselsdato*" })
                         @Html.ValidationMessageFor(u => u.Birthdate)
+                        @Html.TextBoxFor(u => u.Birthdate, new { @placeholder = "Fødselsdato*" })   
                     </div>
                     <div class="editor-field">
-                        @Html.TextBoxFor(u => u.ZipCode, new { @placeholder = "Postnummer" })
                         @Html.ValidationMessageFor(u => u.ZipCode)
+                        @Html.TextBoxFor(u => u.ZipCode, new { @placeholder = "Postnummer" })    
                     </div>
                     <div class="editor-field">
-                        @Html.TextBoxFor(u => u.City, new { @placeholder = "By" })
                         @Html.ValidationMessageFor(u => u.City)
+                        @Html.TextBoxFor(u => u.City, new { @placeholder = "By" })       
                     </div>
                     <div class="editor-field">
-                        @Html.PasswordFor(u => u.Password, new { @placeholder = "Passord*" })
                         @Html.ValidationMessageFor(u => u.Password)
+                        @Html.PasswordFor(u => u.Password, new { @placeholder = "Passord*" })  
                     </div>
                     <hr />
                     <input type="submit" value="Registrer" class="reg-button" />
