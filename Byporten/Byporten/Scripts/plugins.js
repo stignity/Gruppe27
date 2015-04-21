@@ -68,7 +68,6 @@
 
     }
 
-    //activeNav();
     checkURL();
     search_stores();
     
