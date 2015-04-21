@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -14,17 +15,38 @@ namespace Byporten.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return View(db.createpost.ToList());
+            try
+            {
+                return View(db.createpost.ToList());
+            }
+            catch
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.GatewayTimeout);
+            }
         }
 
         public ActionResult Aktuelt()
         {
-            return View();
+            try
+            {
+                return View();
+            }
+            catch
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.GatewayTimeout);
+            }
         }
 
         public ActionResult Butikker()
         {
-            return View(db.butikker.ToList());
+            try
+            {
+                return View(db.butikker.ToList());
+            }
+            catch
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.GatewayTimeout);
+            }
         }
 
         [HttpGet]
@@ -75,10 +97,20 @@ namespace Byporten.Controllers
                     sysUser.Password = encryptPass;
                     sysUser.PasswordSalt = crypto.Salt;
 
-                    db.user.Add(sysUser);
-                    db.SaveChanges();
-
-                    return RedirectToAction("kundeklubb", "Home");
+                    try
+                    {
+                        Match mtch = Regex.Match(sysUser.Name, "[^a-zA-Z]", RegexOptions.IgnoreCase);
+                        if (mtch.Success)
+                        {
+                            db.user.Add(sysUser);
+                            db.SaveChanges();
+                            return RedirectToAction("kundeklubb", "Home");
+                        }
+                    }
+                    catch
+                    {
+                        ModelState.AddModelError("u.Name", "Kan ikke innholde spesielle tegn");
+                    }
                 }
             }
             return View();
@@ -110,7 +142,7 @@ namespace Byporten.Controllers
 
             if (createpost == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("errorPage");
             }
 
             return View(createpost);
