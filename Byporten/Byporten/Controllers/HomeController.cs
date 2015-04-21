@@ -21,7 +21,7 @@ namespace Byporten.Controllers
             }
             catch
             {
-                return new HttpStatusCodeResult(HttpStatusCode.GatewayTimeout);
+                return RedirectToAction("serverError");
             }
         }
 
@@ -33,7 +33,7 @@ namespace Byporten.Controllers
             }
             catch
             {
-                return new HttpStatusCodeResult(HttpStatusCode.GatewayTimeout);
+                return RedirectToAction("serverError");
             }
         }
 
@@ -45,7 +45,7 @@ namespace Byporten.Controllers
             }
             catch
             {
-                return new HttpStatusCodeResult(HttpStatusCode.GatewayTimeout);
+                return RedirectToAction("serverError");
             }
         }
 
@@ -128,7 +128,14 @@ namespace Byporten.Controllers
 
         public ActionResult Stillinger(int? id)
         {
-            return View(db.availablepositions.ToList());
+            try
+            {
+                return View(db.availablepositions.ToList());
+            }
+            catch
+            {
+                return RedirectToAction("serverError");
+            }
         }
 
         public ActionResult viewArticles(int? id)
@@ -202,6 +209,11 @@ namespace Byporten.Controllers
         }
 
         public ActionResult errorPage()
+        {
+            return View();
+        }
+
+        public ActionResult serverError()
         {
             return View();
         }

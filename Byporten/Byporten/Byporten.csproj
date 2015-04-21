@@ -149,6 +149,9 @@
     <Content Include="images\web\image5_corner.png" />
     <Content Include="images\web\image_error.jpg" />
     <Content Include="images\web\loader.gif" />
+    <Content Include="images\web\Photo 26-02-15 09 32 21.jpg" />
+    <Content Include="images\web\Photo 26-02-15 09 34 54.jpg" />
+    <Content Include="images\web\Photo 26-02-15 09 40 04.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\fontawesome-webfont.woff" />
@@ -302,6 +305,7 @@
     <Content Include="Views\Home\errorPage.cshtml" />
     <Content Include="Views\Home\viewStore.cshtml" />
     <Content Include="Views\Home\viewPosition.cshtml" />
+    <Content Include="Views\Home\serverError.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

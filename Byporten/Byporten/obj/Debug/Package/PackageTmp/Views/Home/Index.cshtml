@@ -5,17 +5,15 @@
 }
 
 <div class="carousel-wrap">
-    <div class="container">
-        <div id="slideshow">
-            <div>
-                <img src="~/images/web/image2_stairs.png" alt="carousel_image_1" class="img-responsive" />
-            </div>
-            <div>
-                <img src="~/images/web/image3_upTop.png" alt="carousel_image_2" class="img-responsive" />
-            </div>
-            <div>
-                <img src="~/images/web/image4_kremmerhuset.png" alt="carousel_image_3" class="img-responsive" />
-            </div>
+    <div id="slideshow">
+        <div id="image1">
+                <!--Image-->
+        </div>
+        <div id="image2">
+                <!--Image-->
+        </div>
+        <div id="image3">
+                <!--Image-->
         </div>
     </div>
 </div>  
@@ -30,12 +28,14 @@
         {
             if (itemCount % 2 == 0 || itemCount % 2 == 2)
             {
-                @:<div class="row">
+                @:<div class="row article-row">
             }
             <a href="@Url.Action("viewArticles", new {id = item.Id })">
                 <div class="col-lg-6 col-md-6 col-sm-6 article-wrapper">
                     <div class="image-section">
-                        <img class="image-placeholder" src="~/images/uploads/@Html.DisplayFor(modelItem => item.ImageURL)" />
+                        <div class="the-image">
+                            <img class="image-placeholder" src="~/images/uploads/@Html.DisplayFor(modelItem => item.ImageURL)" />
+                        </div>
                     </div>
                     <div class="title-section">
                         <h4>@Html.DisplayFor(modelItem => item.Title)</h4>

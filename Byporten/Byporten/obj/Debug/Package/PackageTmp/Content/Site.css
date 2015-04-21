@@ -1,23 +1,27 @@
 ﻿/*index*/
 .article-wrapper{
     height: auto;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 20px;
+    padding-bottom: 10px; 
 }
 
 .article-wrapper:hover {
-    background-color: #eee;
     color: rgb(226, 226, 226);
     cursor: pointer;
+    background-color: rgb(238, 238, 238);
 }
 
 .title-section{
     color: rgb(71, 71, 71);
 }
 
-.image-section img{
-    height: 300px;
+.the-image img{
     width: 100%;
+    height: 300px;
+}
+
+.image-section img{
+
 }
 
 .pushDown{
@@ -26,25 +30,26 @@
 }
 
 .article-section{
-    width: 70%;
+    width: 65%;
     height: auto;
     float: left;
 }
 
 .sidebar-section{
-    width: 25%;
+    width: 30%;
     height: auto;
     float: left;
-    margin: 9px 0px 0px 5%;
+    margin: 0px 0px 0px 5%;
     background-color: rgb(236, 236, 236);
 }
 
 .sidebar-section .sidebar-header{
     width: 100%;
     height: auto;
-    background-color: rgb(82, 179, 217);
-    color: rgb(246, 246, 246);
+    background-color: rgb(236, 236, 236);
+    color: rgb(71, 71, 71);
     box-sizing: border-box;
+    border-bottom: 2px solid rgb(71, 71, 71);
 }
 
 .sidebar-section .lead{
@@ -61,13 +66,14 @@
 
 .sidebar-section .sidebar-body{
     padding-bottom: 30px;
+    background-color: rgb(255, 255, 255);
 }
 
 .sidebar-section .sidebar-body-section{
     /*inside the body section*/
     width: 100%;
     height: auto;
-
+    background-color: rgb(238, 238, 238);
 }
 
 .sidebar-body-section .fb-page{
@@ -84,28 +90,46 @@
 }
 
 .front-page-container{
-    padding-top: 80px;
+    padding-top: 20px;
 }
 
 
 /*carousel*/
 .carousel-wrap {
     width: 100%;
-    height: 350px;
-    background-color: rgb(255, 255, 255);
-    padding-top: 20px;
+    height: auto;
 }
 
 #slideshow { 
     position: relative; 
     width: 100%; 
-    height: 350px; 
+    height: 500px; 
+
+}
+
+#image1{
+    background: url('../images/web/Photo 26-02-15 09 32 21.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#image2{
+    background: url('../images/web/Photo 26-02-15 09 34 54.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#image3{
+    background: url('../images/web/Photo 26-02-15 09 40 04.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#image1, #image2, #image3{
+    height:500px;
+    width: 100%;
 }
 
 #slideshow > div { 
-    position: absolute; 
-}
-
-#slideshow img{
-    width: 1140px;
+     position: absolute;
 }
