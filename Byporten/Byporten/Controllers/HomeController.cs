@@ -201,6 +201,18 @@ namespace Byporten.Controllers
             return View(availablepositions);
         }
 
+        public ActionResult SearchResult(string searchString)
+        {
+            var articles = from art in db.createpost select art;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                articles = articles.Where(s => s.Title.Contains(searchString));
+            }
+
+            return View(articles);
+        }
+
         public ActionResult errorPage()
         {
             return View();
