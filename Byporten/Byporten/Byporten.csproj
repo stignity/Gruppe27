@@ -307,6 +307,7 @@
     <Content Include="Views\Home\viewPosition.cshtml" />
     <Content Include="Views\Home\serverError.cshtml" />
     <Content Include="Views\Home\SearchResult.cshtml" />
+    <Content Include="Views\Home\viewOffers.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -29,7 +29,7 @@ namespace Byporten.Controllers
         {
             try
             {
-                return View();
+                return View(db.aktuelt.ToList());
             }
             catch
             {
@@ -206,6 +206,30 @@ namespace Byporten.Controllers
             }
 
             return View(availablepositions);
+        }
+
+        public ActionResult viewOffers(int? id)
+        {
+            try
+            {
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+                }
+
+                aktuelt aktuelt = db.aktuelt.Find(id);
+
+                if (aktuelt == null)
+                {
+                    return HttpNotFound();
+                }
+
+                return View(aktuelt);
+            }
+            catch
+            {
+                return RedirectToAction("serverError");
+            }
         }
 
         public ActionResult SearchResult(string searchString)

@@ -76,6 +76,5 @@ C:\Users\Øyvind\Documents\Gruppe27\Byporten\Byporten\bin\System.Web.Razor.xml
 C:\Users\Øyvind\Documents\Gruppe27\Byporten\Byporten\bin\System.Web.WebPages.xml
 C:\Users\Øyvind\Documents\Gruppe27\Byporten\Byporten\bin\System.Web.WebPages.Deployment.xml
 C:\Users\Øyvind\Documents\Gruppe27\Byporten\Byporten\bin\System.Web.WebPages.Razor.xml
-C:\Users\Øyvind\Documents\Gruppe27\Byporten\Byporten\obj\Debug\Byporten.csprojResolveAssemblyReference.cache
 C:\Users\Øyvind\Documents\Gruppe27\Byporten\Byporten\obj\Debug\Byporten.dll
 C:\Users\Øyvind\Documents\Gruppe27\Byporten\Byporten\obj\Debug\Byporten.pdb

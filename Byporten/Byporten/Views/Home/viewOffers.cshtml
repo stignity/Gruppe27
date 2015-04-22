@@ -1,0 +1,22 @@
+﻿@model Byporten.aktuelt
+
+@{
+    ViewBag.Title = "viewOffers";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+
+<div class="container view-container">
+    <div class="row">
+        <div class="col-lg-4 contain-image">
+            <img src="~/images/stores/@Html.DisplayFor(model => model.Bilde)" class="img-responsive" />
+        </div>
+        <div class="col-lg-8 contain-content">
+            <h2 class="page-header">@Html.DisplayFor(model => model.Tittel)</h2>
+            <p>@Html.DisplayFor(model => model.Innhold)</p>
+            <hr class="divider" />
+            <p>Sluttdato: @Html.DisplayFor(model => model.Sluttdato)</p>
+        </div>
+    </div>
+</div>
+
+

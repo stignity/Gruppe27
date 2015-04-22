@@ -1,10 +1,59 @@
-﻿
+﻿@model IEnumerable<Byporten.aktuelt>
+@using System.Linq
+
 @{
     ViewBag.Title = "Aktuelt";
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
 }
 
-<div class="container">
-    <p class="lead page-header">Aktuelle tilbud!</p>
+<div class="container front-page-container">
+    <p class="page-header lead">Artikler</p>
+    <div class="article-section">
+        @{
+            var itemCount = 0;
+        }
+
+        @if (!Model.Any())
+        {
+            <p class="lead">Det finnes ingen tilbud!</p>
+        }
+        else {
+            
+            foreach (var offer in Model.Reverse())
+            {
+                if (itemCount % 3 == 0 || itemCount % 3 == 3)
+                {
+                    @:<div class="row article-row">
+                }
+                <a href="@Url.Action("viewOffers", new {id = offer.Id })">
+                    <div class="col-lg-4 col-md-4 col-sm-4 article-wrapper">
+                        <div class="image-section">
+                            <div class="the-image">
+                                <center>
+                                    <img class="image-placeholder" src="~/images/uploads/@Html.DisplayFor(modelItem => offer.Bilde)" />
+                                </center>
+                            </div>
+                        </div>
+                        <div class="title-section">
+                            <center>
+                                <h4>@Html.DisplayFor(modelItem => offer.Tittel)</h4>
+                            </center>
+                        </div>
+                    </div>
+                </a>
+
+                itemCount++;
+
+                if ((itemCount % 3) == 0)
+                {
+                    @:</div>
+                    @:<hr class="divider" />
+
+                }
+
+            }
+            
+        }
+    </div>
 </div>
 
