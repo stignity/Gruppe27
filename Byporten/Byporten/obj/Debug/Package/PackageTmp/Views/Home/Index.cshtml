@@ -34,12 +34,15 @@
                 <div class="col-lg-6 col-md-6 col-sm-6 article-wrapper">
                     <div class="image-section">
                         <div class="the-image">
-                            <img class="image-placeholder" src="~/images/uploads/@Html.DisplayFor(modelItem => item.ImageURL)" />
+                            <center>
+                                <img class="image-placeholder" src="~/images/uploads/@Html.DisplayFor(modelItem => item.ImageURL)" />
+                            </center>
                         </div>
                     </div>
                     <div class="title-section">
-                        <h4>@Html.DisplayFor(modelItem => item.Title)</h4>
-
+                        <center>
+                            <h4>@Html.DisplayFor(modelItem => item.Title)</h4>
+                        </center>
                     </div>
                 </div>
             </a>
@@ -57,9 +60,6 @@
         }
     </div>
     <div class="sidebar-section">
-        <div class="sidebar-header">
-            <p class="lead">Informasjon</p>
-        </div>
         <div class="sidebar-body">
             <div class="sidebar-body-section">
                 <p class="lead">Åpningstider</p>

@@ -60,6 +60,7 @@
     padding: 5px!important;
     }
 
+    
 }
 
 @media (max-width: 768px){
@@ -106,6 +107,9 @@ ul.top-nav-most-used li{
 ul.top-nav-most-used li:last-child{
     display: block;
 }
+    .top-info-sublist li{
+        width: 100%;
+    }
 
 
 }
