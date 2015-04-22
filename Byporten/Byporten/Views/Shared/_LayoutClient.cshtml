@@ -52,11 +52,17 @@
                 </a>
                 <!--MOST USED LINKS MENU-->
                 <ul class="top-nav-most-used">
-                    <li>@Html.ActionLink("Forsiden", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Kundeklubben", "Kundeklubb", "Home")</li>
-                    <li>@Html.ActionLink("Butikker", "Butikker", "Home")</li>
-                    <li>@Html.ActionLink("Ledige Stillinger", "Stillinger", "Home")</li>
-                    <li class="menu-trigger"><a class="menu-button"><span class="fa fa-bars"></span></a></li>
+                    <li class="hideOnSearch">@Html.ActionLink("Forsiden", "Index", "Home")</li>
+                    <li class="hideOnSearch">@Html.ActionLink("Kundeklubben", "Kundeklubb", "Home")</li>
+                    <li class="hideOnSearch">@Html.ActionLink("Butikker", "Butikker", "Home")</li>
+                    <li class="hideOnSearch">@Html.ActionLink("Ledige Stillinger", "Stillinger", "Home")</li>
+                    <li>
+                        <form method="post" action="">
+                            <input type="search" class="searchbar-top" placeholder="SØK...." />
+                        </form>
+                    </li>
+                    <li class="search-trigger"><a class="search-top-button"><span class="fa fa-search"></span></a></li>
+                    <li class="menu-trigger"><a class="menu-button"><span class="fa fa-bars"></span></a></li>      
                 </ul>
                 <!--<h3 class="fa fa-bars pull-right menu-button"></h3>-->
                 <!--SEARCH-->
@@ -96,13 +102,9 @@
                             <li>Driftsteknikere 46 76 46 56 (Åpent 8-16)</li>
                             <li>Varemottak: 93 26 56 74 (Åpent 7-15)</li>
                             <li>Senterdirektør: 23 36 20 00 </li>
-<<<<<<< HEAD
                             <li>
-                                <a href="mailto:&#101;&#108;&#105;&#115;&#097;&#098;&#101;&#116;&#104;&#046;&#106;&#101;&#110;&#115;&#101;&#110;&#064;&#098;&#121;&#112;&#111;&#114;&#116;&#101;&#110;&#046;&#110;&#111;">Elisabeth</a>
+                                <a href="mailto:&#101;&#108;&#105;&#115;&#097;&#098;&#101;&#116;&#104;&#046;&#106;&#101;&#110;&#115;&#101;&#110;&#064;&#098;&#121;&#112;&#111;&#114;&#116;&#101;&#110;&#046;&#110;&#111;">Send mail til senterdirektør, Elisabeth</a>
                             </li>
-=======
-                            <li>&#101;&#108;&#105;&#115;&#097;&#098;&#101;&#116;&#104;&#046;&#106;&#101;&#110;&#115;&#101;&#110;&#064;&#098;&#121;&#112;&#111;&#114;&#116;&#101;&#110;&#046;&#110;&#111;</li>
->>>>>>> 1d51e25a29b5172ce45ddfc2a5a292766839eda7
                         </ul>
                     </div>
                 </div>
