@@ -9,11 +9,15 @@ namespace Byporten.Models
 {
     public class UserRegModel
     {
-
         [Required(ErrorMessage="Feltet er påkrevd")]
         [Display(Name = "Navn*")]
+        [RegularExpression(@"^[a-zA-Z ]+$", ErrorMessage="Kun alfabetiske tegn")]
         [MinLength(3, ErrorMessage="Navnet er for kort"), MaxLength(100, ErrorMessage="Navnet er for langt")]
         public string Name { get; set; }
+
+        [Required(ErrorMessage = "Feltet er påkrevd")]
+        [Display(Name = "Kjønn*")]
+        public string Gender { get; set; }
 
         [Required(ErrorMessage = "Feltet er påkrevd")]
         [Display(Name = "Epost*")]
@@ -22,8 +26,25 @@ namespace Byporten.Models
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Feltet er påkrevd")]
+        [Display(Name="Gjenta Epost*")]
+        [DataType(DataType.EmailAddress, ErrorMessage="Feil Epost")]
+        public string RepeatEmail { get; set; }
+
+        [Required(ErrorMessage = "Feltet er påkrevd")]
+        [MinLength(8), MaxLength(15)]
+        [Display(Name="Mobilnummer")]
+        public string PhoneNumber { get; set; }
+
+        [Required(ErrorMessage = "Feltet er påkrevd")]
         [Display(Name = "Burdag*")]
         public string Birthdate { get; set; }
+
+        [Display(Name="Interesser")]
+        public string Interests { get; set; }
+
+        [Display(Name="Antall barn")]
+        [MaxLength(5)]
+        public string Children { get; set; }
 
         [MinLength(3, ErrorMessage="For kort")]
         [Display(Name="Postkode")]
@@ -38,6 +59,9 @@ namespace Byporten.Models
         [MinLength(7, ErrorMessage="Passordet må inneholde minst 7 tegn"), MaxLength(250)]
         [Display(Name = "Passord")]
         public string Password { get; set; }
+
+        [Display(Name="Hvordan fikk du vite om Byporten+?")]
+        public string Knowledge { get; set; }
     
     }
     public class UserLoginModel {
