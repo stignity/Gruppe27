@@ -16,11 +16,23 @@ namespace Byporten
     {
         public int UserID { get; set; }
         public string Name { get; set; }
+
+        public string Gender { get; set; }
         public string Email { get; set; }
+
+        public string RepeatEmail { get; set; }
+
+        public string PhoneNumber { get; set; }
         public string Birthdate { get; set; }
+
+        public string Interests { get; set; }
+
+        public string Children { get; set; }
         public string ZipCode { get; set; }
         public string City { get; set; }
         public string Password { get; set; }
         public string PasswordSalt { get; set; }
+
+        public string Knowledge { get; set; }
     }
 }

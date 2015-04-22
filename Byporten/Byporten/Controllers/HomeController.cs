@@ -90,27 +90,30 @@ namespace Byporten.Controllers
                     var sysUser = db.user.Create();
 
                     sysUser.Name = user.Name;
+                    sysUser.Gender = user.Gender;
                     sysUser.Email = user.Email;
+                    sysUser.RepeatEmail = user.RepeatEmail;
+
+                    //Check if the current email address matches the repeated email
+                    Match emailMatch = Regex.Match(user.RepeatEmail, user.Email, RegexOptions.IgnoreCase);
+                    if (!emailMatch.Success)
+                    {
+                        ModelState.AddModelError("user.RepeatEmail", "Eposten må matche");
+                    }
+
+                    sysUser.PhoneNumber = user.PhoneNumber;
                     sysUser.Birthdate = user.Birthdate;
+                    sysUser.Interests = user.Interests;
+                    sysUser.Children = user.Children;
                     sysUser.ZipCode = user.ZipCode;
                     sysUser.City = user.City;
                     sysUser.Password = encryptPass;
                     sysUser.PasswordSalt = crypto.Salt;
+                    sysUser.Knowledge = user.Knowledge;
 
-                    try
-                    {
-                        Match mtch = Regex.Match(sysUser.Name, "[^a-zA-Z]", RegexOptions.IgnoreCase);
-                        if (mtch.Success)
-                        {
-                            db.user.Add(sysUser);
-                            db.SaveChanges();
-                            return RedirectToAction("kundeklubb", "Home");
-                        }
-                    }
-                    catch
-                    {
-                        ModelState.AddModelError("u.Name", "Kan ikke innholde spesielle tegn");
-                    }
+                    db.user.Add(sysUser);
+                    db.SaveChanges();
+                    return RedirectToAction("kundeklubb", "Home");
                 }
             }
             return View();
