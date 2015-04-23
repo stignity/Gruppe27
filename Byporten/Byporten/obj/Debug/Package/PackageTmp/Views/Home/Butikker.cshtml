@@ -22,7 +22,7 @@
     }
     else
     {
-        foreach (var store in Model.Reverse())
+        foreach (var store in Model.OrderBy(item => item.Navn))
         {
 
              if (itemcount % 3 == 0 || itemcount % 3 == 3)

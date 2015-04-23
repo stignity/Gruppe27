@@ -100,16 +100,7 @@
     float: none;
 }
 
-ul.top-nav-most-used li{
-    display: none;
-}
 
-ul.top-nav-most-used li:last-child{
-    display: block;
-}
-    .top-info-sublist li{
-        width: 100%;
-    }
 
 
 }
@@ -123,6 +114,21 @@ ul.top-nav-most-used li:last-child{
 @media (max-width: 1200px){
     #u_0_z{
         width: 100%;
-
     }
+
+    ul.top-nav-most-used li{
+    display: none;
+}
+
+    ul.top-nav-most-used li:last-child{
+    display: block;
+    
+    }
+    .top-info-sublist li{
+        width: 100%;
+    }
+
+    .mobile-search-bar{
+    display: block;
+}
 }

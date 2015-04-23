@@ -144,14 +144,20 @@ ul.top-nav-most-used li a:hover{
 .searchbar-top{
     width: 0px;
     height: 40px;
-    border: none;    
-    background-color: rgb(238, 238, 238);
+    border-bottom: 2px solid rgb(71, 71, 71); 
+    border-top: none;
+    border-right: none;
+    border-left: none;   
     box-sizing: border-box;
     padding: 10px;
     color: rgb(0, 0, 0);
     outline: none;
     top: 10px;
     position: relative;
+    display: none;
+}
+
+.mobile-search-bar{
     display: none;
 }
 

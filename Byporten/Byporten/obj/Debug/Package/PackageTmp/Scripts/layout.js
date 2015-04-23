@@ -51,12 +51,41 @@
         })
     }
 
+    var isOpen = false;
+    function showSearch() {
+        $('.search-top-button').click(function () {
+            if (isOpen === false) {
+                isOpen = true;
+                $('.hideOnSearch').fadeOut(100);
+                $('.searchbar-top').show(100, function () {
+                    $('.searchbar-top').animate({width: '400px'}, 100)
+                })
+            } else {
+                isOpen = false;
+                $('.searchbar-top').animate({ width: '0px' }, 100, function () {
+                    $('.searchbar-top').hide(100, function () {
+                        $('.hideOnSearch').show();
+                    });
+                })
+                
+            }
+            console.log(isOpen)
+        })
+    }
+
+
+    function activeURL() {
+       
+    }
+
   
     //pageload function
     var init = function () {
         toggle_main_menu();
         carousel();
         to_top();
+        showSearch();
+        activeURL();
     }    
 
     

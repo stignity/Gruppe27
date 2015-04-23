@@ -52,11 +52,17 @@
                 </a>
                 <!--MOST USED LINKS MENU-->
                 <ul class="top-nav-most-used">
-                    <li>@Html.ActionLink("Forsiden", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Kundeklubben", "Kundeklubb", "Home")</li>
-                    <li>@Html.ActionLink("Butikker", "Butikker", "Home")</li>
-                    <li>@Html.ActionLink("Ledige Stillinger", "Stillinger", "Home")</li>
-                    <li class="menu-trigger"><a class="menu-button"><span class="fa fa-bars"></span></a></li>
+                    <li class="hideOnSearch">@Html.ActionLink("Forsiden", "Index", "Home")</li>
+                    <li class="hideOnSearch">@Html.ActionLink("Kundeklubben", "Kundeklubb", "Home")</li>
+                    <li class="hideOnSearch">@Html.ActionLink("Butikker", "Butikker", "Home")</li>
+                    <li class="hideOnSearch">@Html.ActionLink("Ledige Stillinger", "Stillinger", "Home")</li>
+                    <li>
+                        <form method="post" action="">
+                            <input type="search" class="searchbar-top" placeholder="SØK...." />
+                        </form>
+                    </li>
+                    <li class="search-trigger"><a class="search-top-button"><span class="fa fa-search"></span></a></li>
+                    <li class="menu-trigger"><a class="menu-button"><span class="fa fa-bars"></span></a></li>      
                 </ul>
                 <!--<h3 class="fa fa-bars pull-right menu-button"></h3>-->
                 <!--SEARCH-->

@@ -9,34 +9,34 @@ namespace Byporten.Models
 {
     public class UserRegModel
     {
-        [Required(ErrorMessage="Feltet er påkrevd")]
+        [Required(ErrorMessage="Feltet er påkrevet")]
         [Display(Name = "Navn*")]
         [RegularExpression(@"^[a-zA-Z ]+$", ErrorMessage="Kun alfabetiske tegn")]
         [MinLength(3, ErrorMessage="Navnet er for kort"), MaxLength(100, ErrorMessage="Navnet er for langt")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Feltet er påkrevd")]
+        [Required(ErrorMessage = "Feltet er påkrevet")]
         [Display(Name = "Kjønn*")]
         public string Gender { get; set; }
 
-        [Required(ErrorMessage = "Feltet er påkrevd")]
+        [Required(ErrorMessage = "Feltet er påkrevet")]
         [Display(Name = "Epost*")]
-        [DataType(DataType.EmailAddress, ErrorMessage="Må være en gydlig epost")]
+        [DataType(DataType.EmailAddress, ErrorMessage="Det må være en gyldig e-postadresse")]
         [MinLength(5), MaxLength(200)]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Feltet er påkrevd")]
+        [Required(ErrorMessage = "Feltet er påkrevet")]
         [Display(Name="Gjenta Epost*")]
-        [DataType(DataType.EmailAddress, ErrorMessage="Feil Epost")]
+        [DataType(DataType.EmailAddress, ErrorMessage="Feil e-post")]
         public string RepeatEmail { get; set; }
 
-        [Required(ErrorMessage = "Feltet er påkrevd")]
+        [Required(ErrorMessage = "Feltet er påkrevet")]
         [MinLength(8), MaxLength(15)]
         [Display(Name="Mobilnummer")]
         public string PhoneNumber { get; set; }
 
-        [Required(ErrorMessage = "Feltet er påkrevd")]
-        [Display(Name = "Burdag*")]
+        [Required(ErrorMessage = "Feltet er påkrevet")]
+        [Display(Name = "Bursdag*")]
         public string Birthdate { get; set; }
 
         [Display(Name="Interesser")]
@@ -54,7 +54,7 @@ namespace Byporten.Models
         [Display(Name="By")]
         public string City { get; set; }
 
-        [Required(ErrorMessage = "Feltet er påkrevd")]
+        [Required(ErrorMessage = "Feltet er påkrevet")]
         [DataType(DataType.Password)]
         [MinLength(7, ErrorMessage="Passordet må inneholde minst 7 tegn"), MaxLength(250)]
         [Display(Name = "Passord")]
@@ -77,12 +77,12 @@ namespace Byporten.Models
     public class AdminModel
     {
 
-        [Required(ErrorMessage="Feltet er påkrevd")]
+        [Required(ErrorMessage="Feltet er påkrevet")]
         [Display(Name = "Brukernavn")]
         [StringLength(100)]
         public string Username { get; set; }
 
-        [Required(ErrorMessage = "Feltet er påkrevd")]
+        [Required(ErrorMessage = "Feltet er påkrevet")]
         [Display(Name = "Passord")]
         [DataType(DataType.Password)]
         public string Password { get; set; }

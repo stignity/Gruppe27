@@ -19,7 +19,7 @@
     }
     else
     {
-        foreach (var item in Model.Reverse())
+        foreach (var item in Model.OrderBy(item => item.Navn))
         {
             <div class="last-article-wrap">
                 <div class="article-title" id="query">
