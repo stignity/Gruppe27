@@ -22,7 +22,7 @@
 .hidden-menu-wrap{
     width: 290px;
     height: 100%;
-    background-color: rgb(71, 71, 71);
+    background-color: rgb(0, 0, 0);
     position: fixed;
     right: -290px;
     -webkit-transform: translate3d(0,0,0);
@@ -39,12 +39,10 @@
     box-sizing: border-box;
     padding: 17px;
     padding-left: 20px;
-    color: rgb(191, 191, 191);
+    color: rgb(255, 255, 255);
 }
 
 .menu-header:hover{
-    background-color: rgb(50, 50, 50);
-    color: rgb(255, 255, 255);
     cursor: pointer;
     
 }
@@ -57,19 +55,20 @@
     -moz-box-sizing: border-box;
     -o-box-sizing: border-box;
     box-sizing: border-box;
-    padding: 10px;
+    width: 100%;
 }
 
 .hidden-menu-wrap ul.main-navigation li a{
-    padding: 10px;
+    padding: 15px;
     display: block;
-    color: rgb(191, 191, 191);
+    color: rgb(255, 255, 255);
     text-decoration: none;
+    width: 100%;
     font-size: 1.2em;
 }
 
 .hidden-menu-wrap ul.main-navigation li a:hover{
-    background-color: rgb(81, 81, 81)
+    background-color: rgb(51, 51, 51);
 }
 
 .header-wrap{
@@ -97,7 +96,7 @@ ul.top-nav-most-used li{
 }
 
 ul.top-nav-most-used li a{
-    padding: 19px;
+    padding: 20px;
     display: block !important;
     text-decoration: none;
     color: rgb(71, 71, 71);
@@ -105,7 +104,8 @@ ul.top-nav-most-used li a{
 }
 
 ul.top-nav-most-used li a:hover{
-    border-bottom: 2px solid rgb(25, 181, 254);
+    background-color: rgb(25, 181, 254);
+    color: rgb(255, 255, 255);
 }
 
 .menu-button, .search-top-button{
@@ -137,7 +137,7 @@ ul.top-nav-most-used li a:hover{
     height: 40px;
     border: none;
     border-radius: 0px;
-    background-color: rgb(236, 236, 236);
+    background-color: rgb(34, 167, 240);
 }
 
 .searchbar-top{
@@ -164,12 +164,28 @@ ul.top-nav-most-used li a:hover{
     width: 80%;
     height: 40px;
     border: none;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(34, 167, 240);
     box-sizing: border-box;
     padding: 10px;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     outline: none;
     float: left;
+}
+
+.top-search-bar::-webkit-input-placeholder {
+   color: rgb(206, 206, 206);
+}
+
+.top-search-bar :-moz-placeholder { /* Firefox 18- */
+   color: rgb(206, 206, 206);  
+}
+
+.top-search-bar ::-moz-placeholder {  /* Firefox 19+ */
+   color: rgb(206, 206, 206); 
+}
+
+.top-search-bar :-ms-input-placeholder {  
+   color: rgb(206, 206, 206);
 }
 
 .blur{
