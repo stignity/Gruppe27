@@ -97,7 +97,7 @@ ul.top-nav-most-used li{
 }
 
 ul.top-nav-most-used li a{
-    padding: 20px;
+    padding: 19px;
     display: block !important;
     text-decoration: none;
     color: rgb(71, 71, 71);
@@ -105,8 +105,7 @@ ul.top-nav-most-used li a{
 }
 
 ul.top-nav-most-used li a:hover{
-    background-color: rgb(71, 71, 71);
-    color: rgb(255, 255, 255);
+    border-bottom: 2px solid rgb(25, 181, 254);
 }
 
 .menu-button, .search-top-button{
