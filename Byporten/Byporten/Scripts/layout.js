@@ -11,15 +11,15 @@
     var toggle_main_menu = function () {
         $('.menu-trigger').click(function () {
             $('.hidden-menu-wrap').animate({ right: '0px' }, 250);
-            $('.master').animate({ right: '200px' }, 250);
+            $('.master').animate({ right: '290px' }, 250);
             $('.master').css('max-width', '100%');
             $('.master').css('overflow-y', 'hidden');
-            $('.menu-trigger').fadeOut();
+            $('.menu-trigger').hide('fast');
         });
         $('.menu-header').click(function () {
             $('.hidden-menu-wrap').animate({ right: '-290px' }, 250);
             $('.master').animate({ right: '0px' }, 250);
-            $('.menu-trigger').fadeIn();
+            $('.menu-trigger').show('fast');
         });   
     }
 

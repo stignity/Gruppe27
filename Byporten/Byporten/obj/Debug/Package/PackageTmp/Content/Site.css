@@ -1,4 +1,29 @@
 ﻿/*index*/
+
+.top-info-bar{
+    width: 100%;
+    height: auto;
+    padding-top: 20px;
+    padding-bottom: 0px;
+    background-color: rgb(255, 255, 255);
+}
+
+ul.top-info-sublist{
+    display: block;
+    padding: 0px;
+    list-style: none;
+    margin: 0 auto;
+}
+
+.top-info-sublist li{
+    padding: 20px;
+    text-decoration: none;
+    float: left;
+    background-color: rgb(238, 238, 238);
+    margin: 5px;
+}
+
+
 .article-wrapper{
     height: auto;
     padding-top: 20px;
@@ -10,6 +35,10 @@
     cursor: pointer;
 }
 
+.article-row{
+    width: 100%;
+}
+
 .title-section{
     width: auto;
 }
@@ -19,66 +48,24 @@
     height: auto;
 }
 
+.the-image img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
 .pushDown{
     padding-top: 20px;
     padding-bottom: 150px;
 }
 
 .article-section{
-    width: 65%;
-    height: auto;
-    float: left;
-}
-
-.sidebar-section{
-    width: 30%;
-    height: auto;
-    float: left;
-    margin: 18px 0px 0px 5%;
-    background-color: rgb(236, 236, 236);
-}
-
-.sidebar-section .lead{
-    margin-bottom: 0px;
-}
-
-.sidebar-section .sidebar-body .lead{
-    padding-left: 30px;
-    padding-bottom: 20px;
-    padding-top: 20px;
-}
-
-.sidebar-section .sidebar-body-section p{
-    padding-left: 30px;
-    padding-bottom: 20px; 
-}
-
-.sidebar-section .sidebar-body{
-    background-color: rgb(255, 255, 255);
-}
-
-.sidebar-section .sidebar-body-section{
-    /*inside the body section*/
     width: 100%;
     height: auto;
-    background-color: rgb(238, 238, 238);
-}
-
-.sidebar-body-section .fb-page{
-    width: 100%;
-}
-
-.sidebar-body-section .fb-page span{
-    width: 100% !important;
-    height: 500px !important;
-}
-
-.sidebar-body-section .fb-page span iframe{
-    width: 100% !important;
+    float: left;
 }
 
 .front-page-container{
-    padding-top: 20px;
+
 }
 
 

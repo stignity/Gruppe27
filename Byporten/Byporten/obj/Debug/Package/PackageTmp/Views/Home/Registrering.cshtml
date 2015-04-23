@@ -22,13 +22,49 @@
                         @Html.ValidationMessageFor(u => u.Name)
                         @Html.TextBoxFor(u => u.Name, new {@placeholder = "Navn*" })       
                     </div>
+                    <div>
+                        @Html.ValidationMessageFor(u => u.Gender)
+                        @Html.DropDownListFor(u => u.Gender, new[] {
+                            new SelectListItem() {Text = "Velg kjønn"},
+                            new SelectListItem() {Text = "Mann"},
+                            new SelectListItem() {Text = "Kvinne"}
+                        })
+                    </div>
                     <div class="editor-field">
                         @Html.ValidationMessageFor(u => u.Email)
                         @Html.TextBoxFor(u => u.Email, new {@placeholder = "E-post*" })                        
                     </div>
+                    <div>
+                        @Html.ValidationMessageFor(u => u.RepeatEmail)
+                        @Html.TextBoxFor(u => u.RepeatEmail, new {@placeholder = "Gjenta E-post*" })
+                    </div>
+                    <div>
+                        @Html.ValidationMessageFor(u => u.PhoneNumber)
+                        @Html.TextBoxFor(u => u.PhoneNumber, new {@placeholder = "Mobilnummer" })
+                    </div>
                     <div class="editor-field">
                         @Html.ValidationMessageFor(u => u.Birthdate)
-                        @Html.TextBoxFor(u => u.Birthdate, new { @placeholder = "Fødselsdato*" })   
+                        @Html.TextBoxFor(u => u.Birthdate, new { @placeholder = "Fødselsdato*", @type = "date" })   
+                    </div>
+                    <div>
+                        @Html.ValidationMessageFor(u => u.Interests)
+                        @Html.DropDownListFor(u => u.Interests, new[] {
+                            new SelectListItem() {Text = "Velg din interesse"},
+                            new SelectListItem() {Text = "Klær/Sko/Tilbehør"},
+                            new SelectListItem() {Text = "Sport/Fritid"},
+                            new SelectListItem() {Text = "Helse/Velvære"},
+                            new SelectListItem() {Text = "Teknologi/Underholdning"}
+                        })
+                    </div>
+                    <div>
+                        @Html.ValidationMessageFor(u => u.Children)
+                        @Html.DropDownListFor(u => u.Children, new[] {
+                            new SelectListItem() {Text = "Barn"},
+                            new SelectListItem() {Text = "1"},
+                            new SelectListItem() {Text = "2"},
+                            new SelectListItem() {Text = "3"},
+                            new SelectListItem() {Text = "Flere"}
+                        })
                     </div>
                     <div class="editor-field">
                         @Html.ValidationMessageFor(u => u.ZipCode)
@@ -42,7 +78,12 @@
                         @Html.ValidationMessageFor(u => u.Password)
                         @Html.PasswordFor(u => u.Password, new { @placeholder = "Passord*" })  
                     </div>
-                    <hr />
+                    <div>
+                        @Html.ValidationMessageFor(u => u.Knowledge)
+                        <br />
+                        @Html.Label("Hvordan fikk du høre om BYPORTEN+?")
+                        @Html.TextAreaFor(u => u.Knowledge, new { @placeholder = "Skriv her"})
+                    </div>
                     <input type="submit" value="Registrer" class="reg-button" />
                 </div>
             </div>

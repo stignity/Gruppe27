@@ -3,6 +3,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
     <title>@ViewBag.Title</title>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
@@ -23,7 +24,7 @@
             <p class="lead close-menu"><span class="fa fa-remove"></span> Lukk</p>
         </div>
         <ul class="main-navigation">
-            <li>
+            <li class="mobile-search-bar">
                 <form method="post" action="">
                     <fieldset>
                         <input type="search" class="top-search-bar" placeholder="Søk i fritekst" />
@@ -34,10 +35,10 @@
             <li>@Html.ActionLink("Forsiden", "Index", "Home")</li>
             <li>@Html.ActionLink("Aktuelt", "Aktuelt", "Home")</li>
             <li>@Html.ActionLink("Butikker", "Butikker", "Home")</li>
-            <li>@Html.ActionLink("Kundeklubben", "Kundeklubb", "Home")</li>
+            <li>@Html.ActionLink("Kundeklubben BYPORTEN+", "Kundeklubb", "Home")</li>
             <li>@Html.ActionLink("Gavekort", "Gavekort", "Home")</li>
             <li>@Html.ActionLink("Senterinformasjon", "Senterinformasjon", "Home")</li>
-            <li>@Html.ActionLink("Ledige Stillinger", "Stillinger", "Home")</li>
+            <li>@Html.ActionLink("Ledige stillinger", "Stillinger", "Home")</li>
             <li>@Html.ActionLink("ADMINISTRATOR", "Portal", "Admin")</li>
         </ul>
     </div> <!-- Hidden-menu-wrap end -->
@@ -52,13 +53,12 @@
                 </a>
                 <!--MOST USED LINKS MENU-->
                 <ul class="top-nav-most-used">
-                    <li class="hideOnSearch">@Html.ActionLink("Forsiden", "Index", "Home")</li>
-                    <li class="hideOnSearch">@Html.ActionLink("Kundeklubben", "Kundeklubb", "Home")</li>
+                    <li class="hideOnSearch">@Html.ActionLink("Kundeklubben BYPORTEN+", "Kundeklubb", "Home")</li>
                     <li class="hideOnSearch">@Html.ActionLink("Butikker", "Butikker", "Home")</li>
-                    <li class="hideOnSearch">@Html.ActionLink("Ledige Stillinger", "Stillinger", "Home")</li>
+                    <li class="hideOnSearch">@Html.ActionLink("Ledige stillinger", "Stillinger", "Home")</li>
                     <li>
                         <form method="post" action="">
-                            <input type="search" class="searchbar-top" placeholder="SØK...." />
+                            <input type="search" class="searchbar-top" id="iconified" placeholder="Søk i fritekst.."/>
                         </form>
                     </li>
                     <li class="search-trigger"><a class="search-top-button"><span class="fa fa-search"></span></a></li>
