@@ -11,7 +11,7 @@ namespace Byporten.Models
     {
         [Required(ErrorMessage="Feltet er påkrevd")]
         [Display(Name = "Navn*")]
-        [RegularExpression(@"^[a-zA-Z ]+$", ErrorMessage="Kun alfabetiske tegn")]
+        [RegularExpression(@"^[ÆØÅæøåa-zA-Z ]+$", ErrorMessage="Kun alfabetiske tegn")]
         [MinLength(3, ErrorMessage="Navnet er for kort"), MaxLength(100, ErrorMessage="Navnet er for langt")]
         public string Name { get; set; }
 

@@ -5,4 +5,28 @@
 }
 
 <h2>Search Results</h2>
+<p>@Html.ActionLink("Create", "#")</p>
+
+<table>
+    <tr>
+        <th>
+            @Html.ActionLink("Id", "SearchResult", new {sortOrder = ViewBag.IdSortParam })
+        </th>
+        <th>
+            @Html.ActionLink("Title", "SearchResult", new {sortOrder = ViewBag.TitleSortParam })
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>
+                @Html.DisplayFor(Modelitem => item.Id)
+            </th>
+            <th>
+                @Html.DisplayFor(Modelitem => item.Title)
+            </th>
+        </tr>
+    }
+</table>
 
