@@ -269,5 +269,10 @@ namespace Byporten.Controllers
                 return View();
             }
         }
+
+        public ActionResult LogOut
+        {
+            
+        }
     }
 }
