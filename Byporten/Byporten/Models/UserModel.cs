@@ -43,7 +43,7 @@ namespace Byporten.Models
         public string Interests { get; set; }
 
         [Display(Name="Antall barn")]
-        [MaxLength(5)]
+        [MaxLength(5, ErrorMessage="Venligst velg antall barn")]
         public string Children { get; set; }
 
         [MinLength(3, ErrorMessage="For kort")]
