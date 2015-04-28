@@ -1,0 +1,25 @@
+﻿@model Byporten.Models.ImageModel
+@{
+    ViewBag.Title = "ImageList";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="container">
+    @foreach (var image in Model.Images)
+    {
+
+        <div class="row imageRow">
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <img src="@Url.Content(image)" alt="Bilde" style="width: 100%;" />
+            </div>
+            <div class="col-lg-7 col-md-7 col-sm-7">
+                <p class="text">Bildetekst her</p>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2">
+                <input type="submit" value="Slett bilde" />
+            </div>
+            <hr />
+        </div>
+
+    }
+</div>
+

@@ -237,24 +237,15 @@ namespace Byporten.Controllers
 
         public ActionResult SearchResult(string searchString)
         {
-            ViewBag.TitleSortParam = String.IsNullOrEmpty(searchString) ? "title_desc" : "";
-            ViewBag.IdSortParam = searchString == "Id" ? "id_desc" : "Id";
-
             var articles = from a in db.createpost
                            select a;
 
-            switch (searchString) {
-                case "title_desc":
-                    articles = articles.OrderByDescending(a => a.Title);
-                    break;
-                case "id_desc":
-                    articles = articles.OrderByDescending(a => a.Id);
-                    break;
-                default:
-                    articles = articles.OrderBy(a => a.Title);
-                    break;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                articles = articles.Where(a => a.Title.ToLower().Contains(searchString.ToLower())
+                                            || a.Content.ToLower().Contains(searchString.ToLower()));
             }
-            return View(db.createpost.ToList());
+            return View(articles.ToList());
         }
 
         public ActionResult errorPage()

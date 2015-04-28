@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 namespace Byporten.Models
@@ -50,5 +51,13 @@ namespace Byporten.Models
         public string Startdato { get; set; }
         public string Sluttdato { get; set; }
         public string Bilde { get; set; }
+    }
+
+    public class CompanyDBContext 
+    {
+        public List<PostModel> PostModels { get; set; }
+        public List<StoreModel> StoreModels { get; set; }
+        public List<PositionModel> PositionModels { get; set; }
+        public List<OfferModel> OfferModels { get; set; }
     }
 }
