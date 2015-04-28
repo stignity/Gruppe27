@@ -74,10 +74,6 @@
     }
 
 
-    function activeURL() {
-       
-    }
-
   
     //pageload function
     var init = function () {
@@ -85,7 +81,6 @@
         carousel();
         to_top();
         showSearch();
-        activeURL();
     }    
 
     

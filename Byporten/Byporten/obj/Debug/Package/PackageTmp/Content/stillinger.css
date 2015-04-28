@@ -1,32 +1,26 @@
-﻿
-.position{
-    height: auto;
+﻿.position{
+
 }
 
-.inner-position{
-    
-    padding: 15px;
-}
-
-.position p{
-}
-
-.link{
-    box-sizing: border-box;
+a.link{
     list-style: none !important;
     text-decoration: none !important;
+    display: block;
+    height: auto;
+    width: 100%;
+    height: 100%;
+    font-size: 2em;
 }
 
-.position .inner-position p{
-    color: rgb(71, 71, 71);
+a.link:hover{
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
 }
 
-.inner-position .lead{
-    margin-bottom: 0px;
+.link img{
+    width: 100%;
 }
-
 .position:hover{
-    background-color: rgb(236, 236, 236);
+    
 }
 
 .stilling-wrap{

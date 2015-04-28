@@ -1,28 +1,7 @@
 ﻿/*index*/
-
-.top-info-bar{
-    width: 100%;
-    height: auto;
-    padding-top: 20px;
-    padding-bottom: 0px;
-    background-color: rgb(255, 255, 255);
+#ROW-WRAP{
+    padding-bottom: 50px;
 }
-
-ul.top-info-sublist{
-    display: block;
-    padding: 0px;
-    list-style: none;
-    margin: 0 auto;
-}
-
-.top-info-sublist li{
-    padding: 20px;
-    text-decoration: none;
-    float: left;
-    background-color: rgb(238, 238, 238);
-    margin: 5px;
-}
-
 
 .article-wrapper{
     height: auto;
@@ -44,7 +23,6 @@ ul.top-info-sublist{
 }
 
 .the-image{
-    width: auto;
     height: auto;
 }
 
@@ -66,6 +44,29 @@ ul.top-info-sublist{
 
 .front-page-container{
 
+}
+
+.sidebar{
+    width: 100%;
+    height: auto;
+    padding-bottom: 10px;
+    background-color: rgb(238, 238, 238);
+}
+
+.top-info-bar{
+    padding: 10px;
+}
+
+ul.top-info-sublist{
+    padding: 0px;
+    display: block;
+    list-style: none;
+}
+
+.top-info-sublist li{
+    padding: 10px;
+    display: block;
+    border-bottom: 1px solid rgb(226, 226, 226);
 }
 
 

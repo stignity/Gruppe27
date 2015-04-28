@@ -52,6 +52,11 @@
             // If it's a JPG, leave it alone, otherwise...
             return /\.(jpg|png|pdf)$/.test(src) ? src : '/images/web/image_error.jpg';
         });
+
+        $('.link img').attr('src', function (i, src) {
+            // If it's a JPG, leave it alone, otherwise...
+            return /\.(jpg|png|pdf)$/.test(src) ? src : '/images/web/image_error.jpg';
+        });
     }
 
     function activeNav() {

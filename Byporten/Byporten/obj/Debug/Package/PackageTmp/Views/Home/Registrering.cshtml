@@ -24,6 +24,7 @@
                     </div>
                     <div>
                         @Html.ValidationMessageFor(u => u.Gender)
+                        @Html.Label("Velg kjønn: ")
                         @Html.DropDownListFor(u => u.Gender, new[] {
                             new SelectListItem() {Text = "Velg kjønn"},
                             new SelectListItem() {Text = "Mann"},
@@ -48,6 +49,7 @@
                     </div>
                     <div>
                         @Html.ValidationMessageFor(u => u.Interests)
+                        @Html.Label("Velg Interesse: ")
                         @Html.DropDownListFor(u => u.Interests, new[] {
                             new SelectListItem() {Text = "Velg din interesse"},
                             new SelectListItem() {Text = "Klær/Sko/Tilbehør"},
@@ -58,8 +60,10 @@
                     </div>
                     <div>
                         @Html.ValidationMessageFor(u => u.Children)
+                        @Html.Label("Antall barn: ")
                         @Html.DropDownListFor(u => u.Children, new[] {
-                            new SelectListItem() {Text = "Barn"},
+                            new SelectListItem() {Text = "Velg antall"},
+                            new SelectListItem() {Text = "0"},
                             new SelectListItem() {Text = "1"},
                             new SelectListItem() {Text = "2"},
                             new SelectListItem() {Text = "3"},

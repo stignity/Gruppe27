@@ -4,5 +4,35 @@
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
 }
 
-<h2>Search Results</h2>
+<h2>SearchResult</h2>
+
+@using (Html.BeginForm("SearchResult", "Home", FormMethod.Get))
+{
+    <p>
+        Search: @Html.TextBox("SearchString")
+        <input type="submit" value="Search"/> 
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            <h2>Tittel</h2>
+        </th>
+        <th>
+            <h2>Content</h2>
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>
+                @Html.DisplayFor(Modelitem => item.Title)
+            </th>
+            <th>
+                @Html.DisplayFor(Modelitem => item.Content)
+            </th>
+        </tr>
+    }
+</table>
 

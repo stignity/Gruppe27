@@ -31,7 +31,7 @@
                         <h4>@Html.DisplayFor(modelitem => item.Title)</h4>
                     </div>
                     <div class="article-content">
-                        <p>@Html.DisplayFor(modelitem => item.Content)</p>
+                        <p>@Html.DisplayFor(modelitem => item.Content, new {@class = "result" })</p>
                         <hr />
                         <p><b>Startdato:</b> @Html.DisplayFor(modelitem => item.CreateDate)</p>
                         <p><b>Sluttdato:</b> @Html.DisplayFor(modelitem => item.ExpireDate)</p>
