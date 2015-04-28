@@ -71,12 +71,7 @@
             }
             console.log(isOpen)
         })
-    }
-
-
-    function activeURL() {
-       
-    }
+    }   
 
   
     //pageload function
@@ -85,7 +80,6 @@
         carousel();
         to_top();
         showSearch();
-        activeURL();
     }    
 
     
