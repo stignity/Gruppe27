@@ -10,6 +10,7 @@ using System.Web.Security;
 using System.IO;
 using System.Data;
 using System.Text.RegularExpressions;
+using Byporten.Models;
 
 namespace Byporten.Controllers
 {
@@ -725,6 +726,15 @@ namespace Byporten.Controllers
         public ActionResult errorPage()
         {
             return View();
+        }
+
+        public ActionResult ImageList(Byporten.Models.ImageModel image)
+        {
+            var model = new ImageModel()
+            {
+                Images = Directory.EnumerateFiles(Server.MapPath("~/images/uploads")).Select(fn => "~/images/uploads/" + Path.GetFileName(fn))
+            };
+            return View(model);
         }
     }
 }

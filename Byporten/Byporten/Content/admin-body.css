@@ -223,3 +223,10 @@
 .settings-sidebar .field-validation-error{
     width: 95%;
 }
+
+
+/*Image list*/
+
+.imageRow {
+    margin-top: 50px;
+}
