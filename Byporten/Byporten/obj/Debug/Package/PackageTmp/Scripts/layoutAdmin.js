@@ -52,10 +52,18 @@
         });
     }
 
+    var lineBreakOnNewArticle = function(){
+        $('textarea').bind('keyup', function (e) {
+            var data = $('textarea').val();
+            $('.result').html(data.replace(/\n/g, "<br />"));
+        });
+    }
+
     var init = function () {
         mobile_menu();
         search_articles();
         display_article_content();
+        lineBreakOnNewArticle();
     }
 
     //calling init

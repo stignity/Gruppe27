@@ -3,6 +3,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
     <title>@ViewBag.Title</title>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
@@ -40,6 +41,18 @@
             <li>@Html.ActionLink("Ledige stillinger", "Stillinger", "Home")</li>
             <li>@Html.ActionLink("ADMINISTRATOR", "Portal", "Admin")</li>
         </ul>
+        @if (Request.IsAuthenticated)
+        {
+        <div class="user-wrap">
+            <ul class="logged-in-list">
+                <li>Velkommen, @Html.Encode(User.Identity.Name)</li>
+                <li>
+                    @Html.ActionLink("Logg ut", "LogOut", "Home", new {@class = "logoutBtn" })
+                    <button class="seeMoreBtn">Se fordeler</button>
+                </li>
+            </ul>
+        </div>
+        }
     </div> <!-- Hidden-menu-wrap end -->
     
     <div class="master">
