@@ -266,3 +266,29 @@ ul.top-nav-most-used li a:hover{
     background-color: rgb(30, 139, 195);
 }
 
+/*USER LOGGED IN*/
+
+.user-wrap{
+    width: 100%;
+    height: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: rgb(34, 167, 240);
+}
+
+.logged-in-list{
+    display: block;
+    padding: 0px;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+.logged-in-list li{
+    padding: 20px;
+}
+
+.logoutBtn, .seeMoreBtn{
+    width: 45%;
+    height: 40px;
+    border: none;
+}

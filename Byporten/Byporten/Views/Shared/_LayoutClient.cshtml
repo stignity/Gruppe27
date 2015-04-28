@@ -41,6 +41,18 @@
             <li>@Html.ActionLink("Ledige stillinger", "Stillinger", "Home")</li>
             <li>@Html.ActionLink("ADMINISTRATOR", "Portal", "Admin")</li>
         </ul>
+        <div class="user-wrap">
+            <ul class="logged-in-list">
+                @if (Request.IsAuthenticated)
+                {
+                    <li>Velkommen, @Html.Encode(User.Identity.Name)</li>
+                    <li>
+                        <button class="logoutBtn">Logg ut</button>
+                        <button class="seeMoreBtn">Se fordeler</button>
+                    </li>
+                }
+            </ul>
+        </div>
     </div> <!-- Hidden-menu-wrap end -->
     
     <div class="master">

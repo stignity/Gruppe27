@@ -71,7 +71,12 @@
             }
             console.log(isOpen)
         })
-    }   
+    }
+
+
+    function endSession() {
+        
+    }
 
   
     //pageload function
@@ -80,6 +85,7 @@
         carousel();
         to_top();
         showSearch();
+        endSession();
     }    
 
     
