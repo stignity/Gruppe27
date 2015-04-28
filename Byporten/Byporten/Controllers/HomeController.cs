@@ -73,6 +73,13 @@ namespace Byporten.Controllers
             return View(user);
         }
 
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            return RedirectToAction("Kundeklubb");
+        }
+
         [HttpGet]
         public ActionResult Registrering()
         {
@@ -268,11 +275,6 @@ namespace Byporten.Controllers
             {
                 return View();
             }
-        }
-
-        public ActionResult LogOut
-        {
-            
         }
     }
 }
