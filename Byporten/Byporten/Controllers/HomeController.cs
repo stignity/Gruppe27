@@ -257,5 +257,17 @@ namespace Byporten.Controllers
         {
             return View();
         }
+
+        public ActionResult Subscription()
+        {
+            if (Session["User"] == null)
+            {
+                return RedirectToAction("Kundeklubb");
+            }
+            else
+            {
+                return View();
+            }
+        }
     }
 }

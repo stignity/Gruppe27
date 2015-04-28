@@ -312,6 +312,7 @@
     <Content Include="Views\Partials\_PostList.cshtml" />
     <Content Include="Views\Partials\_PositionList.cshtml" />
     <Content Include="Views\Admin\ImageList.cshtml" />
+    <Content Include="Views\Home\Subscription.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
