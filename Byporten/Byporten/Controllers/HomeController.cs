@@ -120,7 +120,7 @@ namespace Byporten.Controllers
         }
 
         public JsonResult CheckEmail(string Email)
-        {
+        { 
             var result = true;
             var email = db.user.Where(e => e.Email == Email).FirstOrDefault();
 

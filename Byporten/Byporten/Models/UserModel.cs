@@ -20,7 +20,6 @@ namespace Byporten.Models
         [Display(Name = "Kjønn*")]
         public string Gender { get; set; }
 
-        []
         [Required(ErrorMessage = "Feltet er påkrevet")]
         [Display(Name = "Epost*")]
         [DataType(DataType.EmailAddress, ErrorMessage="Det må være en gyldig e-postadresse")]

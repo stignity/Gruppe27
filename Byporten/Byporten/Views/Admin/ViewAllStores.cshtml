@@ -19,30 +19,31 @@
     }
     else
     {
-        foreach (var item in Model.OrderBy(item => item.Navn))
-        {
-            <div class="last-article-wrap">
-                <div class="article-title" id="query">
-                    <h4>@Html.DisplayFor(modelitem => item.Navn)</h4>
-                </div>
-                <div class="article-content">
-                    <p>@Html.DisplayFor(modelitem => item.Beskrivelse)</p>
-                    <hr />
-                    <p><b>Kategori:</b> @Html.DisplayFor(modelitem => item.Kategori)</p>
-                    <p><b>Hjemmeside:</b> @Html.DisplayFor(modelitem => item.Hjemmeside)</p>
-                    <p><b>Logo:</b> @Html.DisplayFor(modelitem => item.Logo)</p>
-                    <p><b>Telefon:</b> @Html.DisplayFor(modelitem => item.Telefon)</p>
-                    <div class="choices">
-                        <p>@Html.ActionLink("Endre", "EditStore", new { id = item.Id }, new { @class = "link-button" })</p>
-                        <p>@Html.ActionLink("Detaljer", "StoreDetails", new { id = item.Id }, new { @class = "link-button" })</p>
-                        <p>@Html.ActionLink("Slett", "DeleteStore", new { id = item.Id }, new { @class = "link-button" })</p>
-                    </div>
-                </div>
 
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>Navn</td>
+                    <td>Kategori</td>
+                    <td>Endre</td>
+                    <td>Detaljer</td>
+                    <td>Slett</td>
+                </tr>
+            </thead>
 
-
-            </div>
-        }
+            @foreach (var item in Model.OrderBy(item => item.Navn))
+            {
+            <tbody>
+                <tr>
+                    <td>@Html.DisplayFor(modelitem => item.Navn)</td>
+                    <td>@Html.DisplayFor(modelitem => item.Kategori)</td>
+                    <td>@Html.ActionLink("Endre", "EditStore", new { id = item.Id }, new { @class = "link-button" })</td>
+                    <td>@Html.ActionLink("Detaljer", "StoreDetails", new { id = item.Id }, new { @class = "link-button" })</td>
+                    <td>@Html.ActionLink("Slett", "DeleteStore", new { id = item.Id }, new { @class = "link-button" })</td>
+                </tr>
+            </tbody>
+            }
+        </table>
     }
 
     
