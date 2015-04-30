@@ -31,7 +31,7 @@ namespace Byporten.Models
         public string RepeatEmail { get; set; }
 
         [Required(ErrorMessage = "Feltet er påkrevet")]
-        [MinLength(8), MaxLength(15)]
+        [MinLength(8), MaxLength(15, ErrorMessage="Må være et gyldig nummer")]
         [Display(Name="Mobilnummer")]
         public string PhoneNumber { get; set; }
 

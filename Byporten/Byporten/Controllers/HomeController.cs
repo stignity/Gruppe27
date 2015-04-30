@@ -63,7 +63,7 @@ namespace Byporten.Controllers
                 if (IsValdid(user.Email, user.Password))
                 {
                     FormsAuthentication.SetAuthCookie(user.Email, false);
-                    return RedirectToAction("Subscription", "Home");
+                    return RedirectToAction("Subscription", "Home");                    
                 }
                 else
                 {
