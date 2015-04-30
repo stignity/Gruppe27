@@ -48,7 +48,7 @@
                 <li>Velkommen, @Html.Encode(User.Identity.Name)</li>
                 <li>
                     @Html.ActionLink("Logg ut", "LogOut", "Home", new {@class = "logoutBtn" })
-                    <button class="seeMoreBtn">Se fordeler</button>
+                    @Html.ActionLink("Se fordeler", "Subscription", "Home", new {@class = "seeMoreBtn" })
                 </li>
             </ul>
         </div>

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Byporten.Models
 {
@@ -19,9 +20,11 @@ namespace Byporten.Models
         [Display(Name = "Kjønn*")]
         public string Gender { get; set; }
 
+        []
         [Required(ErrorMessage = "Feltet er påkrevet")]
         [Display(Name = "Epost*")]
         [DataType(DataType.EmailAddress, ErrorMessage="Det må være en gyldig e-postadresse")]
+        [Remote("CheckEmail", "Home", ErrorMessage="Email er i bruk, velg en annen")]
         [MinLength(5), MaxLength(200)]
         public string Email { get; set; }
 

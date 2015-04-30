@@ -101,13 +101,6 @@ namespace Byporten.Controllers
                     sysUser.Email = user.Email;
                     sysUser.RepeatEmail = user.RepeatEmail;
 
-                    //Check if the current email address matches the repeated email
-                    Match emailMatch = Regex.Match(user.RepeatEmail, user.Email, RegexOptions.IgnoreCase);
-                    if (!emailMatch.Success)
-                    {
-                        ModelState.AddModelError("user.RepeatEmail", "Eposten må matche");
-                    }
-
                     sysUser.PhoneNumber = user.PhoneNumber;
                     sysUser.Birthdate = user.Birthdate;
                     sysUser.Interests = user.Interests;
@@ -124,6 +117,18 @@ namespace Byporten.Controllers
                 }
             }
             return View();
+        }
+
+        public JsonResult CheckEmail(string Email)
+        {
+            var result = true;
+            var email = db.user.Where(e => e.Email == Email).FirstOrDefault();
+
+            if (email != null)
+            {
+                result = false;
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Gavekort()

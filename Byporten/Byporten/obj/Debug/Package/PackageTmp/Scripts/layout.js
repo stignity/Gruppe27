@@ -15,11 +15,31 @@
             $('.master').css('max-width', '100%');
             $('.master').css('overflow-y', 'hidden');
             $('.menu-trigger').hide('fast');
+
+            /*
+            if ($(window).width() < 600) {
+                $('.hidden-menu-wrap').css('overflow-y', 'scroll');
+                $('html, body').css({
+                    height: '100%',
+                    overflow: 'hidden'
+
+                });
+            }
+            */
         });
         $('.menu-header').click(function () {
             $('.hidden-menu-wrap').animate({ right: '-290px' }, 250);
             $('.master').animate({ right: '0px' }, 250);
             $('.menu-trigger').show('fast');
+            /*
+            if ($(window).width() < 600) {
+                $('.hidden-menu-wrap').css('overflow', 'auto');
+                $('html, body').css({
+                    height: 'auto',
+                    overflow: 'visible'
+                });
+            }
+            */
         });   
     }
 

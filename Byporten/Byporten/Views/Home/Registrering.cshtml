@@ -82,9 +82,7 @@
                         @Html.ValidationMessageFor(u => u.Password)
                         @Html.PasswordFor(u => u.Password, new { @placeholder = "Passord*" })  
                     </div>
-                    <div>
-                        @Html.ValidationMessageFor(u => u.Knowledge)
-                        <br />
+                    <div class="editor-field">
                         @Html.Label("Hvordan fikk du høre om BYPORTEN+?")
                         @Html.TextAreaFor(u => u.Knowledge, new { @placeholder = "Skriv her"})
                     </div>
