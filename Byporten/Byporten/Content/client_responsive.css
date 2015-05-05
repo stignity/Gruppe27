@@ -73,6 +73,12 @@
         max-height: 100%;
     }
 
+    .store-list li a{
+        padding: 10px;
+        display: block;
+        background-color: rgb(238, 238, 238);
+    }
+
 }
 
 @media (max-width: 992px){
@@ -105,6 +111,11 @@
     float: none;
 }
 
+    .store-list li a{
+        padding: 10px;
+        display: block;
+        background-color: rgb(238, 238, 238);
+    }
 
 
 
