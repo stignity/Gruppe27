@@ -147,9 +147,7 @@ namespace Byporten.Controllers
                     imageURL.ContentType.ToLower() != "image/psd" &&
                     imageURL.ContentType.ToLower() != "image/pdf") 
                 {
-
                     ModelState.AddModelError("ImageURL", "Må være bildefil");
-
                 }
 
                 try
@@ -176,20 +174,28 @@ namespace Byporten.Controllers
                 {
                     ModelState.AddModelError("model.ImageURL", "Noe gikk galt");
                 }
+            }
+
+            if (ModelState.IsValid)
+            {
 
                 var imageName = Path.GetFileName(imageURL.FileName);
                 var path = Path.Combine(Server.MapPath("~/images/uploads/"), imageName);
 
                 imageURL.SaveAs(path);
                 createpost.ImageURL = imageName;
-            }
 
-            if (ModelState.IsValid)
-            {
-                //ViewData["SuccessMessage"] = "Artikkel opprettet!";
-                db.createpost.Add(createpost);
-                db.SaveChanges();
-                return RedirectToAction("Create");
+                try
+                {
+                    db.createpost.Add(createpost);
+                    db.SaveChanges();
+                    return RedirectToAction("Create");
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("model.ImageURL", ex.Message);
+                }
+                
             }
             return View(createpost);
         }
