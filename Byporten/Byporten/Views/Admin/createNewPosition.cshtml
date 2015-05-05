@@ -4,6 +4,18 @@
     ViewBag.Title = "Ny stilling";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+
+@if (ViewData.ModelState.IsValid)
+{
+    <div class="added">
+        <center>
+            <div class="publish-loading">
+
+            </div>
+        </center>
+    </div>
+}
+
 <div class="container">
     <h2>Ny stilling</h2>
 

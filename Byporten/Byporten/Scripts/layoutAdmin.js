@@ -59,11 +59,32 @@
         });
     }
 
+    var responseStore = function () {
+        $('form').on('submit', function () {
+            $.ajax({
+                url: 'CreateStore',
+                type: 'POST',
+                beforeSend: function () {
+                    $('.added').fadeIn();
+                    $('.publish-loading').append('<i style="font-size: 7em; !important;" class="fa fa-circle-o-notch fa-spin"></i>');
+                },
+                success: function () {
+                    console.log('SUCCESS');
+                    $('.added').fadeOut();
+                },
+                error: function(err) {
+                    return err;
+            }
+            })
+        })
+    }
+
     var init = function () {
         mobile_menu();
         search_articles();
         display_article_content();
         lineBreakOnNewArticle();
+        responseStore();
     }
 
     //calling init
