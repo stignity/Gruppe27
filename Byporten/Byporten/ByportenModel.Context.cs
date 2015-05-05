@@ -30,6 +30,5 @@ namespace Byporten
         public DbSet<availablepositions> availablepositions { get; set; }
         public DbSet<butikker> butikker { get; set; }
         public DbSet<createpost> createpost { get; set; }
-        public DbSet<user> user { get; set; }
     }
 }

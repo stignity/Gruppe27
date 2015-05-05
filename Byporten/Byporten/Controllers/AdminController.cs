@@ -186,9 +186,10 @@ namespace Byporten.Controllers
 
             if (ModelState.IsValid)
             {
+                //ViewData["SuccessMessage"] = "Artikkel opprettet!";
                 db.createpost.Add(createpost);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create");
             }
             return View(createpost);
         }
@@ -374,7 +375,7 @@ namespace Byporten.Controllers
             if(ModelState.IsValid) {
                 db.availablepositions.Add(availableposition);
                 db.SaveChanges();
-                return RedirectToAction("AllPositions", "Admin");
+                return RedirectToAction("createNewPosition", "Admin");
             }
             return View(availableposition);
         }
@@ -507,7 +508,7 @@ namespace Byporten.Controllers
             {
                 db.butikker.Add(butikker);
                 db.SaveChanges();
-                return RedirectToAction("ViewAllStores");
+                return RedirectToAction("CreateStore");
             }
 
             return View(butikker);
@@ -633,7 +634,7 @@ namespace Byporten.Controllers
             {
                 db.aktuelt.Add(aktuelt);
                 db.SaveChanges();
-                return RedirectToAction("ViewAllOffers");
+                return RedirectToAction("CreateOffer");
             }
             return View(aktuelt);
         }

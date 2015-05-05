@@ -4,59 +4,80 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="userModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="user">
+      <Schema Namespace="bplususerModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="bplususer">
           <Key>
             <PropertyRef Name="Email" />
           </Key>
-          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Email" Type="varchar" MaxLength="250" Nullable="false" />
-          <Property Name="Birthdate" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ZipCode" Type="varchar" MaxLength="10" />
-          <Property Name="City" Type="varchar" MaxLength="100" />
+          <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="EmailRepeat" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Gender" Type="varchar" MaxLength="20" />
+          <Property Name="Birthdate" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Zipcode" Type="varchar" MaxLength="8" />
+          <Property Name="BirthYearChild1" Type="varchar" MaxLength="10" />
+          <Property Name="BirthYearChild2" Type="varchar" MaxLength="10" />
+          <Property Name="BirthYearChild3" Type="varchar" MaxLength="10" />
+          <Property Name="BirthYearChild4" Type="varchar" MaxLength="10" />
+          <Property Name="Interests" Type="varchar" MaxLength="100" />
           <Property Name="Password" Type="varchar" MaxLength="250" Nullable="false" />
-          <Property Name="PasswordSalt" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="PasswordSalt" Type="varchar" MaxLength="250" />
         </EntityType>
-        <EntityContainer Name="userModelStoreContainer">
-          <EntitySet Name="user" EntityType="Self.user" Schema="byporten" store:Type="Tables" />
+        <EntityContainer Name="bplususerModelStoreContainer">
+          <EntitySet Name="bplususer" EntityType="Self.bplususer" Schema="byporten" store:Type="Tables" />
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="userModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="user">
+      <Schema Namespace="bplususerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="bplususer">
           <Key>
             <PropertyRef Name="Email" />
           </Key>
-          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Birthdate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ZipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmailRepeat" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Birthdate" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Zipcode" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="BirthYearChild1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="BirthYearChild2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="BirthYearChild3" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="BirthYearChild4" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Interests" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="PasswordSalt" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PasswordSalt" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="userEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="user" EntityType="Self.user" />
+        <EntityContainer Name="bplussuserEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="bplususer" EntityType="Self.bplususer" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="userModelStoreContainer" CdmEntityContainer="userEntities">
-          <EntitySetMapping Name="user">
-            <EntityTypeMapping TypeName="userModel.user">
-              <MappingFragment StoreEntitySet="user">
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
+        <EntityContainerMapping StorageEntityContainer="bplususerModelStoreContainer" CdmEntityContainer="bplussuserEntities">
+          <EntitySetMapping Name="bplususer">
+            <EntityTypeMapping TypeName="bplususerModel.bplususer">
+              <MappingFragment StoreEntitySet="bplususer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailRepeat" ColumnName="EmailRepeat" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
                 <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
-                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
-                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+                <ScalarProperty Name="BirthYearChild1" ColumnName="BirthYearChild1" />
+                <ScalarProperty Name="BirthYearChild2" ColumnName="BirthYearChild2" />
+                <ScalarProperty Name="BirthYearChild3" ColumnName="BirthYearChild3" />
+                <ScalarProperty Name="BirthYearChild4" ColumnName="BirthYearChild4" />
+                <ScalarProperty Name="Interests" ColumnName="Interests" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
               </MappingFragment>
