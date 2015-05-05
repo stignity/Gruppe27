@@ -60,14 +60,21 @@ namespace Byporten.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (IsValid(user.Email, user.Password))
+                try
                 {
-                    FormsAuthentication.SetAuthCookie(user.Email, false);
-                    return RedirectToAction("Subscription", "Home");                    
+                    if (IsValid(user.Email, user.Password))
+                    {
+                        FormsAuthentication.SetAuthCookie(user.Email, true);
+                        return RedirectToAction("Kundeklubb", "Home");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Feil Brukernavn eller Passord.");
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    ModelState.AddModelError("", "Feil Brukernavn eller Passord.");
+                    ModelState.AddModelError("", ex.Message);
                 }
             }
             return View(user);
@@ -254,14 +261,7 @@ namespace Byporten.Controllers
 
         public ActionResult Subscription()
         {
-            if (Session["User"] == null)
-            {
-                return RedirectToAction("Kundeklubb");
-            }
-            else
-            {
-                return View();
-            }
+            return View();
         }
 
         public bool IsValid(string email, string password)
@@ -280,7 +280,6 @@ namespace Byporten.Controllers
                     }
                 }
             }
-
             return isValid;
         }
     }

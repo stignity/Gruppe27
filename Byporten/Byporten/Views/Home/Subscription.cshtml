@@ -6,25 +6,31 @@
 
 
 <div class="container">
-    <div class="page-header">
-        <h3>Du er logget inn som <strong>@Html.Encode(User.Identity.Name)</strong></h3>
-        
-    </div>
-
-    <ul>
-        <li>-20% på alle ordinære varer, samt -15% på skipakker hos G-Sport</li>
-        <li>-30% på valgfri behandling hos Headmasters</li>
-        <li>-20% på alle varer (unntatt Samsonite) hos BagOrama</li>
-        <li>Kanelbolle kr 20,- (ord. pris kr 36,-) hos BIT</li>
-        <li>-25% på all Basic VILA hos Camilla Risøe</li>
-        <li>Gratis WiFi</li>
-        <li>Gratis kaffe/te hos Egon Restaurant</li>
-        <li>-20% på klipp hos HairShop Frisør</li>
-        <li>3 for 2 på alle såper i fast form hos LUSH. De spanderer den billigste.</li>
-        <li>-15% på alle ordinære varer hos !Solid</li>
-        <li>Gratis Make me up (verdi kr 300,-) samt -10% på alle ordinære varer hos Make Up Store.</li>
-        <li>Byporten Tannlegesenter: Nye pasienter får en undersøkelse for kr 495,-</li>
-    </ul>
+    @if (Request.IsAuthenticated)
+    {
+        <div class="page-header">
+            <h3>Du er logget inn som <strong>@Html.Encode(User.Identity.Name)</strong></h3>
+        </div>
+        <ul>
+            <li>-20% på alle ordinære varer, samt -15% på skipakker hos G-Sport</li>
+            <li>-30% på valgfri behandling hos Headmasters</li>
+            <li>-20% på alle varer (unntatt Samsonite) hos BagOrama</li>
+            <li>Kanelbolle kr 20,- (ord. pris kr 36,-) hos BIT</li>
+            <li>-25% på all Basic VILA hos Camilla Risøe</li>
+            <li>Gratis WiFi</li>
+            <li>Gratis kaffe/te hos Egon Restaurant</li>
+            <li>-20% på klipp hos HairShop Frisør</li>
+            <li>3 for 2 på alle såper i fast form hos LUSH. De spanderer den billigste.</li>
+            <li>-15% på alle ordinære varer hos !Solid</li>
+            <li>Gratis Make me up (verdi kr 300,-) samt -10% på alle ordinære varer hos Make Up Store.</li>
+            <li>Byporten Tannlegesenter: Nye pasienter får en undersøkelse for kr 495,-</li>
+        </ul>
+    }
+    else {
+        <div class="page-header">
+            <h3>For å kunne se tilbud må du @Html.ActionLink("logge inn", "Kundeklubb")</h3>
+        </div>
+    }
 
 </div>
 
