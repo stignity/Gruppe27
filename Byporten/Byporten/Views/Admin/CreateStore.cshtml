@@ -29,7 +29,13 @@
                     <!--Startdato-->
                     <p>Kategori</p>
                     @Html.DropDownListFor(model => model.Kategori, new[] {
-                        new SelectListItem() {Text = " "}})
+                        new SelectListItem() {Text = "Mat og drikke"},
+                        new SelectListItem() {Text = "Klær/Sko/Reiseeffekter"},
+                        new SelectListItem() {Text = "Spesialbutikker"},
+                        new SelectListItem() {Text = "Hus og hjem"},
+                        new SelectListItem() {Text = "Service og Tjenesteytende"},
+                        new SelectListItem() {Text = "Servering"}
+                    })
                     @Html.ValidationMessageFor(model => model.Kategori, "", new { @class = "text-danger" })
                     <!--Sluttdato-->
                     <p>Hjemmeside</p>
