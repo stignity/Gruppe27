@@ -17,11 +17,11 @@ namespace Byporten
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage="¨Feltet er påkrevd")]
+        [Required(ErrorMessage="¨Feltet er påkrevet")]
         [MinLength(2, ErrorMessage="Navnet er for kort"), MaxLength(150, ErrorMessage="For langt")]
         public string Navn { get; set; }
 
-        [Required(ErrorMessage="Feltet er påkrevd.")]
+        [Required(ErrorMessage="Feltet er påkrevet.")]
         [MinLength(2, ErrorMessage="Kategorien eksisterer ikke"), MaxLength(100, ErrorMessage="For langt")]
         public string Kategori { get; set; }
 
@@ -30,11 +30,11 @@ namespace Byporten
         public string Beskrivelse { get; set; }
         public string Logo { get; set; }
 
-        [Required(ErrorMessage="Felt påkrevd")]
+        [Required(ErrorMessage="Felt påkrevet")]
         [MinLength(4, ErrorMessage="For kort"), MaxLength(15, ErrorMessage="Sikker på at nummeret er norsk?")]
         public string Telefon { get; set; }
 
-        [Required(ErrorMessage="Feltet er påkrevd")]
+        [Required(ErrorMessage="Feltet er påkrevet")]
         [MinLength(8, ErrorMessage="Linken er fort kort"), MaxLength(100, ErrorMessage="Linken er for lang")]
         public string Hjemmeside { get; set; }
     }

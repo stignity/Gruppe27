@@ -212,19 +212,14 @@ ul.top-nav-most-used li a:hover{
 .footer-navigation{
     padding: 0px;
     list-style: none;
-    display: block;
 }
 .footer-navigation li{
-    display: block;
     text-decoration: none;
     color: rgb(101, 101, 101);
-    padding: 5px;
 }
 
 .footer-navigation li a{
-    display: block;
     text-decoration: none;
-    padding: 5px;
     color: rgb(34, 49, 63);
 }
 
@@ -259,6 +254,7 @@ ul.top-nav-most-used li a:hover{
     padding: 15px;
     cursor: pointer;
     display: none;
+    z-index: 1;
 }
 
 .to-top:hover{
@@ -287,15 +283,7 @@ ul.top-nav-most-used li a:hover{
     padding: 20px;
 }
 
-.seeMoreBtn{
-    width: 45%;
-    height: 40px;
-    border: none;
-    color: rgb(255, 255, 255);
-    background-color: rgb(71, 71, 71);
-}
-
-.logoutBtn{
+.logoutBtn, .seeMoreBtn{
     padding: 10px;
     background-color: rgb(206, 206, 206);
     text-decoration: none;
@@ -303,6 +291,6 @@ ul.top-nav-most-used li a:hover{
     background-color: rgb(71, 71, 71);
 }
 
-.logoutBtn:hover{
+.logoutBtn:hover, .seeMoreBtn:hover{
     color: rgb(255, 255, 255);
 }

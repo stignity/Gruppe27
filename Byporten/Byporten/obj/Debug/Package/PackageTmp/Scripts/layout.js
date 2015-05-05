@@ -93,6 +93,23 @@
         })
     }
 
+    function footer() {
+        if (window.location.href.indexOf('Home/viewArticles/') > -1) {
+            $('.footer-wrap').css('display', 'none');
+        }
+
+        else if (window.location.href.indexOf('Home/viewStore/') > -1) {
+            $('.footer-wrap').css('display', 'none');
+        }
+
+        else if (window.location.href.indexOf('Home/viewPosition/') > -1) {
+            $('.footer-wrap').css('display', 'none');
+        }
+
+        else if (window.location.href.indexOf('Home/viewOffers/') > -1) {
+            $('.footer-wrap').css('display', 'none');
+        }
+    }
 
   
     //pageload function
@@ -101,6 +118,7 @@
         carousel();
         to_top();
         showSearch();
+        footer();
     }    
 
     
