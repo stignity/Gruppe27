@@ -506,9 +506,16 @@ namespace Byporten.Controllers
 
             if (ModelState.IsValid)
             {
-                db.butikker.Add(butikker);
-                db.SaveChanges();
-                return RedirectToAction("CreateStore");
+                try
+                {
+                    db.butikker.Add(butikker);
+                    db.SaveChanges();
+                    return RedirectToAction("CreateStore");
+                }
+                catch (Exception ex)
+                {
+                    
+                }
             }
 
             return View(butikker);
@@ -545,7 +552,7 @@ namespace Byporten.Controllers
             {
                 db.Entry(butikker).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ViewAllStores");
             }
             return View(butikker);
         }

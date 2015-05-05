@@ -22,22 +22,22 @@
     }
     else
     {
-        foreach (var store in Model.OrderBy(item => item.Navn))
+        <h1>Mat og Drikke</h1>
+        foreach (var item in Model.Where(i => i.Kategori == "Mat og drikke"))
         {
-
-             if (itemcount % 3 == 0 || itemcount % 3 == 3)
+            if (itemcount % 3 == 0 || itemcount % 3 == 3)
             {
-               @:<div class="row">
+                @:<div class="row">
             }
 
-        <a class="store-link" href="@Url.Action("viewStore", new {id = store.Id })">
-            <div class="col-lg-4 store">
-                <div class="inner-store">
-                    <p class="lead">@Html.DisplayFor(modelItem => store.Navn)</p>
-                    <span style="display: none;">@Html.DisplayFor(modelItem => store.Kategori)</span>
+            <a class="store-link" href="@Url.Action("viewStore", new {id = item.Id })">
+                <div class="col-lg-4 store">
+                    <div class="inner-store">
+                        <p class="lead">@Html.DisplayFor(modelItem => item.Navn)</p>
+                        <span style="display: none;">@Html.DisplayFor(modelItem => item.Kategori)</span>
+                    </div>
                 </div>
-            </div>
-        </a>
+            </a>
 
             itemcount++;
 
@@ -45,6 +45,66 @@
             {
                 @:</div>
             }
+        }
+        <h1>Klær/Sko/Reiseeffekter</h1>
+        foreach (var item in Model.Where(i => i.Kategori == "Klær/Sko/Reiseeffekter"))
+        {
+            <a class="store-link" href="@Url.Action("viewStore", new {id = item.Id })">
+                <div class="col-lg-4 store">
+                    <div class="inner-store">
+                        <p class="lead">@Html.DisplayFor(modelItem => item.Navn)</p>
+                        <span style="display: none;">@Html.DisplayFor(modelItem => item.Kategori)</span>
+                    </div>
+                </div>
+            </a>
+        }
+        <h1>Spesialbutikker</h1>
+        foreach (var item in Model.Where(i => i.Kategori == "Spesialbutikker"))
+        {
+            <a class="store-link" href="@Url.Action("viewStore", new {id = item.Id })">
+                <div class="col-lg-4 store">
+                    <div class="inner-store">
+                        <p class="lead">@Html.DisplayFor(modelItem => item.Navn)</p>
+                        <span style="display: none;">@Html.DisplayFor(modelItem => item.Kategori)</span>
+                    </div>
+                </div>
+            </a>
+        }
+        <h1>Hus og Hjem</h1>
+        foreach (var item in Model.Where(i => i.Kategori == "Hus og hjem"))
+        {
+            <a class="store-link" href="@Url.Action("viewStore", new {id = item.Id })">
+                <div class="col-lg-4 store">
+                    <div class="inner-store">
+                        <p class="lead">@Html.DisplayFor(modelItem => item.Navn)</p>
+                        <span style="display: none;">@Html.DisplayFor(modelItem => item.Kategori)</span>
+                    </div>
+                </div>
+            </a>
+        }
+        <h1>Service og Tjenesteytende</h1>
+        foreach (var item in Model.Where(i => i.Kategori == "Service og Tjenesteytende"))
+        {
+            <a class="store-link" href="@Url.Action("viewStore", new {id = item.Id })">
+                <div class="col-lg-4 store">
+                    <div class="inner-store">
+                        <p class="lead">@Html.DisplayFor(modelItem => item.Navn)</p>
+                        <span style="display: none;">@Html.DisplayFor(modelItem => item.Kategori)</span>
+                    </div>
+                </div>
+            </a>
+        }
+        <h1>Servering</h1>
+        foreach (var item in Model.Where(i => i.Kategori == "Servering"))
+        {
+            <a class="store-link" href="@Url.Action("viewStore", new {id = item.Id })">
+                <div class="col-lg-4 store">
+                    <div class="inner-store">
+                        <p class="lead">@Html.DisplayFor(modelItem => item.Navn)</p>
+                        <span style="display: none;">@Html.DisplayFor(modelItem => item.Kategori)</span>
+                    </div>
+                </div>
+            </a>
         }
     }
 
