@@ -1,15 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="userModelStoreContainer" CdmEntityContainer="userEntities">
-    <EntitySetMapping Name="user">
-      <EntityTypeMapping TypeName="userModel.user">
-        <MappingFragment StoreEntitySet="user">
-          <ScalarProperty Name="UserID" ColumnName="UserID" />
+  <EntityContainerMapping StorageEntityContainer="bplususerModelStoreContainer" CdmEntityContainer="bplussuserEntities">
+    <EntitySetMapping Name="bplususer">
+      <EntityTypeMapping TypeName="bplususerModel.bplususer">
+        <MappingFragment StoreEntitySet="bplususer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailRepeat" ColumnName="EmailRepeat" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
           <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
-          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
-          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+          <ScalarProperty Name="BirthYearChild1" ColumnName="BirthYearChild1" />
+          <ScalarProperty Name="BirthYearChild2" ColumnName="BirthYearChild2" />
+          <ScalarProperty Name="BirthYearChild3" ColumnName="BirthYearChild3" />
+          <ScalarProperty Name="BirthYearChild4" ColumnName="BirthYearChild4" />
+          <ScalarProperty Name="Interests" ColumnName="Interests" />
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
         </MappingFragment>

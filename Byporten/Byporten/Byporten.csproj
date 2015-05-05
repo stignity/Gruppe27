@@ -198,6 +198,9 @@
     <Compile Include="availablepositions.cs">
       <DependentUpon>ByportenModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="bplususer.cs">
+      <DependentUpon>UserModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="butikker.cs">
       <DependentUpon>ByportenModel.tt</DependentUpon>
     </Compile>
@@ -228,9 +231,6 @@
     <Compile Include="Models\ImageModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="user.cs">
-      <DependentUpon>UserModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="UserModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -285,6 +285,18 @@
     <Content Include="Views\Admin\DeleteOffer.cshtml" />
     <Content Include="Views\Admin\OfferDetails.cshtml" />
     <Content Include="Views\Home\viewArticles.cshtml" />
+    <Content Include="Views\Home\Registrering.cshtml" />
+    <Content Include="Views\Home\errorPage.cshtml" />
+    <Content Include="Views\Home\viewStore.cshtml" />
+    <Content Include="Views\Home\viewPosition.cshtml" />
+    <Content Include="Views\Home\serverError.cshtml" />
+    <Content Include="Views\Home\viewOffers.cshtml" />
+    <Content Include="Views\Home\SearchResult.cshtml" />
+    <Content Include="Views\Partials\_PostList.cshtml" />
+    <Content Include="Views\Partials\_PositionList.cshtml" />
+    <Content Include="Views\Admin\ImageList.cshtml" />
+    <Content Include="Views\Home\Subscription.cshtml" />
+    <Content Include="Views\Home\LogOut.cshtml" />
     <EntityDeploy Include="UserModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>UserModel.Designer.cs</LastGenOutput>
@@ -302,18 +314,6 @@
       <DependentUpon>UserModel.edmx</DependentUpon>
       <LastGenOutput>UserModel.cs</LastGenOutput>
     </Content>
-    <Content Include="Views\Home\Registrering.cshtml" />
-    <Content Include="Views\Home\errorPage.cshtml" />
-    <Content Include="Views\Home\viewStore.cshtml" />
-    <Content Include="Views\Home\viewPosition.cshtml" />
-    <Content Include="Views\Home\serverError.cshtml" />
-    <Content Include="Views\Home\viewOffers.cshtml" />
-    <Content Include="Views\Home\SearchResult.cshtml" />
-    <Content Include="Views\Partials\_PostList.cshtml" />
-    <Content Include="Views\Partials\_PositionList.cshtml" />
-    <Content Include="Views\Admin\ImageList.cshtml" />
-    <Content Include="Views\Home\Subscription.cshtml" />
-    <Content Include="Views\Home\LogOut.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

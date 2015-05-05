@@ -55,22 +55,73 @@ namespace Byporten.Controllers
             return View();
         }
 
+        //[HttpPost]
+        //public ActionResult Kundeklubb(Byporten.Models.UserLoginModel user)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        if (IsValdid(user.Email, user.Password))
+        //        {
+        //            FormsAuthentication.SetAuthCookie(user.Email, false);
+        //            return RedirectToAction("Subscription", "Home");                    
+        //        }
+        //        else
+        //        {
+        //            ModelState.AddModelError("", "Feil Brukernavn eller Passord.");
+        //        }
+        //    }
+        //    return View(user);
+        //}
+
+        [HttpGet]
+        public ActionResult Registrering()
+        {
+            return View();
+        }
+
         [HttpPost]
-        public ActionResult Kundeklubb(Byporten.Models.UserLoginModel user)
+        public ActionResult Registrering(Byporten.Models.UserRegModel user)
         {
             if (ModelState.IsValid)
             {
-                if (IsValdid(user.Email, user.Password))
+                using (var db = new bplussuserEntities())
                 {
-                    FormsAuthentication.SetAuthCookie(user.Email, false);
-                    return RedirectToAction("Subscription", "Home");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Feil Brukernavn eller Passord.");
+                    var crypto = new SimpleCrypto.PBKDF2();
+                    var encryptPass = crypto.Compute(user.Password);
+
+                    var sysUser = db.bplususer.Create();
+
+                    sysUser.Name = user.Name;
+                    sysUser.Email = user.Email;
+                    sysUser.EmailRepeat = user.EmailRepeat;
+                    sysUser.PhoneNumber = user.PhoneNumber;
+                    sysUser.Gender = user.Gender;
+                    sysUser.Birthdate = user.Birthdate;
+                    sysUser.Zipcode = user.Zipcode;
+                    sysUser.BirthYearChild1 = user.BirthYearChild1;
+                    sysUser.BirthYearChild2 = user.BirthYearChild2;
+                    sysUser.BirthYearChild3 = user.BirthYearChild3;
+                    sysUser.BirthYearChild4 = user.BirthYearChild4;
+                    sysUser.Interests = user.Interests;
+
+                    sysUser.Password = encryptPass;
+                    sysUser.PasswordSalt = crypto.Salt;
+
+                    try
+                    {
+                        db.bplususer.Add(sysUser);
+                        db.SaveChanges();
+                        return RedirectToAction("Kundeklubb");
+                    }
+                    catch(Exception ex)
+                    {
+                        ModelState.AddModelError("", ex.Message);
+                    }
+
                 }
             }
-            return View(user);
+
+            return View();
         }
 
         public ActionResult LogOut()
@@ -80,51 +131,6 @@ namespace Byporten.Controllers
             return RedirectToAction("Kundeklubb");
         }
 
-        [HttpGet]
-        public ActionResult Registrering()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Registrering(Byporten.Models.UserRegModel user) {
-            if (ModelState.IsValid)
-            {
-                using (var db = new userEntities())
-                {
-                    var crypto = new SimpleCrypto.PBKDF2();
-                    var encryptPass = crypto.Compute(user.Password);
-                    var sysUser = db.user.Create();
-
-                    sysUser.Name = user.Name;
-                    sysUser.Gender = user.Gender;
-                    sysUser.Email = user.Email;
-                    sysUser.RepeatEmail = user.RepeatEmail;
-
-                    //Check if the current email address matches the repeated email
-                    Match emailMatch = Regex.Match(user.RepeatEmail, user.Email, RegexOptions.IgnoreCase);
-                    if (!emailMatch.Success)
-                    {
-                        ModelState.AddModelError("user.RepeatEmail", "Eposten må matche");
-                    }
-
-                    sysUser.PhoneNumber = user.PhoneNumber;
-                    sysUser.Birthdate = user.Birthdate;
-                    sysUser.Interests = user.Interests;
-                    sysUser.Children = user.Children;
-                    sysUser.ZipCode = user.ZipCode;
-                    sysUser.City = user.City;
-                    sysUser.Password = encryptPass;
-                    sysUser.PasswordSalt = crypto.Salt;
-                    sysUser.Knowledge = user.Knowledge;
-
-                    db.user.Add(sysUser);
-                    db.SaveChanges();
-                    return RedirectToAction("kundeklubb", "Home");
-                }
-            }
-            return View();
-        }
 
         public ActionResult Gavekort()
         {
@@ -163,25 +169,6 @@ namespace Byporten.Controllers
             }
 
             return View(createpost);
-        }
-
-        private bool IsValdid(string email, string password)
-        {
-            var crypto = new SimpleCrypto.PBKDF2();
-            bool isValid = false;
-            using (var db = new userEntities())
-            {
-                var user = db.user.FirstOrDefault(u => u.Email == email);
-                if (user != null)
-                {
-                    if (user.Password == crypto.Compute(password, user.PasswordSalt))
-                    {
-                        isValid = true;
-                        Session["User"] = user.Email;
-                    }
-                }
-            }
-            return isValid;
         }
 
         public ActionResult viewStore(int? id)
@@ -275,6 +262,26 @@ namespace Byporten.Controllers
             {
                 return View();
             }
+        }
+
+        public bool IsValid(string email, string password)
+        {
+            var crypto = new SimpleCrypto.PBKDF2();
+            bool isValid = false;
+
+            using (var db = new bplussuserEntities())
+            {
+                var user = db.bplususer.FirstOrDefault(e => e.Email == email);
+                if (email != null)
+                {
+                    if (user.Password == crypto.Compute(password, user.PasswordSalt))
+                    {
+                        isValid = true;
+                    }
+                }
+            }
+
+            return isValid;
         }
     }
 }

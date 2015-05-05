@@ -13,10 +13,10 @@ namespace Byporten
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class userEntities : DbContext
+    public partial class bplussuserEntities : DbContext
     {
-        public userEntities()
-            : base("name=userEntities")
+        public bplussuserEntities()
+            : base("name=bplussuserEntities")
         {
         }
     
@@ -25,6 +25,6 @@ namespace Byporten
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<user> user { get; set; }
+        public DbSet<bplususer> bplususer { get; set; }
     }
 }
