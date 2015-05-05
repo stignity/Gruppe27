@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
 }
 <div class="container pushDown">
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Registrering", "Home", FormMethod.Post, new {@class = "regForm" }))
     {
         <p class="lead page-header">Registrering hos kundeklubben</p>
         <div class="row">
@@ -19,21 +19,22 @@
                     <p class="lead">Opprett bruker</p>
 
                     @Html.ValidationSummary(true, "Kunne ikke registrere!")
+                    <h2>@Html.Raw(ViewBag.regSuccess)</h2>
                     <div class="editor-field">
                         @Html.ValidationMessageFor(u => u.Name)
-                        @Html.TextBoxFor(u => u.Name, new {@placeholder = "Navn*" })
+                        @Html.TextBoxFor(u => u.Name, new { @placeholder = "Navn*" })
                     </div>
                     <div class="editor-field">
                         @Html.ValidationMessageFor(u => u.Email)
-                        @Html.TextBoxFor(u => u.Email, new {@placeholder ="Epost*" })
+                        @Html.TextBoxFor(u => u.Email, new { @placeholder = "Epost*" })
                     </div>
                     <div class="editor-field">
                         @Html.ValidationMessageFor(u => u.EmailRepeat)
-                        @Html.TextBoxFor(u => u.EmailRepeat, new {@placeholder ="Gjenta Epost*" })
+                        @Html.TextBoxFor(u => u.EmailRepeat, new { @placeholder = "Gjenta Epost*" })
                     </div>
                     <div class="editor-field">
                         @Html.ValidationMessageFor(u => u.PhoneNumber)
-                        @Html.TextBoxFor(u => u.PhoneNumber, new {@placeholder = "Mobilnummer" })
+                        @Html.TextBoxFor(u => u.PhoneNumber, new { @placeholder = "Mobilnummer" })
                     </div>
                     <div class="editor-field">
                         @Html.ValidationMessageFor(u => u.Gender)
@@ -45,7 +46,7 @@
                     </div>
                     <div class="editor-field">
                         @Html.ValidationMessageFor(u => u.Birthdate)
-                        @Html.TextBoxFor(u => u.Birthdate, new { @placeholder = "Fødselsdato", @type = "date"})
+                        @Html.TextBoxFor(u => u.Birthdate, new { @placeholder = "Fødselsdato", @type = "date" })
                     </div>
                     <div class="editor-field">
                         @Html.ValidationMessageFor(u => u.Zipcode)
@@ -149,13 +150,16 @@
                     </div>
                     <div class="editor-field">
                         @Html.ValidationMessageFor(u => u.Interests)
-                        @Html.TextBoxFor(u => u.Interests, new {@placeholder = "Interesser" })
+                        @Html.TextBoxFor(u => u.Interests, new { @placeholder = "Interesser" })
                     </div>
                     <div class="editor-field">
                         @Html.ValidationMessageFor(u => u.Password)
-                        @Html.PasswordFor(u => u.Password, new {@placeholder = "Velg deg et passord" })
+                        @Html.PasswordFor(u => u.Password, new { @placeholder = "Velg deg et passord" })
                     </div>
                     <input type="submit" value="Registrer" class="reg-button" />
+                    <center>
+                        <i id="loading"></i>
+                    </center>
                 </div>
             </div>
         </div>

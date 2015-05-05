@@ -73,7 +73,50 @@
 
     }
 
+    function validateUser(checkUser) {
+
+        $('.regForm').on('submit', function () {
+            $.ajax({
+                url: 'Registrering',
+                type: 'POST',
+                contentType: 'application/json;',
+                beforeSend: function () {
+                    $('#loading').addClass('fa fa-circle-o-notch fa-spin');
+                },
+                success: function (valid) {
+                    $('#loading').addClass('fa fa-circle-o-notch fa-spin');
+                },
+                error: function () {
+                } 
+            })
+        });
+    }
+    
+    function loginUser() {
+        $('form').on('submit', function (e) {
+            $.ajax({
+                url: 'Kundeklubb',
+                type: 'POST',
+                beforeSend: function () {
+                    $('#loading').addClass('fa fa-circle-o-notch fa-spin');
+                    console.log('LOADING THIS REQUEST OF LOG IN')    
+                    
+                },
+                success: function (valid) {
+                    $('#loading').addClass('fa fa-circle-o-notch fa-spin');
+                    console.log('success');
+                },
+                error: function (err) {
+                    console.log('Error i logg inn')
+                    e.preventDefault();
+                }
+            })
+        })
+    }
+    
+
     checkURL();
     search_stores();
-    
+    validateUser();
+    loginUser();
 })();

@@ -55,23 +55,23 @@ namespace Byporten.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public ActionResult Kundeklubb(Byporten.Models.UserLoginModel user)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        if (IsValdid(user.Email, user.Password))
-        //        {
-        //            FormsAuthentication.SetAuthCookie(user.Email, false);
-        //            return RedirectToAction("Subscription", "Home");                    
-        //        }
-        //        else
-        //        {
-        //            ModelState.AddModelError("", "Feil Brukernavn eller Passord.");
-        //        }
-        //    }
-        //    return View(user);
-        //}
+        [HttpPost]
+        public ActionResult Kundeklubb(Byporten.Models.UserLoginModel user)
+        {
+            if (ModelState.IsValid)
+            {
+                if (IsValid(user.Email, user.Password))
+                {
+                    FormsAuthentication.SetAuthCookie(user.Email, false);
+                    return RedirectToAction("Subscription", "Home");                    
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Feil Brukernavn eller Passord.");
+                }
+            }
+            return View(user);
+        }
 
         [HttpGet]
         public ActionResult Registrering()
