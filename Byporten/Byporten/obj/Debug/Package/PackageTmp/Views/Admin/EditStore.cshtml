@@ -35,7 +35,14 @@
             <center>
                 <!--Startdato-->
                 <p>Kategori</p>
-                @Html.EditorFor(model => model.Kategori, new { htmlAttributes = new { @class = "inputField" } })
+                @Html.DropDownListFor(model => model.Kategori, new[] {
+                        new SelectListItem() {Text = "Mat og drikke"},
+                        new SelectListItem() {Text = "Klær/Sko/Reiseeffekter"},
+                        new SelectListItem() {Text = "Spesialbutikker"},
+                        new SelectListItem() {Text = "Hus og hjem"},
+                        new SelectListItem() {Text = "Service og Tjenesteytende"},
+                        new SelectListItem() {Text = "Servering"}
+                })
                 @Html.ValidationMessageFor(model => model.Kategori, "", new { @class = "text-danger" })
                 <!--Sluttdato-->
                 <p>Hjemmeside</p>
@@ -51,7 +58,7 @@
                 @Html.ValidationMessageFor(model => model.Telefon, "", new { @class = "text-danger" })
                 <!--Publish button-->
                 <form>
-                    <input type="submit" value="Publiser" class="publish-btn" />
+                    <input type="submit" value="Lagre endringer" class="publish-btn" />
                 </form>
                 <!--Back to list-->
             </center>

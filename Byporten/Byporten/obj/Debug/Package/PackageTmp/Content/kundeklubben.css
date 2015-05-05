@@ -53,3 +53,9 @@ label{
     background-color: rgb(214, 69, 65);
     width: 100%;
 }
+
+#loading{
+    font-size: 5em;
+    position: relative;
+    top: 20px;
+}

@@ -16,10 +16,14 @@
     </div>
 }
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 92c908ee82979673f495eea338f92ac45c16ac84
 <div class="container">
     <h2>Ny stilling</h2>
 
-    @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data", @class = "createPosition" }))
     {
         @Html.AntiForgeryToken()
 

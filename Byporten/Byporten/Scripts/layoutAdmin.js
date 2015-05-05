@@ -59,24 +59,84 @@
         });
     }
 
+    var responseArticle = function () {
+        $('.createArticle').on('submit', function () {
+            $.ajax({
+                url: 'Create',
+                type: 'POST',
+                beforeSend: function () {
+                    $('.added').fadeIn();
+                    $('.publish-loading').append('<i style="font-size: 7em !important;" class="fa fa-circle-o-notch fa-spin"></i>');
+                },
+                success: function () {
+                    $('.added').fadeOut();
+                },
+                error: function (err) {
+                    return err;
+                }
+            })
+
+        });
+    }
+
+    var responseOffer = function () {
+        $('.createOffer').on('submit', function () {
+            $.ajax({
+                url: 'CreateOffer',
+                type: 'POST',
+                beforeSend: function () {
+                    $('.added').fadeIn();
+                    $('.publish-loading').append('<i style="font-size: 7em !important;" class="fa fa-circle-o-notch fa-spin"></i>');
+                },
+                success: function () {
+                    $('.added').fadeOut();
+                },
+                error: function (err) {
+                    return err;
+                }
+            })
+
+        });
+    }
+
+    var responsePosition = function () {
+        $('.createPosition').on('submit', function () {
+            $.ajax({
+                url: 'createNewPosition',
+                type: 'POST',
+                beforeSend: function () {
+                    $('.added').fadeIn();
+                    $('.publish-loading').append('<i style="font-size: 7em !important;" class="fa fa-circle-o-notch fa-spin"></i>');
+                },
+                success: function () {
+                    $('.added').fadeOut();
+                },
+                error: function (err) {
+                    return err;
+                }
+            })
+
+        });
+    }
+
     var responseStore = function () {
-        $('form').on('submit', function () {
+        $('.createStore').on('submit', function () {
             $.ajax({
                 url: 'CreateStore',
                 type: 'POST',
                 beforeSend: function () {
                     $('.added').fadeIn();
-                    $('.publish-loading').append('<i style="font-size: 7em; !important;" class="fa fa-circle-o-notch fa-spin"></i>');
+                    $('.publish-loading').append('<i style="font-size: 7em !important;" class="fa fa-circle-o-notch fa-spin"></i>');
                 },
                 success: function () {
-                    console.log('SUCCESS');
                     $('.added').fadeOut();
                 },
-                error: function(err) {
+                error: function (err) {
                     return err;
-            }
+                }
             })
-        })
+
+        });
     }
 
     var init = function () {
@@ -84,6 +144,9 @@
         search_articles();
         display_article_content();
         lineBreakOnNewArticle();
+        responseArticle();
+        responseOffer();
+        responsePosition();
         responseStore();
     }
 

@@ -5,9 +5,9 @@
 }
 
 <div class="container pushDown">
-    <h3 class="page-header">Kundeklubben</h3>
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-6">
+            <h3 class="page-header">Kundeklubben</h3>
             <ul>
                 <li>-20% på alle ordinære varer, samt -15% på skipakker hos G-Sport</li>
                 <li>-30% på valgfri behandling hos Headmasters</li>
@@ -20,28 +20,36 @@
             </ul>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6">
-            @using (Html.BeginForm())
-            {
-                <div class="login-kunde-form">
-                    <p class="lead">Logg inn</p>
-                    <div class="editor-field">
-                        @Html.ValidationMessageFor(u => u.Email)
-                        @Html.TextBoxFor(u => u.Email, new { @placeholder = "E-post" })    
-                    </div>
-                    <div class="editor-field">
-                        @Html.ValidationMessageFor(u => u.Password)
-                        @Html.PasswordFor(u => u.Password, new { @placeholder = "Passord" })     
-                    </div>
-                    @Html.ValidationSummary(true)
-                    <input type="submit" value="Logg inn" class="reg-button" />
-                    <hr />
-                    @Html.ActionLink("Ikke medlem? Registrer deg her", "Registrering", "Home");
-                </div>
+            @if(Request.IsAuthenticated){
+                @: <h1 class="page-header lead">Du er logget inn som @Html.Encode(User.Identity.Name)</h1>
+                @: @Html.ActionLink("Logg ut", "LogOut", "Home", new { @class = "logoutBtn" })
+                @Html.ActionLink("Se fordeler", "Subscription", "Home", new { @class = "seeMoreBtn" })
             }
-            
+            else{
+                using (Html.BeginForm())
+                {
+                    <div class="login-kunde-form">
+                        <p class="lead">Logg inn</p>
+                        <div class="editor-field">
+                            @Html.ValidationMessageFor(u => u.Email)
+                            @Html.TextBoxFor(u => u.Email, new { @placeholder = "E-post" })
+                        </div>
+                        <div class="editor-field">
+                            @Html.ValidationMessageFor(u => u.Password)
+                            @Html.PasswordFor(u => u.Password, new { @placeholder = "Passord" })
+                        </div>
+                        @Html.ValidationSummary(true)
+                        <input type="submit" value="Logg inn" class="reg-button" />
+                        <center>
+                            <i id="loading"></i>
+                        </center>
+                        <hr />
+                        
+                        @Html.ActionLink("Ikke medlem? Registrer deg her", "Registrering", "Home");
+                    </div>
+                }
+            }
+           
         </div>
     </div>
-
-   
-
 </div>
