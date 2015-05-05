@@ -28,7 +28,8 @@
                 <center>
                     <!--Startdato-->
                     <p>Kategori</p>
-                    @Html.EditorFor(model => model.Kategori, new { htmlAttributes = new { @class = "inputField"} })
+                    @Html.DropDownListFor(model => model.Kategori, new[] {
+                        new SelectListItem() {Text = " "}})
                     @Html.ValidationMessageFor(model => model.Kategori, "", new { @class = "text-danger" })
                     <!--Sluttdato-->
                     <p>Hjemmeside</p>
