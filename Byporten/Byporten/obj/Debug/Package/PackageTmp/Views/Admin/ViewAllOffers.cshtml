@@ -18,32 +18,23 @@
     }
     else
     {
-
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <td>Tittel</td>
-                    <td>Sluttdato</td>
-                    <td>Endre</td>
-                    <td>Detaljer</td>
-                    <td>Slett</td>
-                </tr>
-            </thead>
-
-            @foreach (var item in Model.Reverse())
-            {
-            <tbody>
-                <tr>
-                    <td>@Html.DisplayFor(modelitem => item.Tittel)</td>
-                    <td>@Html.DisplayFor(modelitem => item.Sluttdato)</td>
-                    <td>@Html.ActionLink("Endre", "EditOffer", new { id = item.Id }, new { @class = "link-button" })</td>
-                    <td>@Html.ActionLink("Detaljer", "OfferDetails", new { id = item.Id }, new { @class = "link-button" })</td>
-                    <td>@Html.ActionLink("Slett", "DeleteOffer", new { id = item.Id }, new { @class = "link-button" })</td>
-                </tr>
-            </tbody>
-            }
-
-        </table>
+        foreach (var offers in Model.Reverse())
+        {
+            <div class="row itemInModel">
+                <div class="col-lg-8 col-md-8 col-sm-6">
+                    <h3>@Html.DisplayFor(modelitem => offers.Tittel)</h3>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-3">
+                    <p><strong>Sluttdato:</strong></p>
+                    <p>@Html.DisplayFor(modelitem => offers.Sluttdato)</p>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-3">
+                    @Html.ActionLink("Endre", "EditOffer", new { id = offers.Id }, new { @class = "link-button btn btn-primary" })
+                    @Html.ActionLink("Detaljer", "OfferDetails", new { id = offers.Id }, new { @class = "link-button btn btn-info" })
+                    @Html.ActionLink("Slett", "DeleteOffer", new { id = offers.Id }, new { @class = "link-button btn btn-danger" })
+                </div>
+            </div>
+        }
     }
 
     

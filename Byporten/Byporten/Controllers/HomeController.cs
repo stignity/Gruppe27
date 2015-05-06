@@ -87,7 +87,7 @@ namespace Byporten.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public ActionResult Registrering(Byporten.Models.UserRegModel user)
         {
             if (ModelState.IsValid)
