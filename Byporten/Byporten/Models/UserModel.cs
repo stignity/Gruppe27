@@ -84,6 +84,7 @@ namespace Byporten.Models
     public class UserLoginModel {
 
         [Required(ErrorMessage="Kan ikke være tom")]
+        [RegularExpression(@"^[ÆØÅæøåa-zA-Z@.]+$", ErrorMessage = "Kun alfabetiske tegn")]
         [DataType(DataType.EmailAddress, ErrorMessage="Må være en epost")]
         public string Email { get; set; }
 

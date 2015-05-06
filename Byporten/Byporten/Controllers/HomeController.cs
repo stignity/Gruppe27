@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
@@ -55,7 +56,7 @@ namespace Byporten.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public ActionResult Kundeklubb(Byporten.Models.UserLoginModel user)
         {
             if (ModelState.IsValid)
