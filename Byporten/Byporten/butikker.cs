@@ -12,6 +12,7 @@ namespace Byporten
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Web.Mvc;
     
     public partial class butikker
     {
@@ -26,6 +27,7 @@ namespace Byporten
         public string Kategori { get; set; }
 
         [Required(ErrorMessage="Butikken må ha en beskrivelse")]
+        [AllowHtml]
         [MinLength(6, ErrorMessage="Beskrivelsen er fort kort"), MaxLength(3000, ErrorMessage="Beskrivelsen er for lang")]
         public string Beskrivelse { get; set; }
         public string Logo { get; set; }
