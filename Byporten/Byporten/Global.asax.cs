@@ -34,7 +34,7 @@ namespace Byporten
                 return ValidationResult.Success;
             var tagWithoutClosingRegex = new Regex(@"<[^>]+>");
             var hasTags = tagWithoutClosingRegex.IsMatch(value.ToString());
-
+             
             if (!hasTags)
                 return ValidationResult.Success;
             return new ValidationResult("Feltet kan ikke inneholde HTML eller XML tagger!");

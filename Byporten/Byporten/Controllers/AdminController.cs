@@ -67,6 +67,7 @@ namespace Byporten.Controllers
         {
             FormsAuthentication.SignOut();
             Session.Abandon();
+            Session.Remove("Username"); 
             return RedirectToAction("Portal", "Admin");
         }
         #endregion
