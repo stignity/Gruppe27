@@ -78,4 +78,3 @@ C:\Users\Øyvind\Documents\Gruppe27\Byporten\Byporten\bin\System.Web.WebPages.Ra
 C:\Users\Øyvind\Documents\Gruppe27\Byporten\Byporten\obj\Debug\Byporten.dll
 C:\Users\Øyvind\Documents\Gruppe27\Byporten\Byporten\obj\Debug\Byporten.pdb
 C:\Users\Øyvind\Documents\Gruppe27\Byporten\Byporten\obj\Debug\Byporten.csprojResolveAssemblyReference.cache
-C:\Users\Anders\Documents\gruppe27\Byporten\Byporten\obj\Debug\Byporten.csprojResolveAssemblyReference.cache
