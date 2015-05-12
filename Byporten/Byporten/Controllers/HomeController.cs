@@ -283,5 +283,17 @@ namespace Byporten.Controllers
             }
             return isValid;
         }
+
+        public ActionResult Servering()
+        {
+            try
+            {
+                return View(db.butikker.ToList());
+            }
+            catch
+            {
+                return RedirectToAction("serverError");
+            }
+        }
     }
 }

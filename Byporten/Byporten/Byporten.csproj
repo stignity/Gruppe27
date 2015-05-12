@@ -315,6 +315,7 @@
       <DependentUpon>UserModel.edmx</DependentUpon>
       <LastGenOutput>UserModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Views\Home\Servering.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
