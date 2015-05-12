@@ -142,7 +142,7 @@
     margin-top: 10px;
     padding-bottom: 20px;
     padding-top: 10px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    background-color: rgb(238, 238, 238);
 }
 
 .link-button{
