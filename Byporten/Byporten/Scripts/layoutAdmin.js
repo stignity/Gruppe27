@@ -70,6 +70,7 @@
                 },
                 success: function () {
                     $('.added').fadeOut();
+                    $('.inputField').val() = '';
                 },
                 error: function (err) {
                     return err;

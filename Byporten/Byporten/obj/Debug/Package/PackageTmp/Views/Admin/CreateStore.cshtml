@@ -4,10 +4,24 @@
     ViewBag.Title = "Ny butikk";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+
+
+@if (ViewData.ModelState.IsValid)
+{
+
+    <div class="added">
+        <center>
+            <div class="publish-loading">
+
+            </div>
+        </center>
+    </div>
+}
+
 <div class="container">
     <h2>Ny butikk</h2>
 
-    @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data", @class = "createStore" }))
     {
         @Html.AntiForgeryToken()
 
@@ -20,6 +34,7 @@
                 @Html.TextAreaFor(model => model.Beskrivelse, new { htmlAttributes = new { @class = "inputField" } })
                 @Html.ValidationMessageFor(model => model.Beskrivelse, "", new { @class = "text-danger" })
         </div>
+
         <div class="settings-sidebar">
             <div class="sidebar-header-settings">
                 <h4>Egenskaper</h4>

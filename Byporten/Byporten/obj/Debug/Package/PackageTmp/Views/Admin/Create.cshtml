@@ -4,9 +4,22 @@
     ViewBag.Title = "Ny artikkel";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+
+@if (ViewData.ModelState.IsValid)
+{
+    <div class="added">
+    <center>
+        <div class="publish-loading">
+
+        </div>
+    </center>
+</div>
+}
+
+
 <div class="container">
     <h2>Ny artikkel</h2>
-    @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data", @class = "createArticle" }))
     {
         @Html.AntiForgeryToken()
 
@@ -19,6 +32,7 @@
                 @Html.TextAreaFor(model => model.Content, new { htmlAttributes = new { @class = "inputField" } })
                 @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
                 
+
             </div>
         </div>
             <div class="settings-sidebar">

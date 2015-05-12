@@ -17,7 +17,12 @@
         </center>
     </div>
 }
-
+@if (ViewData["Success"] != null)
+{
+    <div id="successMessage" class="text-success">
+        @ViewData["Success"]
+    </div>
+}
 <div class="container">
     <h2>Ny butikk</h2>
 

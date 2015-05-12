@@ -10,13 +10,23 @@
     <div class="added">
     <center>
         <div class="publish-loading">
-
+            <div class="container">
+                <div class="text-success" style="font-size: 2em;">
+                    <p>Artikkelen blir opprettet...</p>
+                </div>
+            </div>
+            
         </div>
     </center>
 </div>
 }
 
-
+@if (ViewData["Success"] != null)
+{
+    <div id="successMessage" class="text-success">
+        @ViewData["Success"]
+    </div>
+}
 <div class="container">
     <h2>Ny artikkel</h2>
     @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data", @class = "createArticle" }))
@@ -65,6 +75,5 @@
                     </center>
                 </div>
             </div>
-        
     }
 </div>

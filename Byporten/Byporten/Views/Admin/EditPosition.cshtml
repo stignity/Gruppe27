@@ -9,7 +9,7 @@
 
     <h2>Endre denne stillingen</h2>
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data", @class = "editPosition" }))
     {
         @Html.AntiForgeryToken()
 
