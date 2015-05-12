@@ -283,13 +283,14 @@ namespace Byporten.Controllers
 
                     db.Entry(createpost).State = EntityState.Modified;
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("ViewAllArticles");
                 }
                 else
                 {
+                    
                     db.Entry(createpost).State = EntityState.Modified;
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("ViewAllArticles");
                 }
             }
             return View(createpost); 
