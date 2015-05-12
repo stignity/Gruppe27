@@ -42,7 +42,7 @@
                 <li>@Html.ActionLink("Stillinger", "AllPositions", "Admin")</li>
                 <li>@Html.ActionLink("Butikker", "ViewAllStores", "Admin")</li>
                 <li>@Html.ActionLink("Tilbud", "ViewAllOffers", "Admin")</li>
-                <li>@Html.ActionLink("Byporten.no", "index", "Home")</li>
+                <li>@Html.ActionLink("Byporten.no", "index", new { controller = "Home" }, new { target = "_blank" })</li>
             </ul>
         </div>
     </div>

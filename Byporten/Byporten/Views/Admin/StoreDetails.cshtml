@@ -22,6 +22,8 @@
             <p><b>Kategori:</b> @Html.DisplayFor(model => model.Kategori)</p>
             <p><b>Hjemmeside:</b> @Html.DisplayFor(model => model.Hjemmeside)</p>
             <p><b>Logo:</b> @Html.DisplayFor(model => model.Logo)</p>
+            <img class="image-placeholder" src="~/images/uploads/@Html.DisplayFor(model => model.Logo)" />
+            <hr />
             <p><b>Telefon:</b> @Html.DisplayFor(model => model.Telefon)</p>
         </div>
     </div>

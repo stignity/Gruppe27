@@ -20,7 +20,13 @@
 
 <div class="container">
     <h2>Ny butikk</h2>
-
+    @if (ViewData["Success"] != null)
+    {
+        <div id="successMessage" class="successMessage">
+            <p>@ViewData["Success"]</p>
+        </div>
+        <hr />
+    }
     @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data", @class = "createStore" }))
     {
         @Html.AntiForgeryToken()

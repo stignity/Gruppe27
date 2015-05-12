@@ -16,14 +16,16 @@
     </div>
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 92c908ee82979673f495eea338f92ac45c16ac84
 <div class="container">
     <h2>Ny stilling</h2>
-
-    @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data", @class = "createPosition" }))
+    @if (ViewData["Success"] != null)
+    {
+        <div id="successMessage" class="successMessage">
+            <p>@ViewData["Success"]</p>
+        </div>
+        <hr />
+    }
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data", @class = "createNewPosition" }))
     {
         @Html.AntiForgeryToken()
 

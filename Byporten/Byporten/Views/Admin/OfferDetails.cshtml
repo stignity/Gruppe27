@@ -22,6 +22,8 @@
             <p><b>Startdato:</b> @Html.DisplayFor(model => model.Startdato)</p>
             <p><b>Sluttdato:</b> @Html.DisplayFor(model => model.Sluttdato)</p>
             <p><b>BildeURL:</b> @Html.DisplayFor(model => model.Bilde)</p>
+            <img class="image-placeholder" src="~/images/uploads/@Html.DisplayFor(model => model.Bilde)" />
+            <hr />
         </div>
     </div>
     <p>

@@ -10,7 +10,12 @@
     <div class="added">
     <center>
         <div class="publish-loading">
-
+            <div class="container">
+                <div class="text-success" style="font-size: 2em;">
+                    <p>Artikkelen blir opprettet...</p>
+                </div>
+            </div>
+            
         </div>
     </center>
 </div>
@@ -19,6 +24,14 @@
 
 <div class="container">
     <h2>Ny artikkel</h2>
+    @if (ViewData["Success"] != null)
+    {
+        <div id="successMessage" class="successMessage">
+            <p><strong>@Html.DisplayFor(modelitem => modelitem.Title)</strong> @ViewData["Success"]</p>
+        </div>
+        <hr />
+    }
+    
     @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data", @class = "createArticle" }))
     {
         @Html.AntiForgeryToken()
@@ -65,6 +78,5 @@
                     </center>
                 </div>
             </div>
-        
     }
 </div>
