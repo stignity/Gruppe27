@@ -20,7 +20,32 @@
             var filter = $(this).val(), count = 0;
 
             // Loop through the comment list
-            $(".last-article-wrap").each(function () {
+            $(".itemInModel").each(function () {
+
+                // If the list item does not contain the text phrase fade it out
+                if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+                    $(this).fadeOut();
+
+                    // Show the list item if the phrase matches and increase the count by 1
+                } else {
+                    $(this).show();
+                    count++;
+                }
+            });
+
+            // Update the count
+            var numberItems = count;
+        });
+    }
+
+    var search_stores = function () {
+        $("#filterStore").keyup(function () {
+
+            // Retrieve the input field text and reset the count to zero
+            var filter = $(this).val(), count = 0;
+
+            // Loop through the comment list
+            $(".itemInModel").each(function () {
 
                 // If the list item does not contain the text phrase fade it out
                 if ($(this).text().search(new RegExp(filter, "i")) < 0) {
@@ -70,7 +95,8 @@
                 },
                 success: function () {
                     $('.added').fadeOut();
-                    $('.inputField').val() = '';
+                    var input = $('.inputField').val();
+                    console.log(input);
                 },
                 error: function (err) {
                     return err;
@@ -143,6 +169,7 @@
     var init = function () {
         mobile_menu();
         search_articles();
+        search_stores();
         display_article_content();
         lineBreakOnNewArticle();
         responseArticle();
