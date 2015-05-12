@@ -12,7 +12,13 @@
     <p class="createNewButton">
         @Html.ActionLink("Legg til ny butikk", "CreateStore")
     </p>
-
+    <hr />
+    <div class="search-area">
+        <form id="live-search" action="" method="post">
+            <input type="search" class="search-bar" id="filterStore" placeholder="Søk igjennom butikkene!" />
+        </form>
+    </div>
+    <hr />
     @if (!Model.Any())
     {
         <p class="lead page-header">Det finnes ingen butikker</p>

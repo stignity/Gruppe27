@@ -166,16 +166,18 @@ namespace Byporten.Controllers
 
                     db.createpost.Add(createpost);
                     db.SaveChanges();
-                    ViewData["Success"] = "Artikkelen ble opprettet!";
+                    ViewData["Success"] = " ble opprettet.";
                 }
                 else
                 {
                     db.createpost.Add(createpost);
                     db.SaveChanges();
-                    ViewData["Success"] = "Artikkelen ble opprettet uten bilde!";
+
+                    ViewData["Success"] = " ble opprettet uten bilde!";
                 }
                 
             }
+            ModelState.Clear();
             return View(createpost);
         }
         #endregion
