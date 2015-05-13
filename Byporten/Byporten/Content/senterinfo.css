@@ -1,8 +1,8 @@
 ﻿
 /*Kun for å dytte innhold ned fra header*/
 .content-wrap{
-    padding-top: 20px;
     padding-bottom:20px;
+    padding-top: 0px !important;
     height: auto;
 }
 #content-map{
