@@ -8,7 +8,7 @@
 <div class="container">
     <h2>Endre</h2>
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data", @class = "editArticle" }))
     {
         @Html.AntiForgeryToken()
 
@@ -45,7 +45,7 @@
                         @Html.ValidationMessageFor(model => model.ImageURL, "", new { @class = "text-danger" })
                         <!--Eksterne Lenker-->
                         <p>Eksterne lenker</p>
-                        @Html.EditorFor(model => model.ExternalLinkURL, new { htmlAttributes = new { @class = "inputField file", @placeholder = "Eksterne lenker" } })
+                        @Html.EditorFor(model => model.ExternalLinkURL, new { htmlAttributes = new { @class = "inputField file", @placeholder = "Http://www.eksempel.no" } })
                         @Html.ValidationMessageFor(model => model.ExternalLinkURL, "", new { @class = "text-danger" })
                         <!--Publish button-->
                         <form>

@@ -20,7 +20,32 @@
             var filter = $(this).val(), count = 0;
 
             // Loop through the comment list
-            $(".last-article-wrap").each(function () {
+            $(".itemInModel").each(function () {
+
+                // If the list item does not contain the text phrase fade it out
+                if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+                    $(this).fadeOut();
+
+                    // Show the list item if the phrase matches and increase the count by 1
+                } else {
+                    $(this).show();
+                    count++;
+                }
+            });
+
+            // Update the count
+            var numberItems = count;
+        });
+    }
+
+    var search_stores = function () {
+        $("#filterStore").keyup(function () {
+
+            // Retrieve the input field text and reset the count to zero
+            var filter = $(this).val(), count = 0;
+
+            // Loop through the comment list
+            $(".itemInModel").each(function () {
 
                 // If the list item does not contain the text phrase fade it out
                 if ($(this).text().search(new RegExp(filter, "i")) < 0) {
@@ -59,11 +84,98 @@
         });
     }
 
+    var responseArticle = function () {
+        $('.createArticle').on('submit', function () {
+            $.ajax({
+                url: 'Create',
+                type: 'POST',
+                beforeSend: function () {
+                    $('.added').fadeIn();
+                    $('.publish-loading').append('<i style="font-size: 7em !important;" class="fa fa-circle-o-notch fa-spin"></i>');
+                },
+                success: function () {
+                    $('.added').fadeOut();
+                    var input = $('.inputField').val();
+                    console.log(input);
+                },
+                error: function (err) {
+                    return err;
+                }
+            })
+
+        });
+    }
+
+    var responseOffer = function () {
+        $('.createOffer').on('submit', function () {
+            $.ajax({
+                url: 'CreateOffer',
+                type: 'POST',
+                beforeSend: function () {
+                    $('.added').fadeIn();
+                    $('.publish-loading').append('<i style="font-size: 7em !important;" class="fa fa-circle-o-notch fa-spin"></i>');
+                },
+                success: function () {
+                    $('.added').fadeOut();
+                },
+                error: function (err) {
+                    return err;
+                }
+            })
+
+        });
+    }
+
+    var responsePosition = function () {
+        $('.createPosition').on('submit', function () {
+            $.ajax({
+                url: 'createNewPosition',
+                type: 'POST',
+                beforeSend: function () {
+                    $('.added').fadeIn();
+                    $('.publish-loading').append('<i style="font-size: 7em !important;" class="fa fa-circle-o-notch fa-spin"></i>');
+                },
+                success: function () {
+                    $('.added').fadeOut();
+                },
+                error: function (err) {
+                    return err;
+                }
+            })
+
+        });
+    }
+
+    var responseStore = function () {
+        $('.createStore').on('submit', function () {
+            $.ajax({
+                url: 'CreateStore',
+                type: 'POST',
+                beforeSend: function () {
+                    $('.added').fadeIn();
+                    $('.publish-loading').append('<i style="font-size: 7em !important;" class="fa fa-circle-o-notch fa-spin"></i>');
+                },
+                success: function () {
+                    $('.added').fadeOut();
+                },
+                error: function (err) {
+                    return err;
+                }
+            })
+
+        });
+    }
+
     var init = function () {
         mobile_menu();
         search_articles();
+        search_stores();
         display_article_content();
         lineBreakOnNewArticle();
+        responseArticle();
+        responseOffer();
+        responsePosition();
+        responseStore();
     }
 
     //calling init

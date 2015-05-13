@@ -141,6 +141,7 @@
     <Content Include="images\web\bag.png" />
     <Content Include="images\web\banner1.png" />
     <Content Include="images\web\banner1_mobile.png" />
+    <Content Include="images\web\FaviconByporten.png" />
     <Content Include="images\web\gavekort-bakside-kant.png" />
     <Content Include="images\web\gavekort-forside.png" />
     <Content Include="images\web\image2_stairs.png" />
@@ -314,6 +315,7 @@
       <DependentUpon>UserModel.edmx</DependentUpon>
       <LastGenOutput>UserModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Views\Home\Servering.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

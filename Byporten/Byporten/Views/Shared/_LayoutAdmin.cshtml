@@ -1,8 +1,9 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@ViewBag.Title</title>
+    <link rel="icon" href="~/images/web/FaviconByporten.png" type="image/gif" sizes="16x16">
     <link href="~/Content/layoutAdmin.css" rel="stylesheet" />
     <link href="~/Content/font-awesome.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
@@ -42,7 +43,7 @@
                 <li>@Html.ActionLink("Stillinger", "AllPositions", "Admin")</li>
                 <li>@Html.ActionLink("Butikker", "ViewAllStores", "Admin")</li>
                 <li>@Html.ActionLink("Tilbud", "ViewAllOffers", "Admin")</li>
-                <li>@Html.ActionLink("Byporten.no", "index", "Home")</li>
+                <li>@Html.ActionLink("Byporten.no", "index", new { controller = "Home" }, new { target = "_blank" })</li>
             </ul>
         </div>
     </div>

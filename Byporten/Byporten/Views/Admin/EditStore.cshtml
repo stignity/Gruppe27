@@ -9,7 +9,7 @@
 
     <h2>Endre denne butikken</h2>
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data", @class = "editStore" }))
     {
         @Html.AntiForgeryToken()
 
@@ -24,7 +24,9 @@
             <!--Artikkel-->
             @Html.TextAreaFor(model => model.Beskrivelse, new { htmlAttributes = new { @class = "inputField" } })
             @Html.ValidationMessageFor(model => model.Beskrivelse, "", new { @class = "text-danger" })
-
+            <div class="back-button">
+                @Html.ActionLink("Tilbake til butikker", "ViewAllStores")
+            </div>
         </div>
     </div>
     <div class="settings-sidebar">
@@ -54,7 +56,7 @@
                 @Html.ValidationMessageFor(model => model.Logo, "", new { @class = "text-danger" })
                 <!--Eksterne Lenker-->
                 <p>Telefon</p>
-                @Html.EditorFor(model => model.Telefon, new { htmlAttributes = new { @class = "inputField file", @placeholder = "Eksterne lenker" } })
+                @Html.EditorFor(model => model.Telefon, new { htmlAttributes = new { @class = "inputField file", @placeholder = "Http://www.eksempel.no" } })
                 @Html.ValidationMessageFor(model => model.Telefon, "", new { @class = "text-danger" })
                 <!--Publish button-->
                 <form>

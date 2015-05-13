@@ -67,6 +67,7 @@ namespace Byporten.Controllers
         {
             FormsAuthentication.SignOut();
             Session.Abandon();
+            Session.Remove("Username"); 
             return RedirectToAction("Portal", "Admin");
         }
         #endregion
@@ -91,29 +92,6 @@ namespace Byporten.Controllers
                 }
             }
             return isValid;
-        }
-        #endregion
-
-        #region Post Details
-        public ActionResult Details(int? id)
-        {
-            if (Session["Username"] == null)
-            {
-                return RedirectToAction("Portal", "Admin");
-            }
-            else
-            {
-                if (id == null)
-                {
-                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                }
-                createpost createpost = db.createpost.Find(id);
-                if (createpost == null)
-                {
-                    return HttpNotFound();
-                }
-                return View(createpost);
-            }
         }
         #endregion
 
@@ -147,9 +125,7 @@ namespace Byporten.Controllers
                     imageURL.ContentType.ToLower() != "image/psd" &&
                     imageURL.ContentType.ToLower() != "image/pdf") 
                 {
-
                     ModelState.AddModelError("ImageURL", "Må være bildefil");
-
                 }
 
                 try
@@ -176,22 +152,56 @@ namespace Byporten.Controllers
                 {
                     ModelState.AddModelError("model.ImageURL", "Noe gikk galt");
                 }
-
-                var imageName = Path.GetFileName(imageURL.FileName);
-                var path = Path.Combine(Server.MapPath("~/images/uploads/"), imageName);
-
-                imageURL.SaveAs(path);
-                createpost.ImageURL = imageName;
             }
 
             if (ModelState.IsValid)
             {
-                //ViewData["SuccessMessage"] = "Artikkel opprettet!";
-                db.createpost.Add(createpost);
-                db.SaveChanges();
-                return RedirectToAction("Create");
+                if (imageURL != null)
+                {
+                    var imageName = Path.GetFileName(imageURL.FileName);
+                    var path = Path.Combine(Server.MapPath("~/images/uploads/"), imageName);
+
+                    imageURL.SaveAs(path);
+                    createpost.ImageURL = imageName;
+
+                    db.createpost.Add(createpost);
+                    db.SaveChanges();
+                    ViewData["Success"] = " ble opprettet.";
+                }
+                else
+                {
+                    db.createpost.Add(createpost);
+                    db.SaveChanges();
+
+                    ViewData["Success"] = " ble opprettet uten bilde!";
+                }
+                
             }
+            ModelState.Clear();
             return View(createpost);
+        }
+        #endregion
+
+        #region Post Details
+        public ActionResult Details(int? id)
+        {
+            if (Session["Username"] == null)
+            {
+                return RedirectToAction("Portal", "Admin");
+            }
+            else
+            {
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                createpost createpost = db.createpost.Find(id);
+                if (createpost == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(createpost);
+            }
         }
         #endregion
 
@@ -220,15 +230,72 @@ namespace Byporten.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Content,CreateDate,ExpireDate,ImageURL,ExternalLinkURL")] createpost createpost)
+        public ActionResult Edit([Bind(Include = "Id,Title,Content,CreateDate,ExpireDate,ImageURL,ExternalLinkURL")] createpost createpost, HttpPostedFileBase imageURL)
         {
+            const int ImageMinimumBytes = 1024;
+
+            if (imageURL != null && imageURL.ContentLength > 0)
+            {
+                //Check image mime type
+                if (imageURL.ContentType.ToLower() != "image/jpg" &&
+                    imageURL.ContentType.ToLower() != "image/jpeg" &&
+                    imageURL.ContentType.ToLower() != "image/png" &&
+                    imageURL.ContentType.ToLower() != "image/gif" &&
+                    imageURL.ContentType.ToLower() != "image/psd" &&
+                    imageURL.ContentType.ToLower() != "image/pdf")
+                {
+                    ModelState.AddModelError("ImageURL", "Må være bildefil");
+                }
+
+                try
+                {
+                    if (!imageURL.InputStream.CanRead)
+                    {
+                        ModelState.AddModelError("ImageURL", "Må være en bildefil!");
+                    }
+                    if (imageURL.ContentLength < ImageMinimumBytes)
+                    {
+                        ModelState.AddModelError("ImageURL", "Bilde må være større enn 1024 bytes");
+                    }
+
+                    byte[] buffer = new byte[1024];
+                    imageURL.InputStream.Read(buffer, 0, 1024);
+                    string content = System.Text.Encoding.UTF8.GetString(buffer);
+                    if (Regex.IsMatch(content, @"<script|<html|<head|<title|<body|<pre|<table|<a\s+href|<img|<plaintext|<cross\-domain\-policy",
+                        RegexOptions.IgnoreCase | RegexOptions.CultureInvariant | RegexOptions.Multiline))
+                    {
+                        ModelState.AddModelError("model.ImageURL", "Potensiell farlig fil funnet!");
+                    }
+                }
+                catch (Exception)
+                {
+                    ModelState.AddModelError("model.ImageURL", "Noe gikk galt");
+                }
+            }
+
             if (ModelState.IsValid)
             {
-                db.Entry(createpost).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (imageURL != null)
+                {
+                    var imageName = Path.GetFileName(imageURL.FileName);
+                    var path = Path.Combine(Server.MapPath("~/images/uploads/"), imageName);
+
+                    imageURL.SaveAs(path);
+                    createpost.ImageURL = imageName;
+
+                    db.Entry(createpost).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("ViewAllArticles");
+                }
+                else
+                {
+                    
+                    db.Entry(createpost).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("ViewAllArticles");
+                }
             }
-            return View(createpost);
+            return View(createpost); 
         }
         #endregion
 
@@ -274,6 +341,7 @@ namespace Byporten.Controllers
 
         #endregion
 
+        //Disposing
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -363,19 +431,68 @@ namespace Byporten.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult createNewPosition(availablepositions availableposition, HttpPostedFileBase imageUrl)
         {
+
+            const int ImageMinimumBytes = 1024;
+
             if (imageUrl != null && imageUrl.ContentLength > 0)
             {
-                var imageName = Path.GetFileName(imageUrl.FileName);
-                var path = Path.Combine(Server.MapPath("~/images/positions/"), imageName);
 
-                imageUrl.SaveAs(path);
-                availableposition.ImageURL = imageName;
+                if (imageUrl.ContentType.ToLower() != "image/jpg" &&
+                    imageUrl.ContentType.ToLower() != "image/jpeg" &&
+                    imageUrl.ContentType.ToLower() != "image/png" &&
+                    imageUrl.ContentType.ToLower() != "image/gif" &&
+                    imageUrl.ContentType.ToLower() != "image/psd" &&
+                    imageUrl.ContentType.ToLower() != "image/pdf")
+                {
+                    ModelState.AddModelError("ImageURL", "Må være bildefil");
+                }
+
+                try
+                {
+                    if (!imageUrl.InputStream.CanRead)
+                    {
+                        ModelState.AddModelError("ImageURL", "Må være en bildefil!");
+                    }
+                    if (imageUrl.ContentLength < ImageMinimumBytes)
+                    {
+                        ModelState.AddModelError("ImageURL", "Bilde må være større enn 1024 bytes");
+                    }
+
+                    byte[] buffer = new byte[1024];
+                    imageUrl.InputStream.Read(buffer, 0, 1024);
+                    string content = System.Text.Encoding.UTF8.GetString(buffer);
+                    if (Regex.IsMatch(content, @"<script|<html|<head|<title|<body|<pre|<table|<a\s+href|<img|<plaintext|<cross\-domain\-policy",
+                        RegexOptions.IgnoreCase | RegexOptions.CultureInvariant | RegexOptions.Multiline))
+                    {
+                        ModelState.AddModelError("model.ImageURL", "Potensiell farlig fil funnet!");
+                    }
+                }
+                catch (Exception)
+                {
+                    ModelState.AddModelError("model.ImageURL", "Noe gikk galt");
+                }
             }
             
             if(ModelState.IsValid) {
-                db.availablepositions.Add(availableposition);
-                db.SaveChanges();
-                return RedirectToAction("createNewPosition", "Admin");
+                if (imageUrl != null)
+                {
+                    var imageName = Path.GetFileName(imageUrl.FileName);
+                    var path = Path.Combine(Server.MapPath("~/images/positions/"), imageName);
+
+                    imageUrl.SaveAs(path);
+                    availableposition.ImageURL = imageName;
+
+                    db.availablepositions.Add(availableposition);
+                    db.SaveChanges();
+                    ViewData["Success"] = "Stillingen ble opprettet.";
+                }
+                else
+                {
+                    db.availablepositions.Add(availableposition);
+                    db.SaveChanges();
+                    ViewData["Success"] = "Stllingen ble opprettet uten bilde.";
+                }
+                
             }
             return View(availableposition);
         }
@@ -406,10 +523,58 @@ namespace Byporten.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditPosition([Bind(Include = "Id, Title, Description, CreateDate, ExpireDate, ImageURL, ExternalLinkURL")] availablepositions availableposition)
+        public ActionResult EditPosition([Bind(Include = "Id, Title, Description, CreateDate, ExpireDate, ImageURL, ExternalLinkURL")] availablepositions availableposition, HttpPostedFileBase imageUrl)
         {
+
+            const int ImageMinimumBytes = 1024;
+
+            if (imageUrl != null && imageUrl.ContentLength > 0)
+            {
+
+                if (imageUrl.ContentType.ToLower() != "image/jpg" &&
+                    imageUrl.ContentType.ToLower() != "image/jpeg" &&
+                    imageUrl.ContentType.ToLower() != "image/png" &&
+                    imageUrl.ContentType.ToLower() != "image/gif" &&
+                    imageUrl.ContentType.ToLower() != "image/psd" &&
+                    imageUrl.ContentType.ToLower() != "image/pdf")
+                {
+                    ModelState.AddModelError("ImageURL", "Må være bildefil");
+                }
+
+                try
+                {
+                    if (!imageUrl.InputStream.CanRead)
+                    {
+                        ModelState.AddModelError("ImageURL", "Må være en bildefil!");
+                    }
+                    if (imageUrl.ContentLength < ImageMinimumBytes)
+                    {
+                        ModelState.AddModelError("ImageURL", "Bilde må være større enn 1024 bytes");
+                    }
+
+                    byte[] buffer = new byte[1024];
+                    imageUrl.InputStream.Read(buffer, 0, 1024);
+                    string content = System.Text.Encoding.UTF8.GetString(buffer);
+                    if (Regex.IsMatch(content, @"<script|<html|<head|<title|<body|<pre|<table|<a\s+href|<img|<plaintext|<cross\-domain\-policy",
+                        RegexOptions.IgnoreCase | RegexOptions.CultureInvariant | RegexOptions.Multiline))
+                    {
+                        ModelState.AddModelError("model.ImageURL", "Potensiell farlig fil funnet!");
+                    }
+                }
+                catch (Exception)
+                {
+                    ModelState.AddModelError("model.ImageURL", "Noe gikk galt");
+                }
+            }
+
             if (ModelState.IsValid)
             {
+                var imageName = Path.GetFileName(imageUrl.FileName);
+                var path = Path.Combine(Server.MapPath("~/images/positions/"), imageName);
+
+                imageUrl.SaveAs(path);
+                availableposition.ImageURL = imageName;
+
                 db.Entry(availableposition).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("AllPositions");
@@ -495,26 +660,67 @@ namespace Byporten.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateStore(butikker butikker, HttpPostedFileBase logo)
         {
+
+            const int logoMinimumBytes = 1024;
+
             if (logo != null && logo.ContentLength > 0)
             {
-                var logoName = Path.GetFileName(logo.FileName);
-                var path = Path.Combine(Server.MapPath("~/images/stores/"), logoName);
 
-                logo.SaveAs(path);
-                butikker.Logo = logoName;
+                if (logo.ContentType.ToLower() != "image/jpg" &&
+                    logo.ContentType.ToLower() != "image/jpeg" &&
+                    logo.ContentType.ToLower() != "image/png" &&
+                    logo.ContentType.ToLower() != "image/gif" &&
+                    logo.ContentType.ToLower() != "image/psd" &&
+                    logo.ContentType.ToLower() != "image/pdf")
+                {
+                    ModelState.AddModelError("ImageURL", "Må være bildefil");
+                }
+
+                try
+                {
+                    if (!logo.InputStream.CanRead)
+                    {
+                        ModelState.AddModelError("ImageURL", "Må være en bildefil!");
+                    }
+                    if (logo.ContentLength < logoMinimumBytes)
+                    {
+                        ModelState.AddModelError("ImageURL", "Bilde må være større enn 1024 bytes");
+                    }
+
+                    byte[] buffer = new byte[1024];
+                    logo.InputStream.Read(buffer, 0, 1024);
+                    string content = System.Text.Encoding.UTF8.GetString(buffer);
+                    if (Regex.IsMatch(content, @"<script|<html|<head|<title|<body|<pre|<table|<a\s+href|<img|<plaintext|<cross\-domain\-policy",
+                        RegexOptions.IgnoreCase | RegexOptions.CultureInvariant | RegexOptions.Multiline))
+                    {
+                        ModelState.AddModelError("model.ImageURL", "Potensiell farlig fil funnet!");
+                    }
+                }
+                catch (Exception)
+                {
+                    ModelState.AddModelError("model.ImageURL", "Noe gikk galt");
+                }
             }
 
             if (ModelState.IsValid)
             {
-                try
+                if (logo != null)
+                {
+                    var logoName = Path.GetFileName(logo.FileName);
+                    var path = Path.Combine(Server.MapPath("~/images/stores/"), logoName);
+
+                    logo.SaveAs(path);
+                    butikker.Logo = logoName;
+
+                    db.butikker.Add(butikker);
+                    db.SaveChanges();
+                    ViewData["Success"] = "Butikken ble opprettet.";
+                }
+                else
                 {
                     db.butikker.Add(butikker);
                     db.SaveChanges();
-                    return RedirectToAction("CreateStore");
-                }
-                catch (Exception ex)
-                {
-                    
+                    ViewData["Success"] = "Butikken ble opprettet uten bilde.";
                 }
             }
 
@@ -547,12 +753,70 @@ namespace Byporten.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditStore([Bind(Include = "Id, Navn, Kategori, Beskrivelse, Logo, Telefon, Hjemmeside")] butikker butikker) {
+        public ActionResult EditStore([Bind(Include = "Id, Navn, Kategori, Beskrivelse, Logo, Telefon, Hjemmeside")] butikker butikker, HttpPostedFileBase logo) {
+
+            const int logoMinimumBytes = 1024;
+
+            if (logo != null && logo.ContentLength > 0)
+            {
+
+                if (logo.ContentType.ToLower() != "image/jpg" &&
+                    logo.ContentType.ToLower() != "image/jpeg" &&
+                    logo.ContentType.ToLower() != "image/png" &&
+                    logo.ContentType.ToLower() != "image/gif" &&
+                    logo.ContentType.ToLower() != "image/psd" &&
+                    logo.ContentType.ToLower() != "image/pdf")
+                {
+                    ModelState.AddModelError("ImageURL", "Må være bildefil");
+                }
+
+                try
+                {
+                    if (!logo.InputStream.CanRead)
+                    {
+                        ModelState.AddModelError("ImageURL", "Må være en bildefil!");
+                    }
+                    if (logo.ContentLength < logoMinimumBytes)
+                    {
+                        ModelState.AddModelError("ImageURL", "Bilde må være større enn 1024 bytes");
+                    }
+
+                    byte[] buffer = new byte[1024];
+                    logo.InputStream.Read(buffer, 0, 1024);
+                    string content = System.Text.Encoding.UTF8.GetString(buffer);
+                    if (Regex.IsMatch(content, @"<script|<html|<head|<title|<body|<pre|<table|<a\s+href|<img|<plaintext|<cross\-domain\-policy",
+                        RegexOptions.IgnoreCase | RegexOptions.CultureInvariant | RegexOptions.Multiline))
+                    {
+                        ModelState.AddModelError("model.ImageURL", "Potensiell farlig fil funnet!");
+                    }
+                }
+                catch (Exception)
+                {
+                    ModelState.AddModelError("model.ImageURL", "Noe gikk galt");
+                }
+            }
+
             if (ModelState.IsValid)
             {
-                db.Entry(butikker).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("ViewAllStores");
+                if (logo != null)
+                {
+                    var logoName = Path.GetFileName(logo.FileName);
+                    var path = Path.Combine(Server.MapPath("~/images/stores/"), logoName);
+
+                    logo.SaveAs(path);
+                    butikker.Logo = logoName;
+
+                    db.Entry(butikker).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("ViewAllStores");
+                }
+                else
+                {
+                    db.Entry(butikker).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("ViewAllStores");
+                }
+
             }
             return View(butikker);
         }
@@ -629,19 +893,65 @@ namespace Byporten.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateOffer(aktuelt aktuelt, HttpPostedFileBase Bilde)
         {
+            const int ImageMinimumBytes = 1024;
+
             if (Bilde != null && Bilde.ContentLength > 0)
             {
-                var imageName = Path.GetFileName(Bilde.FileName);
-                var path = Path.Combine(Server.MapPath("~/images/offers/"), imageName);
 
-                Bilde.SaveAs(path);
-                aktuelt.Bilde = imageName;
+                if (Bilde.ContentType.ToLower() != "image/jpg" &&
+                    Bilde.ContentType.ToLower() != "image/jpeg" &&
+                    Bilde.ContentType.ToLower() != "image/png" &&
+                    Bilde.ContentType.ToLower() != "image/gif" &&
+                    Bilde.ContentType.ToLower() != "image/psd" &&
+                    Bilde.ContentType.ToLower() != "image/pdf")
+                {
+                    ModelState.AddModelError("ImageURL", "Må være bildefil");
+                }
+                try
+                {
+                    if (!Bilde.InputStream.CanRead)
+                    {
+                        ModelState.AddModelError("ImageURL", "Må være en bildefil!");
+                    }
+                    if (Bilde.ContentLength < ImageMinimumBytes)
+                    {
+                        ModelState.AddModelError("ImageURL", "Bilde må være større enn 1024 bytes");
+                    }
+
+                    byte[] buffer = new byte[1024];
+                    Bilde.InputStream.Read(buffer, 0, 1024);
+                    string content = System.Text.Encoding.UTF8.GetString(buffer);
+                    if (Regex.IsMatch(content, @"<script|<html|<head|<title|<body|<pre|<table|<a\s+href|<img|<plaintext|<cross\-domain\-policy",
+                        RegexOptions.IgnoreCase | RegexOptions.CultureInvariant | RegexOptions.Multiline))
+                    {
+                        ModelState.AddModelError("model.ImageURL", "Potensiell farlig fil funnet!");
+                    }
+                }
+                catch (Exception)
+                {
+                    ModelState.AddModelError("model.ImageURL", "Noe gikk galt");
+                }
             }
             if (ModelState.IsValid)
             {
-                db.aktuelt.Add(aktuelt);
-                db.SaveChanges();
-                return RedirectToAction("CreateOffer");
+                if (Bilde != null)
+                {
+                    var imageName = Path.GetFileName(Bilde.FileName);
+                    var path = Path.Combine(Server.MapPath("~/images/offers/"), imageName);
+
+                    Bilde.SaveAs(path);
+                    aktuelt.Bilde = imageName;
+
+                    db.aktuelt.Add(aktuelt);
+                    db.SaveChanges();
+                    ViewData["Success"] = "Tilbudet er opprettet.";
+                }
+                else
+                {
+                    db.aktuelt.Add(aktuelt);
+                    db.SaveChanges();
+                    ViewData["Success"] = "Tilbudet ble opprettet uten bilde.";
+                }
             }
             return View(aktuelt);
         }
@@ -736,6 +1046,7 @@ namespace Byporten.Controllers
             return View();
         }
 
+        //List all the uploaded images
         public ActionResult ImageList(Byporten.Models.ImageModel image)
         {
             var model = new ImageModel()

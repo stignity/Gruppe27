@@ -6,4 +6,7 @@
   <parameter name="userEntities-Web.config Connection String" description="userEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/UserModel.csdl|res://*/UserModel.ssdl|res://*/UserModel.msl;provider=MySql.Data.MySqlClient;provider connection string=&quot;server=46.226.13.53;user id=Administrator;password=AlfaRomeoGTV86;persistsecurityinfo=True;database=byporten&quot;" tags="SqlConnectionString">
     <parameterEntry kind="XmlFile" scope="C:\\Users\\Øyvind\\Documents\\Gruppe27\\Byporten\\Byporten\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='userEntities']/@connectionString" />
   </parameter>
+  <parameter name="bplussuserEntities-Web.config Connection String" description="bplussuserEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/UserModel.csdl|res://*/UserModel.ssdl|res://*/UserModel.msl;provider=MySql.Data.MySqlClient;provider connection string=&quot;server=46.226.13.53;user id=Administrator;password=AlfaRomeoGTV86;persistsecurityinfo=True;database=byporten&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Øyvind\\Documents\\Gruppe27\\Byporten\\Byporten\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='bplussuserEntities']/@connectionString" />
+  </parameter>
 </parameters>

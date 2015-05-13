@@ -8,13 +8,8 @@
 
 <div class="container butikk-container">
     <h3 class="page-header">Butikker</h3>
-
-    <input type="search" id="filter" class="search-store" placeholder="Søk på butikker!" />
     <p class="lead no-store"></p>
 
-    @{
-        var itemcount = 0;
-    }
 
     @if (!Model.Any())
     {
@@ -22,30 +17,74 @@
     }
     else
     {
-        foreach (var store in Model.OrderBy(item => item.Navn))
-        {
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <p class="page-header lead">Mat og Drikke</p>
+                @foreach (var item in Model.Where(i => i.Kategori == "Mat og drikke"))
+                {
+                    <ul class="store-list">
+                        <li>
+                            <a class="store-link" href="@Url.Action("viewStore", new {id = item.Id })">@Html.DisplayFor(modelItem => item.Navn)</a>
+                        </li>
+                    </ul>
+                }
 
-             if (itemcount % 3 == 0 || itemcount % 3 == 3)
-            {
-               @:<div class="row">
-            }
+                <p class="page-header lead">Hus og Hjem</p>
+                @foreach (var item in Model.Where(i => i.Kategori == "Hus og hjem"))
+                {
+                <ul class="store-list">
+                    <li>
+                        <a class="store-link" href="@Url.Action("viewStore", new {id = item.Id })">@Html.DisplayFor(modelitem => item.Navn)</a>
+                    </li>
+                </ul>
+                }
 
-        <a class="store-link" href="@Url.Action("viewStore", new {id = store.Id })">
-            <div class="col-lg-4 store">
-                <div class="inner-store">
-                    <p class="lead">@Html.DisplayFor(modelItem => store.Navn)</p>
-                    <span style="display: none;">@Html.DisplayFor(modelItem => store.Kategori)</span>
-                </div>
+                <p class="page-header lead">Service og Tjenesteytende</p>
+                @foreach (var item in Model.Where(i => i.Kategori == "Service og Tjenesteytende"))
+                {
+                    <ul class="store-list">
+                        <li>
+                            <a class="store-link" href="@Url.Action("viewStore", new {id = item.Id })">@Html.DisplayFor(modelitem => item.Navn)</a>
+                        </li>
+                    </ul>
+                }
+
+                <p class="page-header lead">Servering</p>
+                @foreach (var item in Model.Where(i => i.Kategori == "Servering"))
+                {
+                    <ul class="store-list">
+                        <li>
+                            <a class="store-link" href="@Url.Action("viewStore", new {id = item.Id })">@Html.DisplayFor(modelitem => item.Navn)</a>
+                        </li>
+                    </ul>
+                }
             </div>
-        </a>
 
-            itemcount++;
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <p class="page-header lead">Klær/Sko/Reiseeffekter</p>
+                @foreach (var item in Model.Where(i => i.Kategori == "Klær/Sko/Reiseeffekter"))
+                {
+                    <ul class="store-list">
+                        <li>
+                            <a class="store-link" href="@Url.Action("viewStore", new {id = item.Id })">@Html.DisplayFor(modelitem => item.Navn)</a>
+                        </li>
+                    </ul>
+                }
+            </div>
 
-            if ((itemcount % 3) == 0)
-            {
-                @:</div>
-            }
-        }
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <p class="page-header lead">Spesialbutikker</p>
+                @foreach (var item in Model.Where(i => i.Kategori == "Spesialbutikker"))
+                {
+                    <ul class="store-list">
+                        <li>
+                            <a class="store-link" href="@Url.Action("viewStore", new {id = item.Id })">@Html.DisplayFor(modelitem => item.Navn)</a>
+                        </li>
+                    </ul>
+                }
+
+            </div>
+        </div>
     }
 
     

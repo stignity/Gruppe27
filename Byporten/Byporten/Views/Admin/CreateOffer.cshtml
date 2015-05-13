@@ -4,10 +4,28 @@
     ViewBag.Title = "Nytt tilbud";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+
+@if (ViewData.ModelState.IsValid)
+{
+    <div class="added">
+        <center>
+            <div class="publish-loading">
+
+            </div>
+        </center>
+    </div>
+}
+
 <div class="container">
     <h2>Nytt tilbud</h2>
-
-    @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    @if (ViewData["Success"] != null)
+    {
+        <div id="successMessage" class="successMessage">
+            <p>@ViewData["Success"]</p>
+        </div>
+        <hr />
+    }
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data", @class = "createOffer" }))
     {
         @Html.AntiForgeryToken()
 
