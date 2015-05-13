@@ -111,3 +111,10 @@ ul.top-info-sublist{
 #slideshow > div { 
      position: absolute;
 }
+
+
+/*Servering*/
+
+.servering-container{
+    padding-bottom: 80px;
+}

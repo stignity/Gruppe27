@@ -25,7 +25,9 @@
                 <!--Artikkel-->
                 @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "inputField" } })
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-
+                <div class="back-button">
+                    @Html.ActionLink("Tilbake til stillinger", "AllPositions")
+                </div>
             </div>
         </div>
         <div class="settings-sidebar">
