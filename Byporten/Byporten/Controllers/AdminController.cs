@@ -43,7 +43,7 @@ namespace Byporten.Controllers
         #endregion
 
         #region Admin Login HttpPost
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public ActionResult Portal(Byporten.Models.AdminModel admin) {
             if (ModelState.IsValid)
             {
@@ -180,9 +180,9 @@ namespace Byporten.Controllers
                         ModelState.AddModelError("model.ImageURL", "Potensiell farlig fil funnet!");
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    ModelState.AddModelError("model.ImageURL", "Noe gikk galt");
+                    ModelState.AddModelError("model.ImageURL", "Noe gikk galt, feilkode: " + ex.Message);
                 }
             }
 
@@ -265,6 +265,7 @@ namespace Byporten.Controllers
         public ActionResult Edit([Bind(Include = "Id,Title,Content,CreateDate,ExpireDate,ImageURL,ExternalLinkURL")] createpost createpost, HttpPostedFileBase imageURL)
         {
             const int ImageMinimumBytes = 1024;
+            const Int64 imageMaximumSize = 4096;
 
             if (imageURL != null && imageURL.ContentLength > 0)
             {
@@ -288,6 +289,10 @@ namespace Byporten.Controllers
                     if (imageURL.ContentLength < ImageMinimumBytes)
                     {
                         ModelState.AddModelError("ImageURL", "Bilde må være større enn 1024 bytes");
+                    }
+                    if (imageURL.ContentLength > (imageMaximumSize * 1024))
+                    {
+                        ModelState.AddModelError("ImageURL", "Bilde kan ikke være større enn 4 Mb");
                     }
 
                     byte[] buffer = new byte[1024];
