@@ -59,3 +59,7 @@ label{
     position: relative;
     top: 20px;
 }
+
+.editor-field label{
+    margin-top: 10px;
+}

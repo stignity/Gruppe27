@@ -209,7 +209,6 @@ namespace Byporten.Controllers
                 }
                 
             }
-            ModelState.Clear();
             return View(createpost);
         }
         #endregion

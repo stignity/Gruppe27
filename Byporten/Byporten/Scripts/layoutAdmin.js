@@ -85,7 +85,7 @@
     }
 
     var responseArticle = function () {
-        $('.createArticle').on('submit', function () {
+        $('.createArticle').on('submit', function (e) {
             $.ajax({
                 url: 'Create',
                 type: 'POST',
@@ -95,14 +95,14 @@
                 },
                 success: function () {
                     $('.added').fadeOut();
-                    var input = $('.inputField').val();
-                    console.log(input);
+                    $('.createArticle').resetForm();
+                    
                 },
                 error: function (err) {
-                    return err;
+                    e.preventDefault();
                 }
-            })
 
+            })
         });
     }
 
