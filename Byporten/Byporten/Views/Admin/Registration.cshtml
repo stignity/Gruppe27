@@ -1,0 +1,32 @@
+﻿@model Byporten.Models.AdminModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<h2>Lag en ny adminkonto</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "Feil! Try again!");
+    <div class="container">
+        <fieldset>
+            <legend>Create new user</legend>
+            <div class="editor-label">
+                @Html.LabelFor(u => u.Username)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(u => u.Username)
+                @Html.ValidationMessageFor(u => u.Username)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(u => u.Password)
+            </div>
+            <div class="editor-field">
+                @Html.PasswordFor(u => u.Password)
+                @Html.ValidationMessageFor(u => u.Password)
+            </div>
+            <input type="submit" value="register" />
+        </fieldset>
+    </div>
+}

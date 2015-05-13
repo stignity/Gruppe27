@@ -75,7 +75,7 @@ namespace Byporten.Controllers
                 }
                 catch (Exception ex)
                 {
-                    ModelState.AddModelError("", ex.Message);
+                    ModelState.AddModelError("", "Feil brukernavn/passord");
                 }
             }
             return View(user);

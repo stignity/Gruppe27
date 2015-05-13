@@ -316,6 +316,7 @@
       <LastGenOutput>UserModel.cs</LastGenOutput>
     </Content>
     <Content Include="Views\Home\Servering.cshtml" />
+    <Content Include="Views\Admin\Registration.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

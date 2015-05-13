@@ -62,6 +62,38 @@ namespace Byporten.Controllers
         }
         #endregion
 
+        #region register admin user
+        [HttpGet]
+        public ActionResult Registration()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Registration(Byporten.Models.AdminModel admin)
+        {
+            if (ModelState.IsValid)
+            {
+                using (var db = new byportenEntities())
+                {
+                    var crypto = new SimpleCrypto.PBKDF2();
+                    var encryptPass = crypto.Compute(admin.Password);
+
+                    var sysAdmin = db.adminuser.Create();
+
+                    sysAdmin.Username = admin.Username;
+                    sysAdmin.Password = encryptPass;
+                    sysAdmin.PasswordSalt = crypto.Salt;
+
+                    db.adminuser.Add(sysAdmin);
+                    db.SaveChanges();
+
+                    return RedirectToAction("Portal", "Admin");
+                }
+            }
+            return View();
+        }
+        #endregion
+
         #region Logout Block
         public ActionResult Logout()
         {
@@ -289,7 +321,6 @@ namespace Byporten.Controllers
                 }
                 else
                 {
-                    
                     db.Entry(createpost).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("ViewAllArticles");
