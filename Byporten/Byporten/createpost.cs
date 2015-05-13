@@ -18,7 +18,7 @@ namespace Byporten
         public int Id { get; set; }
 
         [Required(ErrorMessage="Tittel er påkrevd.")]
-        [MinLength(6, ErrorMessage="Tittel må være lengre enn 6 tegn."), MaxLength(150, ErrorMessage="Tittelen er for lang.")]
+        [MinLength(4, ErrorMessage="Tittel må være lengre enn 4 tegn."), MaxLength(100, ErrorMessage="Tittelen er for lang.")]
         public string Title { get; set; }
 
         [Required(ErrorMessage="Dette er påkrevd")]
